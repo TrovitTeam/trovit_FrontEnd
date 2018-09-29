@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../resources/logo.svg';
 import '../styles/App.css';
 
-class Header extends Component {
+class SearchBar extends Component {
   render() {
     return (
       <div className="App">
@@ -18,4 +18,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default SearchBar;
