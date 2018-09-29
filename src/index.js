@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import registerServiceWorker from '../registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter, Route} from 'react-router-dom'
-import Landing_page from './Landing_page';
-import Product_info from './Product_info';
-import Profile from './Profile';
-import Log_in from './Log_in';
-import Sign_in from './Sign_in';
-import Contact from './Contact';
-import Search_result from './Search_result';
-import Send_email from './Send_email';
-import Setting from './Setting';
+import Landing_page from './components/Landing_page';
+import Product_info from './components/Product_info';
+import Profile from './components/Profile';
+import Log_in from './components/Log_in';
+import Sign_in from './components/Sign_in';
+import Contact from './components/Contact';
+import Search_result from './components/Search_result';
+import Send_email from './components/Send_email';
+import Setting from './components/Setting';
 
 ReactDOM.render(
     <BrowserRouter>
