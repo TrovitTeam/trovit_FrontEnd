@@ -3,7 +3,6 @@ import '../styles/index.css';
 import {Card, Col, Carousel,Row, CardTitle, CardPanel} from 'react-materialize'
 import Slider from "react-slick";
 
-import AppBar from '@material-ui/core/AppBar';
 
 class Landing_page extends Component {
   render() {
