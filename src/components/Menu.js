@@ -35,7 +35,7 @@ class Menu extends Component {
             </div>
             <div class="col s5 offset-s2">
               <nav>
-                <div class="nav-wrapper light-blue darken-4">
+                <div class="nav-wrapper grey lighten-2">
                   <form>
                     <div class="input-field">
                       <input id="search" type="search" required/>
