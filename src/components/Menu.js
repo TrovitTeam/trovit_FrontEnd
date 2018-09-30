@@ -25,13 +25,11 @@ class Menu extends Component {
             <NavItem href='/'>Home</NavItem>
             <NavItem href='/Contacts'>Contacts</NavItem>
             {j}
-          <Row>
+          <Row className ="valing-wrapper">
             <div class="col offset-s2 center">
-              <li className="logo">
-                <a className="brand-logo active" id="logo-container">
-                  <img className="material-boxed" width="100%" src={logo} alt="Trovit"/>
+                  <a className="brand-logo active" id="logo-container">
+                  <img className="material-boxed" width="100%" height="100%" style={{padding:3 +"%"}} src={logo} alt="Trovit"/>
                 </a>
-              </li>
             </div>
             <div class="col s5 offset-s2">
               <nav>
