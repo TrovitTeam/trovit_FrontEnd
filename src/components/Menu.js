@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import {Navbar, NavItem} from 'react-materialize';
+import {Navbar, NavItem, Col} from 'react-materialize';
 
 class Menu extends Component {
   render() {
     return (
       <div>
-        <Navbar left>
+        <Navbar className="indigo darken-1 center" brand="Trovit">
           <NavItem href='/Landing'>Home</NavItem>
           <NavItem href='/Contacts'>Contacts</NavItem>
-          <NavItem href='/Sign_in' id='left'>Sing in</NavItem>
-          <NavItem href='/Log_in' id='left'>Log in</NavItem>
+          <NavItem className="right" href='/Sign_in'>Sing in</NavItem>
+          <NavItem className="right" href='/Log_in'>Log in</NavItem>
         </Navbar>
       </div>
     );
