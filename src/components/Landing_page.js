@@ -17,22 +17,22 @@ class Landing_page extends Component {
       <div class="container">
           <Slider {...settings}>
             <div class="container">
-              <img width="100%" height="30%"src="http://www.grupoduplex.com/wp-content/uploads/2018/09/H71626735-Khaki-Field-Auto-Chrono-in-Jack-Ryan-3-6000x500.jpg" />
+              <img width="100%" height="200 px"src="http://www.grupoduplex.com/wp-content/uploads/2018/09/H71626735-Khaki-Field-Auto-Chrono-in-Jack-Ryan-3-6000x500.jpg" />
             </div>
             <div>
-              <img width="100%" height="30%" src="http://xn--schnstegeschenke-owb.de/wp-content/uploads/2018/07/kopfh%C3%B6rer_geschenke_m%C3%A4nner-e1531051063523-6000x500.jpg" />
+              <img width="100%" height="200 px" src="http://xn--schnstegeschenke-owb.de/wp-content/uploads/2018/07/kopfh%C3%B6rer_geschenke_m%C3%A4nner-e1531051063523-6000x500.jpg" />
             </div>
             <div>
-              <img width="100%" height="30%" src="http://xn--schnstegeschenke-owb.de/wp-content/uploads/2018/07/brettspiele_geschenke_m%C3%A4nner-6000x500.jpg" />
+              <img width="100%" height="200 px" src="http://xn--schnstegeschenke-owb.de/wp-content/uploads/2018/07/brettspiele_geschenke_m%C3%A4nner-6000x500.jpg" />
             </div>
             <div>
-              <img width="100%" height="30%" src="http://www.grupoduplex.com/wp-content/uploads/2018/09/H71626735-Khaki-Field-Auto-Chrono-in-Jack-Ryan-3-6000x500.jpg" />
+              <img width="100%" height="200 px" src="http://www.grupoduplex.com/wp-content/uploads/2018/09/H71626735-Khaki-Field-Auto-Chrono-in-Jack-Ryan-3-6000x500.jpg" />
             </div>
             <div>
-              <img width="100%" height="30%" src="http://xn--schnstegeschenke-owb.de/wp-content/uploads/2018/07/kopfh%C3%B6rer_geschenke_m%C3%A4nner-e1531051063523-6000x500.jpg" />
+              <img width="100%" height="200 px" src="http://xn--schnstegeschenke-owb.de/wp-content/uploads/2018/07/kopfh%C3%B6rer_geschenke_m%C3%A4nner-e1531051063523-6000x500.jpg" />
             </div>
             <div>
-              <img width="100%" height="30%" src="http://xn--schnstegeschenke-owb.de/wp-content/uploads/2018/07/brettspiele_geschenke_m%C3%A4nner-6000x500.jpg" />
+              <img width="100%" height="200 px" src="http://xn--schnstegeschenke-owb.de/wp-content/uploads/2018/07/brettspiele_geschenke_m%C3%A4nner-6000x500.jpg" />
             </div>
           </Slider>
           <Row>
