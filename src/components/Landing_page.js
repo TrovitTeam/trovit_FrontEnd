@@ -38,7 +38,7 @@ class Landing_page extends Component {
                 <img width="100%" src={src12}  />
               </div>
               <div>
-                <img width="100%" src={src13} />
+                <img width="100%" src={src11} />
               </div>
             </Slider>
           </div>
