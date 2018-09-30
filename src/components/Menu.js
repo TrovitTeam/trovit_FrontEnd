@@ -22,7 +22,7 @@ class Menu extends Component {
     return (
       <div>
         <Navbar className="indigo darken-1 center" brand="Trovit">
-          <NavItem href='/Landing'>Home</NavItem>
+          <NavItem href='/'>Home</NavItem>
           <NavItem href='/Contacts'>Contacts</NavItem>
           {j}
                     
