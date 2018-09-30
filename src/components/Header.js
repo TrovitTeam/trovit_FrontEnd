@@ -6,10 +6,9 @@ class Header extends Component {
   render() {
     return (
       <Row style={{margin:0}}>
-        <Input type="search" required><Icon>search</Icon></Input>
       </Row>
     );
   }
 }
 
-export default Header;
+export default Header;  
