@@ -21,7 +21,7 @@ class Menu extends Component {
     
     return (
       <div class="container-fluid">
-        <Navbar className="light-blue darken-4">
+        <Navbar className="light-blue darken-4" fixed>
             <NavItem href='/'>Home</NavItem>
             <NavItem href='/Contacts'>Contacts</NavItem>
             {j}
