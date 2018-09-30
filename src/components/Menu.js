@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Navbar, NavItem, Col, Row} from 'react-materialize';
-
+import logo from "../resources/LogoNoBack.png"
 
 class Menu extends Component {
   render() {
@@ -26,9 +26,11 @@ class Menu extends Component {
             <NavItem href='/Contacts'>Contacts</NavItem>
             {j}
           <Row>
-            <div class="col s1 offset-s1">
-              <img width="50%" src="../resources/LogoNoBack.png"/>
-            </div>
+            <li className="logo">
+              <a className="brand-logo active" id="logo-container">
+                <img className="material-boxed" height="50" src={logo} alt="Trovit"/>
+              </a>
+            </li>
             <div class="col s5 offset-s2">
               <nav>
                 <div class="nav-wrapper blue-grey">
