@@ -1,15 +1,10 @@
-/*
-Dark Blue: #264653
-color1: rgba(38, 70, 83, 1);
-Green Blue: #2A9D8F
-color2: rgba(42, 157, 143, 1);
-Yellow: #E9C46A
-color3: rgba(233, 196, 106, 1);
-Orange: #F4A261
-color4: rgba(244, 162, 97, 1);
-red:#E76F51
-color5: rgba(231, 111, 81, 1);
-*/
+/* Main Colors:
+#212121 grey darken-4
+#607d8b blue-grey
+#43a047 green darken-1
+#e0e0e0 grey lighten-2
+#01579b light-blue darken-4
+ */
 
 body {
   margin: 0;
