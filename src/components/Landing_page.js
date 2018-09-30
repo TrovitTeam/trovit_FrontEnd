@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
-import {Card, Col, Carousel, Row, CardTitle, CardPanel, Table, Pagination} from 'react-materialize'
+import {Card, Col, Carousel, Row, CardTitle, CardPanel, Table, Pagination, Footer} from 'react-materialize'
 import Slider from "react-slick";
 import src12 from "../resources/Captura12.PNG"
 import src11 from "../resources/Captura11.PNG"
@@ -14,7 +14,6 @@ import src06 from "../resources/Captura06.PNG"
 import src07 from "../resources/Captura07.PNG"
 import src08 from "../resources/Captura08.PNG"
 import src09 from "../resources/Captura09.PNG"
-import logo from "../resources/LogoNoBack.png"
 
 class Landing_page extends Component {
   render() {

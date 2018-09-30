@@ -14,6 +14,7 @@ import Contact from './components/Contact';
 import Search_result from './components/Search_result';
 import Send_email from './components/Send_email';
 import Setting from './components/Setting';
+import FooterPage from './components/FooterPage';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -29,7 +30,9 @@ ReactDOM.render(
             <Route path = '/Search_result' component = {Search_result}/>
             <Route path = '/Send_email' component = {Send_email}/>
             <Route path = '/Setting' component = {Setting}/>
+            <FooterPage/>
         </div>
+        
     </BrowserRouter>
     , document.getElementById('root'));
             
