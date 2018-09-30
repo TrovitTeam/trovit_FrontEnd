@@ -21,7 +21,7 @@ class Menu extends Component {
     
     return (
       <div>
-        <Navbar className="indigo darken-1 center" brand="Trovit">
+        <Navbar className="light-blue darken-4 center" brand="Trovit">
           <NavItem href='/'>Home</NavItem>
           <NavItem href='/Contacts'>Contacts</NavItem>
           {j}

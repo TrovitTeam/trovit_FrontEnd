@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
-import {Card, Col, Carousel,Row, CardTitle, CardPanel} from 'react-materialize'
+import {Card, Col, Carousel,Row, CardTitle, CardPanel, Table} from 'react-materialize'
 import Slider from "react-slick";
 
 
@@ -39,22 +39,115 @@ class Landing_page extends Component {
               <Col s={6} m={3}>
                   <div>
                     <ul class="collection">
-                      <li class="collection-item">Item 1</li>
-                      <li class="collection-item">Item 2</li>
-                      <li class="collection-item">Item 3</li>
-                      <li class="collection-item">Item 4</li>
+                      <li class="collection-item avatar">
+                        <i class="material-icons circle">folder</i>
+                        <span class="title">Title</span>
+                        <p>First Line <br></br>
+                            Second Line
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="material-icons circle">folder</i>
+                        <span class="title">Title</span>
+                        <p>First Line <br></br>
+                            Second Line
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="material-icons circle">folder</i>
+                        <span class="title">Title</span>
+                        <p>First Line <br></br>
+                            Second Line
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="material-icons circle">folder</i>
+                        <span class="title">Title</span>
+                        <p>First Line <br></br>
+                            Second Line
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                      </li>
                     </ul>
                   </div>
               </Col>
               <Col s={6} m={9}>
-                  <div>
-                    <ul class="collection">
-                      <li class="collection-item">Item 1</li>
-                      <li class="collection-item">Item 2</li>
-                      <li class="collection-item">Item 3</li>
-                      <li class="collection-item">Item 4</li>
-                    </ul>
-                  </div>
+                <Table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                      <td>
+                        <Card className='small blue-grey'
+                          header={<CardTitle image="http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg">Card Title</CardTitle>}
+                          actions={[<a href='#'>Product Link</a>]}>
+                          Product Description.
+                        </Card>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
               </Col>
           </Row>
 
