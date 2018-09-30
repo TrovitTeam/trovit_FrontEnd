@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter, Route} from 'react-router-dom'
-import Header from './components/ Header';
+import Header from './components/Header';
 import Menu from './components/Menu';
 import Landing_page from './components/Landing_page';
 import Product_info from './components/Product_info';
