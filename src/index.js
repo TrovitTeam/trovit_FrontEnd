@@ -32,7 +32,6 @@ ReactDOM.render(
             <Route path = '/Setting' component = {Setting}/>
             <FooterPage/>
         </div>
-        
     </BrowserRouter>
     , document.getElementById('root'));
             
