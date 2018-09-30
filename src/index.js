@@ -19,17 +19,19 @@ import FooterPage from './components/FooterPage';
 ReactDOM.render(
     <BrowserRouter>
         <div>
-            <Route path = '/' component = {Header}/>
-            <Route path = '/' component = {Menu}/>
-            <Route exact path = '/' component = {Landing_page}/>
-            <Route path = '/Contact' component = {Contact}/>
-            <Route path = '/Log_in' component = {Log_in}/>
-            <Route path = '/Sign_in' component = {Sign_in}/>
-            <Route path = '/Product_Info' component = {Product_info}/>
-            <Route path = '/Profile' component = {Profile}/>
-            <Route path = '/Search_result' component = {Search_result}/>
-            <Route path = '/Send_email' component = {Send_email}/>
-            <Route path = '/Setting' component = {Setting}/>
+            <div class="main-container">
+                <Route path = '/' component = {Header}/>
+                <Route path = '/' component = {Menu}/>
+                <Route exact path = '/' component = {Landing_page}/>
+                <Route path = '/Contact' component = {Contact}/>
+                <Route path = '/Log_in' component = {Log_in}/>
+                <Route path = '/Sign_in' component = {Sign_in}/>
+                <Route path = '/Product_Info' component = {Product_info}/>
+                <Route path = '/Profile' component = {Profile}/>
+                <Route path = '/Search_result' component = {Search_result}/>
+                <Route path = '/Send_email' component = {Send_email}/>
+                <Route path = '/Setting' component = {Setting}/>
+            </div>
             <FooterPage/>
         </div>
     </BrowserRouter>
