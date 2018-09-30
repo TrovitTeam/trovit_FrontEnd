@@ -5,8 +5,11 @@ import {Icon, Input, Row} from 'react-materialize';
 class Header extends Component {
   render() {
     return (
-      <Row style={{margin:0}}>
-      </Row>
+      <div>
+        <Row style={{margin:0}}>
+        </Row>
+      </div>
+      
     );
   }
 }

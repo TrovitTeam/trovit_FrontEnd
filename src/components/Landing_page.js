@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
-import {Card, Col, Carousel,Row, CardTitle, CardPanel, Table} from 'react-materialize'
+import {Card, Col, Carousel, Row, CardTitle, CardPanel, Table} from 'react-materialize'
 import Slider from "react-slick";
 
 
@@ -150,9 +150,6 @@ class Landing_page extends Component {
                 </Table>
               </Col>
           </Row>
-
-
-          
       </div>
     );
   }

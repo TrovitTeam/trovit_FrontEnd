@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Navbar, NavItem, Col} from 'react-materialize';
+import {Navbar, NavItem, Col, Row} from 'react-materialize';
 
 
 class Menu extends Component {
@@ -20,12 +20,30 @@ class Menu extends Component {
       }
     
     return (
-      <div>
-        <Navbar className="light-blue darken-4 center" brand="Trovit">
-          <NavItem href='/'>Home</NavItem>
-          <NavItem href='/Contacts'>Contacts</NavItem>
-          {j}
-                    
+      <div class="container-fluid">
+        <Navbar className="light-blue darken-4">
+            <NavItem href='/'>Home</NavItem>
+            <NavItem href='/Contacts'>Contacts</NavItem>
+            {j}
+          <Row>
+            <div class="col s1 offset-s2">
+              <h4 class="right">Trovit</h4>
+            </div>
+            <div class="col s5 offset-s1">
+              <nav>
+                <div class="nav-wrapper blue-grey">
+                  <form>
+                    <div class="input-field">
+                      <input id="search" type="search" required/>
+                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                      <i class="material-icons">close</i>
+                    </div>
+                  </form>
+                </div>
+              </nav>
+            </div>
+            
+          </Row>     
         </Navbar>
       </div>
     );
