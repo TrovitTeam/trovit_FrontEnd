@@ -5,9 +5,11 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        <Navbar brand='Trovit' left>
-          <NavItem href='/Landing'>Getting started</NavItem>
-          <NavItem href='components.html'>Components</NavItem>
+        <Navbar left>
+          <NavItem href='/Landing'>Home</NavItem>
+          <NavItem href='/Contacts'>Contacts</NavItem>
+          <NavItem href='/Sign_in' id='left'>Sing in</NavItem>
+          <NavItem href='/Log_in' id='left'>Log in</NavItem>
         </Navbar>
       </div>
     );

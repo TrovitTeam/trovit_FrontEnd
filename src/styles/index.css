@@ -20,3 +20,8 @@ body {
 .card_ex{
   background: #264653;
 }
+
+#left
+{
+  float: right;
+}
