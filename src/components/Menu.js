@@ -21,15 +21,15 @@ class Menu extends Component {
     
     return (
       <div class="container-fluid">
-        <Navbar className="light-blue darken-4" fixed>
+        <Navbar className="light-blue darken-4">
             <NavItem href='/'>Home</NavItem>
             <NavItem href='/Contacts'>Contacts</NavItem>
             {j}
           <Row>
-            <div class="col s1 offset-s2">
-              <h4 class="right">Trovit</h4>
+            <div class="col s1 offset-s1">
+              <img width="50%" src="../resources/LogoNoBack.png"/>
             </div>
-            <div class="col s5 offset-s1">
+            <div class="col s5 offset-s2">
               <nav>
                 <div class="nav-wrapper blue-grey">
                   <form>
