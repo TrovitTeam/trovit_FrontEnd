@@ -21,19 +21,21 @@ class Menu extends Component {
     
     return (
       <div class="container-fluid">
-        <Navbar className="light-blue darken-4">
+        <Navbar className="blue-grey">
             <NavItem href='/'>Home</NavItem>
             <NavItem href='/Contacts'>Contacts</NavItem>
             {j}
           <Row>
-            <li className="logo">
-              <a className="brand-logo active" id="logo-container">
-                <img className="material-boxed" height="50" src={logo} alt="Trovit"/>
-              </a>
-            </li>
+            <div class="col offset-s2 center">
+              <li className="logo">
+                <a className="brand-logo active" id="logo-container">
+                  <img className="material-boxed" width="100%" src={logo} alt="Trovit"/>
+                </a>
+              </li>
+            </div>
             <div class="col s5 offset-s2">
               <nav>
-                <div class="nav-wrapper blue-grey">
+                <div class="nav-wrapper light-blue darken-4">
                   <form>
                     <div class="input-field">
                       <input id="search" type="search" required/>
