@@ -25,7 +25,8 @@ class Landing_page extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      adaptiveHeight:true
+      adaptiveHeight:true,
+      arrows: false
     };
     return (
       <div>
