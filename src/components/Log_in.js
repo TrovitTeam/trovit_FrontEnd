@@ -7,32 +7,32 @@ import gmlogo from "../resources/gmail.svg"
 class Log_in extends Component {
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <Row>
           <blockquote>
-            <h1 class="center">Log In</h1>
+            <h1 className="center">Log In</h1>
           </blockquote>
         </Row>
         <Row>
           <Input s={12} type="email" label="email" validate><Icon>email</Icon></Input>
           <Input s={12} type="password" label="password" validate><Icon>fingerprint</Icon></Input>  
         </Row>
-        <div class="center">
+        <div className="center">
           <Button className="light-blue darken-4" waves='light'>Log In</Button>
         </div>
-        <div class="center">
+        <div className="center">
           <Row>
             <Col s={4}>
-              <p class="flow-text">Google +</p>
-              <img width="10%" src={glogo}/>
+              <p className="flow-text">Google +</p>
+              <img width="10%" alt="" src={glogo}/>
             </Col>
             <Col s={4}>   
-              <p class="flow-text">Facebook</p>
-              <img width="10%" src={flogo}/>
+              <p className="flow-text">Facebook</p>
+              <img width="10%" alt="" src={flogo}/>
             </Col>
             <Col s={4}>
-              <p class="flow-text">Gmail</p>
-              <img width="10%" src={gmlogo}/>
+              <p className="flow-text">Gmail</p>
+              <img width="10%" alt="" src={gmlogo}/>
             </Col>
           </Row>
         </div>

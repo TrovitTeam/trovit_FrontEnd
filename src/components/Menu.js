@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Navbar, NavItem, Col, Row} from 'react-materialize';
+import {Navbar, NavItem, Row} from 'react-materialize';
 import logo from "../resources/LogoNoBack.png"
 
 class Menu extends Component {
@@ -20,25 +20,25 @@ class Menu extends Component {
       }
     
     return (
-      <div class="container-fluid">
+      <div className="container-fluid">
         <Navbar className="blue-grey">
             <NavItem href='/'>Home</NavItem>
-            <NavItem href='/Contacts'>Contacts</NavItem>
+            <NavItem href='/Contact'>Contacts</NavItem>
             {j}
           <Row className ="valing-wrapper">
-            <div class="col offset-s2 center">
+            <div className="col offset-s2 center">
                   <a className="brand-logo active" id="logo-container">
                   <img className="material-boxed" width="100%" height="100%" style={{padding:3 +"%"}} src={logo} alt="Trovit"/>
                 </a>
             </div>
-            <div class="col s5 offset-s2">
+            <div className="col s5 offset-s2">
               <nav>
-                <div class="nav-wrapper grey lighten-2">
+                <div className="nav-wrapper grey lighten-2">
                   <form>
-                    <div class="input-field">
+                    <div className="input-field">
                       <input id="search" type="search" required/>
-                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                      <i class="material-icons">close</i>
+                      <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+                      <i className="material-icons">close</i>
                     </div>
                   </form>
                 </div>

@@ -19,7 +19,7 @@ import FooterPage from './components/FooterPage';
 ReactDOM.render(
     <BrowserRouter>
         <div>
-            <div class="main-container">
+            <div className="main-container">
                 <Route path = '/' component = {Header}/>
                 <Route path = '/' component = {Menu}/>
                 <Route exact path = '/' component = {Landing_page}/>
