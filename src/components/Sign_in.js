@@ -15,10 +15,10 @@ class Sign_in extends Component {
           </blockquote>
         </Row>
         <Row>
-            <Input s={6} label="First Name" validate><Icon>account_circle</Icon></Input>
-            <Input s={6} label="Last Name"/>
+            <Input s={12} label="Name" validate><Icon>account_circle</Icon></Input>
             <Input s={12} type="password" label="password" validate><Icon>fingerprint</Icon></Input>
             <Input s={12} type="email" label="email" validate><Icon>email</Icon></Input>
+            <Input s={12} label="Telephone" validate type="tel" data-length="35"><Icon>phone</Icon></Input>
         </Row>
         <div class="center">
           <Button className="light-blue darken-4" waves='light'>Register</Button>
