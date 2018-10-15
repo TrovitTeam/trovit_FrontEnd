@@ -14,8 +14,8 @@ class Log_in extends Component {
           </blockquote>
         </Row>
         <Row>
-          <Input s={12} type="email" label="email" validate><Icon>email</Icon></Input>
-          <Input s={12} type="password" label="password" validate><Icon>fingerprint</Icon></Input>  
+          <Input s={12} type="email" label="email" validate data-length="45"><Icon>email</Icon></Input>
+          <Input s={12} type="password" label="password" validate data-length="45"><Icon>fingerprint</Icon></Input>  
         </Row>
         <div className="center">
           <Button className="light-blue darken-4" waves='light'>Log In</Button>
