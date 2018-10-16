@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Icon, Input, Row} from 'react-materialize';
+import {Row} from 'react-materialize';
 
 
 class Header extends Component {

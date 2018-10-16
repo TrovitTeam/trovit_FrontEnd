@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
 
-$.ajax(
-  {
-    url: 'http://localhost:3000/users.json', 
-    success: function(result){
-        console.log(result);
-    }
-  }
-);
+ $.ajax(
+   {
+     url: 'http://localhost:3000/users', 
+     success: function(result){
+         console.log(result);
+     }
+   }
+ );
 
 class Contact extends Component {
-  
   constructor(props){
     super(props);
     this.state = {
@@ -23,7 +22,7 @@ class Contact extends Component {
       var _this = this;
       axios({
           method:'get',
-          url:'http://localhost:3000/users.json',
+          url:'http://localhost:3000/users',
       })
       .then(function(response) {
 
@@ -41,10 +40,7 @@ class Contact extends Component {
   render(){
     return (
       <div>
-        <textarea onChange={this.handleChange} value={this.state.json} />
-        <button onClick={this.saveJson}>SAVE to LocalStorage</button> 
-        <button onClick={this.loadJson}>LOAD from LocalStorage</button>
-          <p>save/load JSON data via a React Component</p>
+        
       </div>
     );
   }

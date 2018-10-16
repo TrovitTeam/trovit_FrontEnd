@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
-import {Card, Col, Carousel, Row, CardTitle, CardPanel, Table, Pagination, Footer} from 'react-materialize'
+import {Card, Col, CardTitle, Table, Row} from 'react-materialize'
 import Slider from "react-slick";
 import src12 from "../resources/Captura12.PNG"
 import src11 from "../resources/Captura11.PNG"
@@ -18,31 +18,35 @@ import src09 from "../resources/Captura09.PNG"
 class Landing_page extends Component {
   render() {
     var settings = {
-      dots: false,
+      dots: true,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
-      adaptiveHeight:true,
-      arrows: false
+      autoplay: false,
+      adaptiveHeight:false,
+      arrows: true
     };
     return (
       <div>
-        <div class="container-fluid">
-          <Slider {...settings}>
-              <div>
-                <img width="100%" src={src13} />
-              </div>
-              <div>
-                <img width="100%" src={src12}  />
-              </div>
-              <div>
-                <img width="100%" src={src11} />
-              </div>
-            </Slider>
-          </div>
-          <div class="container">
+        <div className="container-fluid">
+          <Row>
+            <Col id="land_slider" className="offset-s1" s={10}>
+              <Slider {...settings}>
+                <div>
+                  <img width="100%" alt="" src={src13} />
+                </div>
+                <div>
+                  <img width="100%" alt="" src={src12}  />
+                </div>
+                <div>
+                  <img width="100%" alt="" src={src11} />
+                </div>
+              </Slider>
+            </Col>
+          </Row>
+        </div>
+          <div className="container">
           <Col s={12} m={12}>
                   <Table responsive={true}>
                     <tbody>
@@ -50,21 +54,21 @@ class Landing_page extends Component {
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src01}>  Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src02}>Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src03}>Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
@@ -74,21 +78,21 @@ class Landing_page extends Component {
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src04}>Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src05}>Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src06}>Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
@@ -97,21 +101,21 @@ class Landing_page extends Component {
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src07}>Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src08}>Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
                             header={<CardTitle image={src09}>Product Title</CardTitle>}
-                            actions={[<a href='#'>Product Link</a>]}>
+                            actions={[<a href='/'>Product Link</a>]}>
                             Product Description.
                           </Card>
                         </td>
