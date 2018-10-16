@@ -18,12 +18,17 @@ import FooterPage from './components/FooterPage';
 
 import {Provider} from "react-redux"
 import thunk from "redux-thunk"
-import {createStore, applyMiddleware} from "redux"
+import {createStore, applyMiddleware, compose} from "redux"
 import setAuthorizationToken from './utils/setAuthorizationToken';
 
+import rootReducer from './components/rootReducer';
+
 const store = createStore(
-    (state = {}) => state,
-    applyMiddleware(thunk)
+    rootReducer,
+    compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
 );
 
 setAuthorizationToken(localStorage.jwtToken);
