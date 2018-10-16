@@ -41,7 +41,7 @@ class Profile extends Component {
                 title={this.state.name}
                 reveal={
                   <Row className="valign-wrapper">
-                      <Input type="file" label="File" s={12} multiple placeholder="Upload one or more files" />
+                      <Input type="file" label="Picture" s={12} multiple placeholder="Upload one or More Pictures" />
                   </Row>
                 }>
                 
@@ -68,7 +68,6 @@ class Profile extends Component {
                 </tr>
                 <tr>
                   <th>
-                    <p className="flow-text">User Type</p>
                     <p className="flow-text">{this.state.userType}</p>
                     <p><a href="/Profile">See More</a></p>
                     <ProgressBar width="100%" progress={100}/>
