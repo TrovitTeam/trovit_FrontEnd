@@ -8,7 +8,7 @@ import axios from 'axios';
 import PropTypes from "prop-types"
 
 import {connect} from "react-redux"
-import {login} from "../actions/login"
+import {login} from "../actions/authActions"
 
 
 class Log_in_Form extends Component {

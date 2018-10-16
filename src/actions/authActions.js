@@ -1,4 +1,6 @@
 import axios from "axios"
+import setAuthorizationToken from "../utils/setAuthorizationToken";
+
 
 export function login(data)
 {
@@ -20,6 +22,7 @@ export function login(data)
 
             const token = response.data.jwt;
             localStorage.setItem("jwtToken", token);
+            setAuthorizationToken(token);
         });
     }
-}
+} 

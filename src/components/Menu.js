@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import {Navbar, NavItem, Row} from 'react-materialize';
 import logo from "../resources/LogoNoBack.png"
 
@@ -14,16 +15,18 @@ class Menu extends Component {
       else
       {
         j = ( <div className="right">
-                <NavItem className="right" href='/Sign_in'>Sign in</NavItem>
-                <NavItem className="right" href='/Log_in'>Log in</NavItem>
+                <Link className="right" to='/Sign_in'>Sign in</Link>
+                <Link className="right" to='/Log_in'>Log in</Link>
               </div>);
       }
     
     return (
       <div className="container-fluid">
         <Navbar className="blue-grey">
-            <NavItem href='/'>Home</NavItem>
-            <NavItem href='/Contact'>Contacts</NavItem>
+            <div>
+            <Link to='/'>Home</Link>
+            <Link to='/Contact'>Contacts</Link>
+            </div>
             {j}
           <Row className ="valing-wrapper">
             <div className="col offset-s2 center">
