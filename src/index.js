@@ -16,12 +16,17 @@ import Send_email from './components/Send_email';
 import Setting from './components/Setting';
 import FooterPage from './components/FooterPage';
 
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+
 import {Provider} from "react-redux"
 import thunk from "redux-thunk"
 import {createStore, applyMiddleware, compose} from "redux"
 import setAuthorizationToken from './utils/setAuthorizationToken';
 
 import rootReducer from './components/rootReducer';
+import { SET_CURRENT_USER } from './actions/types';
+import { setCurrentUser } from './actions/authActions';
 
 const store = createStore(
     rootReducer,
@@ -31,7 +36,27 @@ const store = createStore(
     )
 );
 
-setAuthorizationToken(localStorage.jwtToken);
+if(localStorage.jwtToken)
+{
+    setAuthorizationToken(localStorage.jwtToken);
+    
+    const token = localStorage.jwtToken;
+
+    const decoded = jwt_decode(token);
+    const id = decoded.sub;
+
+    axios({
+            method: "get",
+            url:'http://localhost:3000/users/' + id,
+            responseType: "json"
+    })
+    .then(response => {
+
+        console.log(response);
+        store.dispatch(setCurrentUser(response.data));
+    });
+}
+
 
 ReactDOM.render(
     <Provider store={store}>

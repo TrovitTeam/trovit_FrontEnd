@@ -7,11 +7,10 @@ import {SET_CURRENT_USER} from "./types";
 
 export function setCurrentUser(user)
 {
-    return
-    {
+    return {
         type: SET_CURRENT_USER,
         user
-    }
+    };
 }
 
 export function login(data)
@@ -35,7 +34,19 @@ export function login(data)
             const token = response.data.jwt;
             localStorage.setItem("jwtToken", token);
             setAuthorizationToken(token);
-            console.log(jwt_decode(token));
+            const decoded = jwt_decode(token);
+            const id = decoded.sub;
+
+            axios({
+                    method: "get",
+                    url:'http://localhost:3000/users/' + id,
+                    responseType: "json"
+            })
+            .then(response => {
+
+                console.log(response);
+                dispatch(setCurrentUser(response.data));
+            })            
         });
     }
 } 
