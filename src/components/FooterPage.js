@@ -7,20 +7,20 @@ class FooterPage extends Component {
     return (
         <Footer copyrights="&copy 2018 Copyright Text"
           moreLinks={
-            <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <a className="grey-text text-lighten-4 right" href="/">More Links</a>
           }
           links={
             <ul>
-              <li><a className="grey-text text-lighten-3" href="#!">Link 1</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Link 2</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Link 3</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li>
+              <li><a className="grey-text text-lighten-3" href="/">Home</a></li>
+              <li><a className="grey-text text-lighten-3" href="/Profile">Profile</a></li>
+              <li><a className="grey-text text-lighten-3" href="/Sign_In">Sign In</a></li>
+              <li><a className="grey-text text-lighten-3" href="/Log_In">Log In</a></li>
             </ul>
           }
           className="blue-grey"
         >
-            <h5 className="white-text">Footer Content</h5>
-            <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            <h5 className="white-text">Trovit</h5>
+            <p className="grey-text text-lighten-4">Trovit Mega Page Data and Associates</p>
         </Footer>   
     );
   }
