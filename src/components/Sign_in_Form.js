@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
-import axios from 'axios';
 import glogo from "../resources/glogo.svg"
 import flogo from "../resources/flogo.svg"
 import gmlogo from "../resources/gmail.svg"
@@ -163,8 +162,8 @@ class Sign_in_Form extends Component {
   }
 }
 
-SigninForm.propTypes = {
-  userSignupRequest: React.PropTypes.func.isRequired
+Sign_in_Form.propTypes = {
+  userSigninRequest: React.PropTypes.func.isRequired
 }
 
 export default Sign_in_Form;
