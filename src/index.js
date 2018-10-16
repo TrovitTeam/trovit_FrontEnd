@@ -47,8 +47,7 @@ ReactDOM.render(
                 </div>
                 <FooterPage/>
             </div>
-</BrowserRouter>
-
+        </BrowserRouter>
     </Provider>
     , document.getElementById('root'));
             

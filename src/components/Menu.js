@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-import {Navbar, NavItem, Row} from 'react-materialize';
+import {Navbar, NavItem, Row, Col} from 'react-materialize';
 import logo from "../resources/LogoNoBack.png"
 
 class Menu extends Component {
@@ -22,19 +22,20 @@ class Menu extends Component {
     
     return (
       <div className="container-fluid">
-        <Navbar className="blue-grey">
-            <div>
-            <Link to='/'>Home</Link>
-            <Link to='/Contact'>Contacts</Link>
-            </div>
-            {j}
+        <Navbar className="blue-grey">       
           <Row className ="valing-wrapper">
-            <div className="col offset-s2 center">
-                  <a className="brand-logo active" id="logo-container">
-                  <img className="material-boxed" width="100%" height="100%" style={{padding:3 +"%"}} src={logo} alt="Trovit"/>
-                </a>
-            </div>
-            <div className="col s5 offset-s2">
+            <Col s={1}>
+              <Link to='/'>Home</Link>
+            </Col>
+            <Col s={1}>
+              <Link to='/Contact'>Contacts</Link>
+            </Col>
+            <Col className="center" s={2}>
+              <a className="brand-logo active" id="logo-container">
+                <img className="material-boxed" width="100%" height="100%" style={{padding:3 +"%"}} src={logo} alt="Trovit"/>
+              </a>
+            </Col>
+            <Col className="offset-s1" s={5}>
               <nav>
                 <div className="nav-wrapper grey lighten-2">
                   <form>
@@ -46,8 +47,10 @@ class Menu extends Component {
                   </form>
                 </div>
               </nav>
-            </div>
-            
+            </Col>
+            <Col s={2}>
+              {j}
+            </Col>
           </Row>     
         </Navbar>
       </div>

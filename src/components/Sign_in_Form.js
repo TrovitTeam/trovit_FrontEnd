@@ -106,13 +106,13 @@ class Sign_in_Form extends Component {
             </Row>
           </Col>  
         </Row>
-        <div className="center">
-          <Row>
-            <Col className="offset-s2" s={8}>
-              <Button id="Register_Button" className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Register</Button>
-            </Col>
-          </Row>
-        </div>
+          <div className="center">
+            <Row>
+              <Col className="offset-s2" s={8}>
+                <Button id="Register_Button" className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Register</Button>
+              </Col>
+            </Row>
+          </div>
         <div className="center">
           <Row>
             <ProgressBar progress={100}/>
