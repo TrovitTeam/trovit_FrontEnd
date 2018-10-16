@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Card, Col, CardTitle, Table, ProgressBar} from 'react-materialize'
+import {Row, Card, Col, CardTitle, Table, ProgressBar, Input} from 'react-materialize'
 import srcBP from "../resources/blank-profile.png"
 import axios from 'axios';
 
@@ -16,12 +16,13 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/users')
+    axios.get('http://localhost:3000/users/11')
       .then(res => {
-        const Name = res.name;
-        const UserType = res.userType;
-        const Email = res.email;
-        const Phone = res.phone;
+        console.log(res)
+        const Name = res.data.name;
+        const UserType = res.data.userType;
+        const Email = res.data.email;
+        const Phone = res.data.phone;
         this.setState({ 
           name: Name,
           userType: UserType,
@@ -38,8 +39,12 @@ class Profile extends Component {
           <Col s={12} m={6}>
             <Card header={<CardTitle reveal image={srcBP} waves='light'/>}
                 title={this.state.name}
-                reveal={<p>Client Description.</p>}>
-                <p><a href="/Profile">Change Picture</a></p>
+                reveal={
+                  <Row className="valign-wrapper">
+                      <Input type="file" label="File" s={12} multiple placeholder="Upload one or more files" />
+                  </Row>
+                }>
+                
             </Card>
           </Col>
           <Col s={12} m={6}>
