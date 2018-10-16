@@ -33,7 +33,11 @@ body {
  #Register_Button{
    margin: 2em;
  }
- 
+
+ #Log_Button{
+  margin-bottom: 2em;
+}
+
  #land_slider{
   margin-left: 10%;
   margin-top: 0.1%;

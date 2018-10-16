@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input, Row, Icon, Button, Col} from 'react-materialize'
+import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
 import glogo from "../resources/glogo.svg"
 import flogo from "../resources/flogo.svg"
 import gmlogo from "../resources/gmail.svg"
@@ -60,18 +60,25 @@ class Log_in extends Component {
     return (
       <div className="container">
         <Row>
-          <blockquote>
-            <h1 className="center">Log In</h1>
-          </blockquote>
+          <Col className="offset-s4" s={4}>
+            <blockquote>
+              <h1 className="center">Log In</h1>
+            </blockquote>
+          </Col>
         </Row>
         <Row>
-          <Input s={12} name="email" type="email" label="email" value={this.state.email} onChange={this.handleChange} validate data-length="45"><Icon>email</Icon></Input>
-          <Input s={12} name="password" type="password" label="password" value={this.state.password} onChange={this.handleChange} validate data-length="45"><Icon>fingerprint</Icon></Input>  
+          <Col className="offset-s2" s={8}>
+            <Input s={12} name="email" type="email" label="email" value={this.state.email} onChange={this.handleChange} validate data-length="45"><Icon>email</Icon></Input>
+            <Input s={12} name="password" type="password" label="password" value={this.state.password} onChange={this.handleChange} validate data-length="45"><Icon>fingerprint</Icon></Input>  
+          </Col>
         </Row>
         <div className="center">
-          <Button className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Log In</Button>
+          <Button id="Log_Button" className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Log In</Button>
         </div>
         <div className="center">
+          <Row>
+            <ProgressBar progress={100}/>
+          </Row>
           <Row>
             <Col s={4}>
               <p className="flow-text">Google +</p>
