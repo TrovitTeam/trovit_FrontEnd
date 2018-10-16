@@ -19,11 +19,14 @@ import FooterPage from './components/FooterPage';
 import {Provider} from "react-redux"
 import thunk from "redux-thunk"
 import {createStore, applyMiddleware} from "redux"
+import setAuthorizationToken from './utils/setAuthorizationToken';
 
 const store = createStore(
     (state = {}) => state,
     applyMiddleware(thunk)
 );
+
+setAuthorizationToken(localStorage.jwtToken);
 
 ReactDOM.render(
     <Provider store={store}>
