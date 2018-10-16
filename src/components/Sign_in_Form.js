@@ -67,40 +67,14 @@ class Sign_in_Form extends Component {
       });
     }
   }
-
-  /*handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.name);
-    event.preventDefault();
-  }*/
   
   handleSubmit(event){
-      /*var _this = this;
-      axios({
-          method:'post',
-          url:'http://localhost:3000/users',
-          responseType: "json",
-          data: {
-            "user":
-            {
-              "name": _this.state.name,
-              "location": "Bogota",
-              "userType": _this.state.userType,
-              "phone": _this.state.phone,
-              "email": _this.state.email,
-              "password": _this.state.password
-            }
-          }
-      })
-      .then(function(response) {
 
-          console.log(response);
-      })
-      .catch(function (error) {
-      console.log(error);
-
-      });*/
-
-    this.props.userSigninRequest(this.state);
+    this.props.userSigninRequest(this.state).then(
+      () => {
+        this.context.router.history.push("/");
+      }
+    );
   }
 
   render() {
@@ -166,5 +140,9 @@ class Sign_in_Form extends Component {
 Sign_in_Form.propTypes = {
   userSigninRequest: PropTypes.func.isRequired
 }
- 
+
+Sign_in_Form.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 export default Sign_in_Form;
