@@ -16,25 +16,37 @@ import Send_email from './components/Send_email';
 import Setting from './components/Setting';
 import FooterPage from './components/FooterPage';
 
+import {Provider} from "react-redux"
+import thunk from "redux-thunk"
+import {createStore, applyMiddleware} from "redux"
+
+const store = createStore(
+    (state = {}) => state,
+    applyMiddleware(thunk)
+);
+
 ReactDOM.render(
-    <BrowserRouter>
-        <div>
-            <div className="main-container">
-                <Route path = '/' component = {Header}/>
-                <Route path = '/' component = {Menu}/>
-                <Route exact path = '/' component = {Landing_page}/>
-                <Route path = '/Contact' component = {Contact}/>
-                <Route path = '/Log_in' component = {Log_in}/>
-                <Route path = '/Sign_in' component = {Sign_in}/>
-                <Route path = '/Product_Info' component = {Product_info}/>
-                <Route path = '/Profile' component = {Profile}/>
-                <Route path = '/Search_result' component = {Search_result}/>
-                <Route path = '/Send_email' component = {Send_email}/>
-                <Route path = '/Setting' component = {Setting}/>
+    <Provider store={store}>
+        <BrowserRouter>        
+            <div>
+                <div className="main-container">
+                    <Route path = '/' component = {Header}/>
+                    <Route path = '/' component = {Menu}/>
+                    <Route exact path = '/' component = {Landing_page}/>
+                    <Route path = '/Contact' component = {Contact}/>
+                    <Route path = '/Log_in' component = {Log_in}/>
+                    <Route path = '/Sign_in' component = {Sign_in}/>
+                    <Route path = '/Product_Info' component = {Product_info}/>
+                    <Route path = '/Profile' component = {Profile}/>
+                    <Route path = '/Search_result' component = {Search_result}/>
+                    <Route path = '/Send_email' component = {Send_email}/>
+                    <Route path = '/Setting' component = {Setting}/>
+                </div>
+                <FooterPage/>
             </div>
-            <FooterPage/>
-        </div>
-    </BrowserRouter>
+</BrowserRouter>
+
+    </Provider>
     , document.getElementById('root'));
             
 registerServiceWorker();

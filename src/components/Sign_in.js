@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
 import Sign_in_Form from "./Sign_in_Form.js"
 import {connect} from "react-redux"
-import userSigninRequest from "../actions/signinActions";
+import {userSigninRequest} from "../actions/signinActions.js";
+import PropTypes from "prop-types"
+
 
 
 class Sign_in extends Component {
@@ -21,7 +23,7 @@ class Sign_in extends Component {
 }
 
 Sign_in.propTypes = {
-    userSigninRequest: React.PropTypes.func.isRequired
+    userSigninRequest: PropTypes.func.isRequired
   }
   
 export default connect(null, {userSigninRequest}) (Sign_in);

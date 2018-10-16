@@ -3,6 +3,7 @@ import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
 import glogo from "../resources/glogo.svg"
 import flogo from "../resources/flogo.svg"
 import gmlogo from "../resources/gmail.svg"
+import PropTypes from "prop-types"
 
 
 class Sign_in_Form extends Component {
@@ -17,7 +18,7 @@ class Sign_in_Form extends Component {
       password: '',
       cPassword:'',
       confirmPassword: false
-  };
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -163,7 +164,7 @@ class Sign_in_Form extends Component {
 }
 
 Sign_in_Form.propTypes = {
-  userSigninRequest: React.PropTypes.func.isRequired
+  userSigninRequest: PropTypes.func.isRequired
 }
-
+ 
 export default Sign_in_Form;
