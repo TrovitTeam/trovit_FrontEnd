@@ -12,8 +12,12 @@ class Sign_in extends Component {
     super(props);
     this.state = {
       name: '',
+      userType: '',
+      phone: '',
       email: '',
-      password: ''
+      password: '',
+      cPassword:'',
+      confirmPassword: false
   };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,9 +29,43 @@ class Sign_in extends Component {
     const name = target.name;
     const value = target.value;
 
+
     this.setState({
       [name] : value
-    });
+    }, () =>
+    {
+      if(name === "cPassword")
+      {
+        this.handlePassword();
+      }
+    }
+    );
+
+    /*if(name === "cPassword")
+    {
+      this.handlePassword();
+    }*/
+  }
+
+  handlePassword = () => {
+
+    const cPassword = this.state.cPassword;
+    const password = this.state.password;
+
+    if(cPassword !== password)
+    {
+      console.log(password);
+      console.log(cPassword);
+      this.setState({
+        confirmPassword: false
+      });
+    }
+    else
+    {
+      this.setState({
+        confirmPassword: true
+      });
+    }
   }
 
   /*handleSubmit(event) {
@@ -40,14 +78,15 @@ class Sign_in extends Component {
       axios({
           method:'post',
           url:'http://localhost:3000/users',
+          responseType: "json",
           data: {
             "user":
             {
-              "name": "Arka",
+              "name": _this.state.name,
               "location": "Bogota",
-              "userType": "distributor",
-              "phone": "123456689",
-              "email": "johnd@gmail.com",
+              "userType": _this.state.userType,
+              "phone": _this.state.phone,
+              "email": _this.state.email,
               "password": _this.state.password
             }
           }
@@ -63,6 +102,8 @@ class Sign_in extends Component {
   }
 
   render() {
+
+      var className = this.state.confirmPassword ? "valid" : "invalid";
     return (
       <div className="container">
         <Row>
@@ -73,11 +114,11 @@ class Sign_in extends Component {
         <Row>
             <Input s={12} name="name" label="Name" value={this.state.name} onChange={this.handleChange} validate data-length="45"><Icon>account_circle</Icon></Input>
             <Input s={6} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate><Icon>fingerprint</Icon></Input>
-            <Input s={6} type="password" label="Confirm password" validate><Icon>fingerprint</Icon></Input>
-            <Input s={12} type="email" label="Email" validate data-length="45"><Icon>email</Icon></Input>
-            <Input s={12} label="Telephone" validate type="number" data-length="45"><Icon>phone</Icon></Input>
-            <Input s={6} name='group1' type='radio' value='distributor' label='Distributor'/>
-            <Input s={6} name='group1' type='radio' value='businessManager' label='Business Manager'/>
+            <Input s={6} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange}><Icon>fingerprint</Icon></Input>
+            <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45"><Icon>email</Icon></Input>
+            <Input s={12} name="phone" label="Telephone" validate type="number" value={this.state.phone} onChange={this.handleChange} validate data-length="45"><Icon>phone</Icon></Input>
+            <Input s={6} name='userType' type='radio' value='distributor' label='Distributor' onClick={this.handleChange}/>
+            <Input s={6} name='userType' type='radio' value='businessManager' label='Business Manager' onClick={this.handleChange}/>
         </Row>
         <div className="center">
           <Button className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Register</Button>
