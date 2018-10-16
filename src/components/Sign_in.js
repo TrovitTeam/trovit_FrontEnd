@@ -41,12 +41,15 @@ class Sign_in extends Component {
           method:'post',
           url:'http://localhost:3000/users',
           data: {
-            "name": "Arkai",
-            "location": "Bogota",
-            "userType": "distributor",
-            "phone": 1234567,
-            "email": _this.state.email,
-            "password": _this.state.password
+            "user":
+            {
+              "name": "Arka",
+              "location": "Bogota",
+              "userType": "distributor",
+              "phone": "123456689",
+              "email": "johnd@gmail.com",
+              "password": _this.state.password
+            }
           }
       })
       .then(function(response) {
