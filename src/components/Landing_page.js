@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
-import {Card, Col, CardTitle, Table} from 'react-materialize'
+import {Card, Col, CardTitle, Table, Row} from 'react-materialize'
 import Slider from "react-slick";
 import src12 from "../resources/Captura12.PNG"
 import src11 from "../resources/Captura11.PNG"
@@ -18,30 +18,34 @@ import src09 from "../resources/Captura09.PNG"
 class Landing_page extends Component {
   render() {
     var settings = {
-      dots: false,
+      dots: true,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
-      adaptiveHeight:true,
-      arrows: false
+      autoplay: false,
+      adaptiveHeight:false,
+      arrows: true
     };
     return (
       <div>
         <div className="container-fluid">
-          <Slider {...settings}>
-              <div>
-                <img width="100%" alt="" src={src13} />
-              </div>
-              <div>
-                <img width="100%" alt="" src={src12}  />
-              </div>
-              <div>
-                <img width="100%" alt="" src={src11} />
-              </div>
-            </Slider>
-          </div>
+          <Row>
+            <Col id="land_slider" className="offset-s1" s={10}>
+              <Slider {...settings}>
+                <div>
+                  <img width="100%" alt="" src={src13} />
+                </div>
+                <div>
+                  <img width="100%" alt="" src={src12}  />
+                </div>
+                <div>
+                  <img width="100%" alt="" src={src11} />
+                </div>
+              </Slider>
+            </Col>
+          </Row>
+        </div>
           <div className="container">
           <Col s={12} m={12}>
                   <Table responsive={true}>

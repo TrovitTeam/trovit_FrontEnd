@@ -119,7 +119,7 @@ class Sign_in extends Component {
             <Input s={12} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate><Icon>fingerprint</Icon></Input>
             <Input s={12} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange}><Icon>fingerprint</Icon></Input>
             <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45"><Icon>email</Icon></Input>
-            <Input s={12} name="phone" label="Telephone" validate type="number" value={this.state.phone} onChange={this.handleChange} validate data-length="45"><Icon>phone</Icon></Input>
+            <Input s={12} name="phone" label="Telephone" type="number" value={this.state.phone} onChange={this.handleChange} validate data-length="45"><Icon>phone</Icon></Input>
             <Row>
               <Col className="offset-s2" s={4}>
                 <Input name='userType' type='radio' value='distributor' label={<span className=" flow-text black-text">Distributor</span>} onClick={this.handleChange}/>
@@ -128,7 +128,6 @@ class Sign_in extends Component {
                 <Input name='userType' type='radio' value='businessManager' label={<span className="flow-text black-text">Business Manager</span>} onClick={this.handleChange}/>
               </Col> 
             </Row>
-            
           </Col>  
         </Row>
         <div className="center">
