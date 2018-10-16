@@ -100,7 +100,7 @@ class Sign_in_Form extends Component {
 
       });*/
 
-    this.props.userSinginRequest(this.state);
+    this.props.userSigninRequest(this.state);
   }
 
   render() {
