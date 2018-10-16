@@ -29,3 +29,11 @@ body {
   position: relative;
   padding-bottom: 100px; /* height of your footer */
  }
+
+ #Register_Button{
+   margin: 2em;
+ }
+ 
+ #Sel_Row_sign{
+  margin: 4em;
+}

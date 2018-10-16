@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input, Row, Icon, Button, Col} from 'react-materialize'
+import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
 import axios from 'axios';
 import glogo from "../resources/glogo.svg"
 import flogo from "../resources/flogo.svg"
@@ -107,23 +107,41 @@ class Sign_in extends Component {
     return (
       <div className="container">
         <Row>
-          <blockquote>
-            <h1 className="center">Sign In</h1>
-          </blockquote>
+          <Col className="offset-s4" s={4}>
+            <blockquote>
+              <h1 className="center">Sign In</h1>
+            </blockquote>
+          </Col>
         </Row>
         <Row>
+          <Col className="offset-s2" s={8}>
             <Input s={12} name="name" label="Name" value={this.state.name} onChange={this.handleChange} validate data-length="45"><Icon>account_circle</Icon></Input>
-            <Input s={6} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate><Icon>fingerprint</Icon></Input>
-            <Input s={6} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange}><Icon>fingerprint</Icon></Input>
+            <Input s={12} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate><Icon>fingerprint</Icon></Input>
+            <Input s={12} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange}><Icon>fingerprint</Icon></Input>
             <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45"><Icon>email</Icon></Input>
             <Input s={12} name="phone" label="Telephone" validate type="number" value={this.state.phone} onChange={this.handleChange} validate data-length="45"><Icon>phone</Icon></Input>
-            <Input s={6} name='userType' type='radio' value='distributor' label='Distributor' onClick={this.handleChange}/>
-            <Input s={6} name='userType' type='radio' value='businessManager' label='Business Manager' onClick={this.handleChange}/>
+            <Row>
+              <Col className="offset-s2" s={4}>
+                <Input name='userType' type='radio' value='distributor' label={<span className=" flow-text black-text">Distributor</span>} onClick={this.handleChange}/>
+              </Col>
+              <Col s={4}>
+                <Input name='userType' type='radio' value='businessManager' label={<span className="flow-text black-text">Business Manager</span>} onClick={this.handleChange}/>
+              </Col> 
+            </Row>
+            
+          </Col>  
         </Row>
         <div className="center">
-          <Button className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Register</Button>
+          <Row>
+            <Col className="offset-s2" s={8}>
+              <Button id="Register_Button" className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Register</Button>
+            </Col>
+          </Row>
         </div>
         <div className="center">
+          <Row>
+            <ProgressBar progress={100}/>
+          </Row>
           <Row>
             <Col s={4}>
               <p className="flow-text">Google +</p>
