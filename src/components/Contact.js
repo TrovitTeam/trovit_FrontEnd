@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Card, Col, CardTitle, Table, ProgressBar, Input} from 'react-materialize'
+import {Row, Card, Col, CardTitle, Table, ProgressBar, Input, Pagination} from 'react-materialize'
 import srcBP from "../resources/blank-profile.png"
 import axios from 'axios';
 import $ from 'jquery';
@@ -106,6 +106,9 @@ class Contact extends Component {
     return (
       <div>
         {this.createContacts()}
+        <div className="container center">
+          <Pagination items={10} activePage={1} maxButtons={8} />
+        </div>
       </div>
     );
   }
