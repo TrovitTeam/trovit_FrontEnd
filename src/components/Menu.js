@@ -2,24 +2,38 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import {Navbar, NavItem, Row, Col} from 'react-materialize';
 import logo from "../resources/LogoNoBack.png"
+import { connect } from "react-redux";
+
+import {logout} from "../actions/authActions"
+
+import PropTypes from "prop-types";
+
+
 
 class Menu extends Component {
-  render() {
 
-    let j;
-    
-      if(1===0)
-      {
-        j = <NavItem className="right" href='/Sign_in'>lololol</NavItem>;
-      }
-      else
-      {
-        j = ( <div className="right">
-                <Link className="right" to='/Sign_in'>Sign in</Link>
-                <Link className="right" to='/Log_in'>Log in</Link>
-              </div>);
-      }
-    
+  logout(event)
+  {
+    event.preventDefault();
+    this.props.logout();
+  }
+
+  render() {
+    const {isAuthenticated} = this.props.auth;
+
+    const userLinks = (
+      <div className="right">
+        <a className="right" href='#' onClick={this.logout.bind(this)}>Logout</a>
+      </div>
+    );
+
+    const guestLinks = (
+      <div className="right">
+        <Link className="right" to='/Sign_in'>Sign un</Link>
+        <Link className="right" to='/Log_in'>Login</Link>
+      </div>  
+    );
+
     return (
       <div className="container-fluid">
         <Navbar className="blue-grey">       
@@ -49,7 +63,7 @@ class Menu extends Component {
               </nav>
             </Col>
             <Col s={2}>
-              {j}
+              { isAuthenticated ? userLinks : guestLinks }
             </Col>
           </Row>     
         </Navbar>
@@ -58,4 +72,16 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+Menu.propTypes = {
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequiered
+}
+
+function mapStateToProps(state)
+{
+  return{
+    auth: state.auth
+  }
+}
+
+export default connect(mapStateToProps, {logout}) (Menu);

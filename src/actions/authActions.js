@@ -13,6 +13,15 @@ export function setCurrentUser(user)
     };
 }
 
+export function logout()
+{
+    return dispatch => {
+        localStorage.removeItem("jwtToken");
+        setAuthorizationToken(false);
+        dispatch(setCurrentUser({}));
+    }
+}
+
 export function login(data)
 {
     return dispatch => {
