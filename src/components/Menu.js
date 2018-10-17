@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 
 class Menu extends Component {
 
+  
   logout(event)
   {
     event.preventDefault();
