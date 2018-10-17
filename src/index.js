@@ -16,25 +16,69 @@ import Send_email from './components/Send_email';
 import Setting from './components/Setting';
 import FooterPage from './components/FooterPage';
 
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+
+import {Provider} from "react-redux"
+import thunk from "redux-thunk"
+import {createStore, applyMiddleware, compose} from "redux"
+import setAuthorizationToken from './utils/setAuthorizationToken';
+
+import rootReducer from './components/rootReducer';
+import { SET_CURRENT_USER } from './actions/types';
+import { setCurrentUser } from './actions/authActions';
+
+const store = createStore(
+    rootReducer,
+    compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
+);
+
+if(localStorage.jwtToken)
+{
+    setAuthorizationToken(localStorage.jwtToken);
+    
+    const token = localStorage.jwtToken;
+
+    const decoded = jwt_decode(token);
+    const id = decoded.sub;
+
+    axios({
+            method: "get",
+            url:'http://localhost:3000/users/' + id,
+            responseType: "json"
+    })
+    .then(response => {
+
+        console.log(response);
+        store.dispatch(setCurrentUser(response.data));
+    });
+}
+
+
 ReactDOM.render(
-    <BrowserRouter>
-        <div>
-            <div className="main-container">
-                <Route path = '/' component = {Header}/>
-                <Route path = '/' component = {Menu}/>
-                <Route exact path = '/' component = {Landing_page}/>
-                <Route path = '/Contact' component = {Contact}/>
-                <Route path = '/Log_in' component = {Log_in}/>
-                <Route path = '/Sign_in' component = {Sign_in}/>
-                <Route path = '/Product_Info' component = {Product_info}/>
-                <Route path = '/Profile' component = {Profile}/>
-                <Route path = '/Search_result' component = {Search_result}/>
-                <Route path = '/Send_email' component = {Send_email}/>
-                <Route path = '/Setting' component = {Setting}/>
+    <Provider store={store}>
+        <BrowserRouter>        
+            <div>
+                <div className="main-container">
+                    <Route path = '/' component = {Header}/>
+                    <Route path = '/' component = {Menu}/>
+                    <Route exact path = '/' component = {Landing_page}/>
+                    <Route path = '/Contact' component = {Contact}/>
+                    <Route path = '/Log_in' component = {Log_in}/>
+                    <Route path = '/Sign_in' component = {Sign_in}/>
+                    <Route path = '/Product_Info' component = {Product_info}/>
+                    <Route path = '/Profile' component = {Profile}/>
+                    <Route path = '/Search_result' component = {Search_result}/>
+                    <Route path = '/Send_email' component = {Send_email}/>
+                    <Route path = '/Setting' component = {Setting}/>
+                </div>
+                <FooterPage/>
             </div>
-            <FooterPage/>
-        </div>
-    </BrowserRouter>
+        </BrowserRouter>
+    </Provider>
     , document.getElementById('root'));
             
 registerServiceWorker();
