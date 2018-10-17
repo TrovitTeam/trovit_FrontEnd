@@ -5,7 +5,6 @@ import flogo from "../resources/flogo.svg"
 import gmlogo from "../resources/gmail.svg"
 import PropTypes from "prop-types"
 
-
 class Sign_in_Form extends Component {
   
   constructor(props) {
@@ -91,11 +90,11 @@ class Sign_in_Form extends Component {
         </Row>
         <Row>
           <Col className="offset-s2" s={8}>
-            <Input s={12} name="name" label="Name" value={this.state.name} onChange={this.handleChange} validate data-length="45"><Icon>account_circle</Icon></Input>
-            <Input s={12} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate><Icon>fingerprint</Icon></Input>
-            <Input s={12} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange}><Icon>fingerprint</Icon></Input>
-            <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45"><Icon>email</Icon></Input>
-            <Input s={12} name="phone" label="Telephone" type="number" value={this.state.phone} onChange={this.handleChange} validate data-length="45"><Icon>phone</Icon></Input>
+            <Input s={12} name="name" label="Name" value={this.state.name} onChange={this.handleChange} validate data-length="45"></Input>
+            <Input s={12} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate></Input>
+            <Input s={12} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange}></Input>
+            <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45"></Input>
+            <Input s={12} name="phone" label="Telephone" type="number" value={this.state.phone} onChange={this.handleChange} validate data-length="45"></Input>
             <Row>
               <Col className="offset-s2" s={4}>
                 <Input name='userType' type='radio' value='distributor' label={<span className=" flow-text black-text">Distributor</span>} onClick={this.handleChange}/>

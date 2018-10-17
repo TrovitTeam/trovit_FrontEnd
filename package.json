@@ -9,6 +9,7 @@
     "jquery": "^3.3.1",
     "jsonwebtoken": "^8.3.0",
     "jwt-decode": "^2.2.0",
+    "material-icons": "^0.2.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-materialize": "^2.4.5",

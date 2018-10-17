@@ -78,8 +78,8 @@ class Log_in_Form extends Component {
         </Row>
         <Row>
           <Col className="offset-s2" s={8}>
-            <Input s={12} name="email" type="email" label="email" value={this.state.email} onChange={this.handleChange} validate data-length="45"><Icon>email</Icon></Input>
-            <Input s={12} name="password" type="password" label="password" value={this.state.password} onChange={this.handleChange} validate data-length="45"><Icon>fingerprint</Icon></Input>  
+            <Input s={12} name="email" type="email" label="email" value={this.state.email} onChange={this.handleChange} validate data-length="45"></Input>
+            <Input s={12} name="password" type="password" label="password" value={this.state.password} onChange={this.handleChange} validate data-length="45"></Input>  
           </Col>
         </Row>
         <div className="center">

@@ -60,7 +60,7 @@ class Menu extends Component {
                   <form>
                     <div className="input-field">
                       <input type="search" required/>
-                      <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+                      <label className="label-icon" htmlFor="search"></label>
                       <i className="material-icons">close</i>
                     </div>
                   </form>
