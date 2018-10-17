@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Card, Col, CardTitle, Table, ProgressBar, Input} from 'react-materialize'
+import {Row, Card, Col, CardTitle, Table, ProgressBar, Input, Dropdown, Button, NavItem, Navbar} from 'react-materialize'
 import srcBP from "../resources/blank-profile.png"
 import axios from 'axios';
 import {connect} from "react-redux";
@@ -60,7 +60,15 @@ class Profile extends Component {
                   <th>
                     <p className="flow-text">Email</p>
                     <p className="flow-text">{user.email}</p>
-                    <p><a href="/Profile">Edit</a></p>
+                    <Dropdown
+                    trigger={
+                      <Navbar className="grey lighten-2 z-depth-0 blue-text">Edit</Navbar>
+                    }>
+                      <Row className="center">
+                        <Input className="offset-s2" s={10} label="New Email" />
+                        <Button><span>Change Email</span></Button>
+                      </Row>
+                    </Dropdown>
                     <ProgressBar progress={100}/>
                   </th>
                 </tr>
