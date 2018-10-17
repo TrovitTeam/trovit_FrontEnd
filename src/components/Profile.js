@@ -45,11 +45,11 @@ class Profile extends Component {
           <Col s={12} m={6}>
             <Card header={<CardTitle reveal image={srcBP} waves='light'/>}
                 title={user.name}
-                reveal={
+                /* reveal={
                   <Row className="valign-wrapper">
                       <Input type="file" label="Picture" s={12} multiple placeholder="Upload one or More Pictures" />
                   </Row>
-                }>
+                } */>
                 
             </Card>
           </Col>

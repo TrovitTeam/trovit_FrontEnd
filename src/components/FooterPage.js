@@ -12,9 +12,7 @@ class FooterPage extends Component {
           links={
             <ul>
               <li><a className="grey-text text-lighten-3" href="/">Home</a></li>
-              <li><a className="grey-text text-lighten-3" href="/Profile">Profile</a></li>
-              <li><a className="grey-text text-lighten-3" href="/Sign_In">Sign In</a></li>
-              <li><a className="grey-text text-lighten-3" href="/Log_In">Log In</a></li>
+              <li><a className="grey-text text-lighten-3" href="/">Landing_Page</a></li>
             </ul>
           }
           className="blue-grey"
