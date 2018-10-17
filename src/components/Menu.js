@@ -21,6 +21,11 @@ class Menu extends Component {
   render() {
     const {isAuthenticated} = this.props.auth;
 
+    const contactsLink = (
+
+      <Link to='/Contact'>Contacts</Link>
+    );
+
     const userLinks = (
       <div className="right">
         <a className="right" href='#' onClick={this.logout.bind(this)}>Logout</a>
@@ -42,7 +47,7 @@ class Menu extends Component {
               <Link to='/'>Home</Link>
             </Col>
             <Col s={1}>
-              <Link to='/Contact'>Contacts</Link>
+              {isAuthenticated ? contactsLink : null}
             </Col>
             <Col className="center" s={2}>
               <a className="brand-logo active" id="logo-container">
