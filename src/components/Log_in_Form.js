@@ -3,7 +3,6 @@ import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
 import glogo from "../resources/glogo.svg"
 import flogo from "../resources/flogo.svg"
 import gmlogo from "../resources/gmail.svg"
-import axios from 'axios';
 
 import PropTypes from "prop-types"
 

@@ -16,6 +16,7 @@ class Menu extends Component {
   {
     event.preventDefault();
     this.props.logout();
+    this.context.router.history.push('/');
   }
 
   render() {
@@ -28,13 +29,14 @@ class Menu extends Component {
 
     const userLinks = (
       <div className="right">
-        <a className="right" href='#' onClick={this.logout.bind(this)}>Logout</a>
+        <a   className="right" href="http://localhost:3001/" onClick={this.logout.bind(this)}>Logout</a>
+        <Link className="right" to="/Profile"  >Profile</Link>
       </div>
     );
 
     const guestLinks = (
       <div className="right">
-        <Link className="right" to='/Sign_in'>Sign un</Link>
+        <Link className="right"  to='/Sign_in'>Sign up</Link>
         <Link className="right" to='/Log_in'>Login</Link>
       </div>  
     );
@@ -80,6 +82,10 @@ class Menu extends Component {
 Menu.propTypes = {
   auth: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequiered
+}
+
+Menu.contextTypes = {
+  router: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state)
