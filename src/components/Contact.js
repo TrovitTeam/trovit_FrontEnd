@@ -53,17 +53,17 @@ class Contact extends Component {
     for(let index = 0; index < contactsInfo.length; index++) {
       
       contacts.push(
-        <div clas sName="container">
+        <div className="container">
+          
           <Row className="valign-wrapper">
-            <Col s={12} m={6}>
-              <Card header={<CardTitle reveal image={srcBP} waves='light'/>}
+            <Col s={12} m={4}>
+              <Card className="small" header={<CardTitle reveal image={srcBP} waves='light'/>}
                   title={contactsInfo[index].name }
-                  reveal={
+                  /* reveal={
                     <Row className="valign-wrapper">
                         <Input type="file" label="Picture" s={12} multiple placeholder="Upload one or More Pictures" />
                     </Row>
-                  }>
-                  
+                  } */> 
               </Card>
             </Col>
             <Col s={12} m={6}>
@@ -71,31 +71,29 @@ class Contact extends Component {
                 <tbody>
                   <tr>
                     <th>
-                      <p className="flow-text">Email</p>
-                      <p className="flow-text">{contactsInfo[index].email}</p>
-                      <p><a href="/Profile">Edit</a></p>
-                      <ProgressBar progress={100}/>
+                      <p className="grey-text text-darken-4">Email</p>
+                      <p className="grey-text text-darken-2">{contactsInfo[index].email}</p>
+                      <p><a href="/Contact">Edit</a></p>
                     </th>
                   </tr>
                   <tr>
                     <th>
-                      <p className="flow-text">Telephone</p>
-                      <p className="flow-text">{contactsInfo[index].phone}</p>
-                      <p><a href="/Profile">Edit</a></p>
-                      <ProgressBar progress={100}/>
+                      <p className="grey-text text-darken-4">Telephone</p>
+                      <p className="grey-text text-darken-2">{contactsInfo[index].phone}</p>
+                      <p><a href="/Contact">Edit</a></p>
                     </th>
                   </tr>
                   <tr>
                     <th>
-                      <p className="flow-text">{contactsInfo[index].userType}</p>
-                      <p><a href="/Profile">See More</a></p>
-                      <ProgressBar width="100%" progress={100}/>
+                      <p className="grey-text text-darken-2">{contactsInfo[index].userType}</p>
+                      <p><a href="/Contact">See More</a></p>
                     </th>
                   </tr>
                 </tbody>
               </Table>
             </Col>
           </Row>
+          <ProgressBar progress={100}/>
         </div>
       );
     }
