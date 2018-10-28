@@ -22,6 +22,7 @@ class Profile extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePicture = this.handlePicture.bind(this);
   }
 
   handleChange(event) {
@@ -51,6 +52,39 @@ class Profile extends Component {
     this.props.userUpdateRequest(this.state).then(
       (res) => this.context.router.history.replace("/Profile") 
     );
+    window.location.reload();
+  }
+
+  handlePicture(event){
+    const Start_url = 'http://localhost:3000/';
+    const type = this.userType;
+    if(type === "distributor"){
+      const Act_url = Start_url + "business_managers/"
+      return axios({
+          method:'PUT',
+          url: Act_url,
+          responseType: "json",
+          data: {
+              "distributor":
+              {
+              
+              }
+          }
+      })
+    } else if (type === "businessManager"){
+      const Act_url = Start_url + "business_managers/"
+      return axios({
+          method:'PUT',
+          url: Act_url,
+          responseType: "json",
+          data: {
+              "business_manager":
+              {
+              
+              }
+          }
+      })
+    } 
   }
 
   render() {
@@ -63,14 +97,19 @@ class Profile extends Component {
       <div className="container">
         <Row className="valign-wrapper">
           <Col s={12} m={6}>
-            <Card header={<CardTitle reveal image={srcBP} waves='light'/>}
-                title={user.name}
-                /* reveal={
-                  <Row className="valign-wrapper">
-                      <Input type="file" label="Picture" s={12} multiple placeholder="Upload one or More Pictures" />
-                  </Row>
-                } */>
-                
+            <Card 
+              header={
+                <div>
+                  <CardTitle reveal image={srcBP} waves='light'/> 
+                  <Input type="file" label="Picture" s={12} multiple placeholder="Upload one or More Pictures" />
+                </div>
+              }
+              title={user.name}
+              /* reveal={
+                <Row className="valign-wrapper">
+                    <Input type="file" label="Picture" s={12} multiple placeholder="Upload one or More Pictures" />
+                </Row>
+              } */>  
             </Card>
           </Col>
           <Col s={12} m={6}>
