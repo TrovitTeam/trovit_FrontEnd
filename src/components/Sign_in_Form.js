@@ -130,7 +130,7 @@ class Sign_in_Form extends Component {
             <Input s={12} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate data-length="45" minLength={8} error={this.handleDataError(this.state.password, 8)}></Input>
             <Input s={12} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange} data-length="45" minLength={8}></Input>
             <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45" minLength={5} error={this.handleDataError(this.state.email, 5)}></Input>
-            <Input s={12} name="phone" label="Telephone" type="number" className={phoneClass} value={this.state.phone} onChange={this.handleChange} validate data-length="45" minLength={7} error={this.handlePhoneDataError(this.state.phone, 7)}></Input>
+            <Input s={12} name="phone" label="Telephone" className={phoneClass} value={this.state.phone} onChange={this.handleChange} validate data-length="45" minLength={7} error={this.handlePhoneDataError(this.state.phone, 7)}></Input>
             <Row>
               <Col className="offset-s2" s={4}>
                 <Input name='userType' type='radio' value='distributor' label={<span className=" flow-text black-text">Distributor</span>} onClick={this.handleChange}/>
