@@ -16,7 +16,8 @@ class Sign_in_Form extends Component {
       email: '',
       password: '',
       cPassword:'',
-      confirmPassword: false
+      confirmPassword: false,
+      confirmPhone: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -53,8 +54,6 @@ class Sign_in_Form extends Component {
 
     if(cPassword !== password)
     {
-      console.log(password);
-      console.log(cPassword);
       this.setState({
         confirmPassword: false
       });
@@ -76,9 +75,46 @@ class Sign_in_Form extends Component {
     );
   }
 
+  handleDataError(data_int, number_min){
+    if(data_int.length<number_min){
+      return "Minimum "+number_min+" characters.";
+    }
+  }
+
+  handlePhoneDataError(data_int, number_min){
+    if(data_int.length<number_min){
+      return "Minimum "+number_min+" characters.";
+    } else {
+      if(/^[0-9]{+}$/.test(data_int)==false){
+        this.minLength = 45;
+        return "Only Numbers Allowed";
+      }       
+    } 
+  }
+
+  handleClassPhoneDataError = () => {
+    const data_int = this.state.phone;
+    if(data_int.length<7){
+      this.setState({
+        confirmPhone: false
+      });
+    } else {
+      if(/^[0-9]{+}$/.test(data_int)===false){
+        this.setState({
+          confirmPhone: false
+        });
+      } else {
+        this.setState({
+          confirmPhone: true
+        });
+      }       
+    } 
+  }
+
   render() {
 
       var className = this.state.confirmPassword ? "valid" : "invalid";
+      var phoneClass = this.state.confirmPhone ? "valid" : "invalid";
     return (
       <div className="container">
         <Row>
@@ -90,11 +126,11 @@ class Sign_in_Form extends Component {
         </Row>
         <Row>
           <Col className="offset-s2" s={8}>
-            <Input s={12} name="name" label="Name" value={this.state.name} onChange={this.handleChange} validate data-length="45"></Input>
-            <Input s={12} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate></Input>
-            <Input s={12} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange}></Input>
-            <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45"></Input>
-            <Input s={12} name="phone" label="Telephone" type="number" value={this.state.phone} onChange={this.handleChange} validate data-length="45"></Input>
+            <Input s={12} name="name" label="Name" value={this.state.name} onChange={this.handleChange} validate data-length="45" minLength={3} error={this.handleDataError(this.state.name, 3)}></Input>
+            <Input s={12} name="password" type="password" label="Password" value={this.state.password} onChange={this.handleChange} validate data-length="45" minLength={8} error={this.handleDataError(this.state.password, 8)}></Input>
+            <Input s={12} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange} data-length="45" minLength={8}></Input>
+            <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45" minLength={5} error={this.handleDataError(this.state.email, 5)}></Input>
+            <Input s={12} name="phone" label="Telephone" className={phoneClass} value={this.state.phone} onChange={this.handleChange} validate data-length="45" minLength={7} error={this.handlePhoneDataError(this.state.phone, 7)}></Input>
             <Row>
               <Col className="offset-s2" s={4}>
                 <Input name='userType' type='radio' value='distributor' label={<span className=" flow-text black-text">Distributor</span>} onClick={this.handleChange}/>
