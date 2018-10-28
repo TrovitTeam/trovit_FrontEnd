@@ -101,7 +101,7 @@ class Log_in_Form extends Component {
           <Row>
             <Col s={6}>
               <p className="flow-text">Google</p>
-              <img className="btn-floating btn-large waves-effect white" width="10%" alt="" src={glogo}/>
+              <img className="btn-floating btn-large waves-effect waves-light white" width="10%" alt="" src={glogo}/>
             </Col>
             <Col s={6}> 
             <p className="flow-text">Facebook</p>  
@@ -111,7 +111,7 @@ class Log_in_Form extends Component {
               fields="name,email,picture"
               callback={this.responseFacebook}
               render={renderProps => (
-                <img className="btn-floating btn-large waves-effect white" width="10%" alt="" src={flogo} onClick={renderProps.onClick}/>
+                <img className="btn-floating btn-large waves-effect waves-light white" width="10%" alt="" src={flogo} onClick={renderProps.onClick}/>
               )}
             />
               {/* <img width="10%" alt="" src={flogo} onClick={renderProps.onClick}/> */}

@@ -4,7 +4,10 @@ import glogo from "../resources/glogo.svg"
 import flogo from "../resources/flogo.svg"
 import gmlogo from "../resources/gmail.svg"
 import PropTypes from "prop-types"
-
+import {connect} from "react-redux"
+import {login} from "../actions/authActions"
+import {loginFacebook} from "../actions/authActions"
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 class Sign_in_Form extends Component {
   
   constructor(props) {
@@ -24,6 +27,14 @@ class Sign_in_Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
+  responseFacebook = (response) => {
+    console.log(response);
+
+    this.props.loginFacebook(response).then(
+      (res) => this.context.router.history.push("/") 
+    );
+  }
+
   handleChange(event) {
     const target = event.target;
     const name = target.name;
@@ -131,7 +142,7 @@ class Sign_in_Form extends Component {
             <Input s={12} name="cPassword" type="password" className={className} label="Confirm password" value={this.state.cPassword} onChange={this.handleChange} data-length="45" minLength={8}></Input>
             <Input s={12} name="email" type="email" label="Email" value={this.state.email} onChange={this.handleChange} validate data-length="45" minLength={5} error={this.handleDataError(this.state.email, 5)}></Input>
             <Input s={12} name="phone" label="Telephone" className={phoneClass} value={this.state.phone} onChange={this.handleChange} validate data-length="45" minLength={7} error={this.handlePhoneDataError(this.state.phone, 7)}></Input>
-            <Row>
+            <Row id="signOptionsBoxes">
               <Col className="offset-s2" s={4}>
                 <Input name='userType' type='radio' value='distributor' label={<span className=" flow-text black-text">Distributor</span>} onClick={this.handleChange}/>
               </Col>
@@ -153,17 +164,21 @@ class Sign_in_Form extends Component {
             <ProgressBar progress={100}/>
           </Row>
           <Row>
-            <Col s={4}>
-              <p className="flow-text">Google +</p>
-              <img width="10%" alt="" src={glogo}/>
+            <Col s={6}>
+              <p className="flow-text">Google</p>
+              <img className="btn-floating btn-large waves-effect white" width="10%" alt="" src={glogo}/>
             </Col>
-            <Col s={4}>   
+            <Col s={6}>   
               <p className="flow-text">Facebook</p>
-              <img width="10%" alt="" src={flogo}/>
-            </Col>
-            <Col s={4}>
-              <p className="flow-text">Gmail</p>
-              <img width="10%" alt="" src={gmlogo}/>
+              <FacebookLogin
+              appId="287332921890045"
+              autoLoad
+              fields="name,email,picture"
+              callback={this.responseFacebook}
+              render={renderProps => (
+                <img className="btn-floating btn-large waves-effect waves-light white" width="10%" alt="" src={flogo} onClick={renderProps.onClick}/>
+              )}
+            />
             </Col>
           </Row>
         </div>
@@ -173,11 +188,12 @@ class Sign_in_Form extends Component {
 }
 
 Sign_in_Form.propTypes = {
-  userSigninRequest: PropTypes.func.isRequired
+  userSigninRequest: PropTypes.func.isRequired,
+  loginFacebook: PropTypes.func.isRequired
 }
 
 Sign_in_Form.contextTypes = {
   router: PropTypes.object.isRequired
 }
 
-export default Sign_in_Form;
+export default connect (null, {login, loginFacebook}) (Sign_in_Form);
