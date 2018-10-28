@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import {userUpdateRequest} from "../actions/updateActions.js";
 import  Company from "./Company.js";
 import {companySigninRequest} from "../actions/companyinActions";
+import ImageUser from './ImageUser';
 
 
 class Profile extends Component {
@@ -24,7 +25,6 @@ class Profile extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handlePicture = this.handlePicture.bind(this);
   }
 
   handleChange(event) {
@@ -57,38 +57,6 @@ class Profile extends Component {
     window.location.reload();
   }
 
-  handlePicture(event){
-    const Start_url = 'http://localhost:3000/';
-    const type = this.userType;
-    if(type === "distributor"){
-      const Act_url = Start_url + "distributor/"
-      return axios({
-          method:'PUT',
-          url: Act_url,
-          responseType: "json",
-          data: {
-              "distributor":
-              {
-              
-              }
-          }
-      })
-    } else if (type === "businessManager"){
-      const Act_url = Start_url + "business_managers/"
-      return axios({
-          method:'PUT',
-          url: Act_url,
-          responseType: "json",
-          data: {
-              "business_manager":
-              {
-              
-              }
-          }
-      })
-    } 
-  }
-
   render() {
 
     const {user} = this.props.auth;
@@ -103,7 +71,7 @@ class Profile extends Component {
               header={
                 <div>
                   <CardTitle reveal image={srcBP} waves='light'/> 
-                  <Input type="file" label="Picture" s={12} multiple placeholder="Upload one or More Pictures" />
+                  <ImageUser />
                 </div>
               }
               title={user.name}

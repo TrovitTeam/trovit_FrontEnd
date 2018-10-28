@@ -35,6 +35,7 @@ class ProductIn extends Component {
             this.context.router.history.push("/Product_Info");
           }
         );
+        window.location.reload();
       }
     
       handleDataError(data_int, number_min){
@@ -53,7 +54,7 @@ class ProductIn extends Component {
                 <Input s={12} name="price" label="Price" value={this.state.price} onChange={this.handleChange} validate data-length="45" minLength={3} error={this.handleDataError(this.state.price, 3)}></Input>
                 <Input s={12} name="quantity" label="Quantity" value={this.state.quantity} onChange={this.handleChange} validate data-length="45" minLength={1} error={this.handleDataError(this.state.price, 1)}></Input>
                 <Input s={12} name="brand" label="Brand" value={this.state.brand} onChange={this.handleChange} validate data-length="45" minLength={3} error={this.handleDataError(this.state.brand, 3)}></Input>
-                <Input s={12} name="description" label="Description" value={this.state.description} onChange={this.handleChange} validate minLength={3} error={this.handleDataError(this.state.description, 3)}></Input>
+                <Input s={12} name="description" label="Description" value={this.state.description} onChange={this.handleChange} validate minLength={10} error={this.handleDataError(this.state.description, 10)}></Input>
               </Col>  
             </Row>
               <div className="center">
