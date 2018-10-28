@@ -99,25 +99,22 @@ class Log_in_Form extends Component {
             <ProgressBar progress={100}/>
           </Row>
           <Row>
-            <Col s={4}>
-              <p className="flow-text">Google +</p>
-              <img width="10%" alt="" src={glogo}/>
+            <Col s={6}>
+              <p className="flow-text">Google</p>
+              <img className="btn-floating btn-large waves-effect white" width="10%" alt="" src={glogo}/>
             </Col>
-            <Col s={4}>   
+            <Col s={6}> 
+            <p className="flow-text">Facebook</p>  
             <FacebookLogin
               appId="287332921890045"
               autoLoad
               fields="name,email,picture"
               callback={this.responseFacebook}
               render={renderProps => (
-                <button onClick={renderProps.onClick}>This is my custom FB button</button>
+                <img className="btn-floating btn-large waves-effect white" width="10%" alt="" src={flogo} onClick={renderProps.onClick}/>
               )}
             />
-              <img width="10%" alt="" src={flogo}/>
-            </Col>
-            <Col s={4}>
-              <p className="flow-text">Gmail</p>
-              <img width="10%" alt="" src={gmlogo}/>
+              {/* <img width="10%" alt="" src={flogo} onClick={renderProps.onClick}/> */}
             </Col>
           </Row>
         </div>
