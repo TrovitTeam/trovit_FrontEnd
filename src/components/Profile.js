@@ -61,7 +61,7 @@ class Profile extends Component {
     const Start_url = 'http://localhost:3000/';
     const type = this.userType;
     if(type === "distributor"){
-      const Act_url = Start_url + "business_managers/"
+      const Act_url = Start_url + "distributor/"
       return axios({
           method:'PUT',
           url: Act_url,

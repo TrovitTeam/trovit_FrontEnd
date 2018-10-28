@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export function companySigninRequest(companyData){
+    
     return dispatch => {
         console.log(companyData.name);
         return axios({
@@ -8,12 +9,9 @@ export function companySigninRequest(companyData){
             url:'http://localhost:3000/companies',
             responseType: "json",
             data: {
-                "company":
-                {
                 "name": companyData.name,
                 "location": companyData.location,
                 "companyType": companyData.companyType
-                }
             }
         })
         .then(function(response) {
@@ -24,4 +22,5 @@ export function companySigninRequest(companyData){
         });
     }
 }
+
 
