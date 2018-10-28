@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
 import glogo from "../resources/glogo.svg"
 import flogo from "../resources/flogo.svg"
-import gmlogo from "../resources/gmail.svg"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 import {login} from "../actions/authActions"
@@ -178,7 +177,7 @@ class Sign_in_Form extends Component {
               render={renderProps => (
                 <img className="btn-floating btn-large waves-effect waves-light white" width="10%" alt="" src={flogo} onClick={renderProps.onClick}/>
               )}
-            />
+              />
             </Col>
           </Row>
         </div>

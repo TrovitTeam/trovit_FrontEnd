@@ -5,6 +5,8 @@ import axios from 'axios';
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {userUpdateRequest} from "../actions/updateActions.js";
+import  Company from "./Company.js";
+import {companySigninRequest} from "../actions/companyinActions";
 
 
 class Profile extends Component {
@@ -90,7 +92,7 @@ class Profile extends Component {
   render() {
 
     const {user} = this.props.auth;
-
+    
     console.log(this.state);
 
     return (
@@ -124,7 +126,7 @@ class Profile extends Component {
                       header='Change Email'
                       trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
                       <Row className="center">
-                        <Input name="email" value={this.state.email} className="offset-s2" s={10} label="New Email" onChange={this.handleChange} />
+                        <Input name="email" value={this.state.email} className="offset-s2" s={10} label="New Email"/>
                         <Button onClick={this.handleSubmit}><span>Change Email</span></Button>
                       </Row>
                       </Modal>
@@ -154,12 +156,16 @@ class Profile extends Component {
                   </th>
                 </tr>
                 <tr>
-                  <Row>
-                    <Col className="offset-s2" s={4}>
-                      { user.userType === "businessManager" ? <Button waves='light'>Modify Company Data</Button> : null } 
+                  <Row className="center">
+                    <Col s={6}>
+                      { user.userType === "businessManager" ? <Modal 
+                      header='Modify Company Data'
+                      trigger={<Button waves='light' >Create Company</Button>}>
+                      <Company/>
+                      </Modal> : null } 
                     </Col>
-                    <Col s={4}>
-                     { user.userType === "businessManager" ? <Button waves='light' node='a' href={"http://localhost:3000/companies/"+user.id+".pdf"} > Company PDF</Button> : null } 
+                    <Col s={6}>
+                     { user.userType === "businessManager" ? <Button waves='light' node='a' target="_blank" href={"http://localhost:3000/companies/"+user.id+".pdf"} >Company PDF</Button> : null } 
                     </Col>
                   </Row>
                 </tr>
