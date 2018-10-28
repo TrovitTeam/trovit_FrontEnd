@@ -132,7 +132,7 @@ class Profile extends Component {
                   </th>
                 </tr>
                 <tr>
-                <th>
+                  <th>
                     <p className="flow-text">Telephone</p>
                     <p className="flow-text">{user.phone}</p>
                     <Modal 
@@ -152,6 +152,16 @@ class Profile extends Component {
                     <p><a href="/Profile">See More</a></p>
                     <ProgressBar width="100%" progress={100}/>
                   </th>
+                </tr>
+                <tr>
+                  <Row>
+                    <Col className="offset-s2" s={4}>
+                      { user.userType === "businessManager" ? <Button waves='light'>Modify Company Data</Button> : null } 
+                    </Col>
+                    <Col s={4}>
+                     { user.userType === "businessManager" ? <Button waves='light' node='a' href={"http://localhost:3000/companies/"+user.id+".pdf"} > Company PDF</Button> : null } 
+                    </Col>
+                  </Row>
                 </tr>
               </tbody>
             </Table>

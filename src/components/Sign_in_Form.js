@@ -96,7 +96,7 @@ class Sign_in_Form extends Component {
     if(data_int.length<number_min){
       return "Minimum "+number_min+" characters.";
     } else {
-      if(/^[0-9]{+}$/.test(data_int)==false){
+      if(/^[0-9]{+}$/.test(data_int)===false){
         this.minLength = 45;
         return "Only Numbers Allowed";
       }       
