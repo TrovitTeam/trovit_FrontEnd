@@ -9,7 +9,8 @@ class ImageInUser extends Component {
         super(props);
         this.state = {
           image: null,
-          pictureType: "user"
+          pictureType: "user",
+          pictureUrl: "image_url"
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -37,13 +38,13 @@ class ImageInUser extends Component {
       }
 
       fileChangedHandler = (event) => {
-        this.setState({selectedFile: event.target.files[0]})
+        this.setState({image: event.target.files[0]})
       }
       
       uploadHandler = () => { 
         const formData = new FormData()
-        formData.append('myFile', this.state.image)
-        axios.post('http://localhost:3000/users/1/pictures', formData, {
+        formData.append(this.state.image, this.state.pictureType, this.state.pictureUrl)
+        axios.post('http://localhost:3000/users/'++'/pictures', formData, {
             onUploadProgress: progressEvent => {
               console.log(progressEvent.loaded / progressEvent.total)
             }

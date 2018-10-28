@@ -8,7 +8,7 @@ export function imageUserCreateRequest(pictureData){
                     responseType: "json",
                     data: {
                         "image": pictureData.image,
-                        "pictureType": pictureData.pictureType,
+                        "pictureType": "user",
                         "pictureUrl": "image_url"
                     }
                 })
