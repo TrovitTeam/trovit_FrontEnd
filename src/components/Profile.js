@@ -49,7 +49,7 @@ class Profile extends Component {
   handleSubmit(event){
     console.log(this.state);
     this.props.userUpdateRequest(this.state).then(
-      (res) => this.context.router.history.push("/") 
+      (res) => this.context.router.history.replace("/Profile") 
     );
   }
 

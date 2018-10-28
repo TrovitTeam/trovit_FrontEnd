@@ -8,7 +8,9 @@ import PropTypes from "prop-types"
 
 import {connect} from "react-redux"
 import {login} from "../actions/authActions"
+import {loginFacebook} from "../actions/authActions"
 
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 class Log_in_Form extends Component {
   
@@ -35,7 +37,15 @@ class Log_in_Form extends Component {
 
     
   }
-  
+
+  responseFacebook = (response) => {
+    console.log(response);
+
+    this.props.loginFacebook(response).then(
+      (res) => this.context.router.history.push("/") 
+    );
+  }
+
   handleSubmit(event){
       /*var _this = this;
       axios({
@@ -94,7 +104,15 @@ class Log_in_Form extends Component {
               <img width="10%" alt="" src={glogo}/>
             </Col>
             <Col s={4}>   
-              <p className="flow-text">Facebook</p>
+            <FacebookLogin
+              appId="287332921890045"
+              autoLoad
+              fields="name,email,picture"
+              callback={this.responseFacebook}
+              render={renderProps => (
+                <button onClick={renderProps.onClick}>This is my custom FB button</button>
+              )}
+            />
               <img width="10%" alt="" src={flogo}/>
             </Col>
             <Col s={4}>
@@ -109,11 +127,12 @@ class Log_in_Form extends Component {
 }
 
 Log_in_Form.propTypes = {
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  loginFacebook: PropTypes.func.isRequired
 }
 
 Log_in_Form.contextTypes = {
   router: PropTypes.object.isRequired
 }
 
-export default connect (null, {login}) (Log_in_Form);
+export default connect (null, {login, loginFacebook}) (Log_in_Form);
