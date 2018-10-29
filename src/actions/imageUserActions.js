@@ -40,7 +40,7 @@ export function imageUpload(fData){
         }
 
         let id = 0;
-
+        
         axios({
             method: 'GET',
             url: 'http://localhost:3000/users/' + user.id + '/user_type',
@@ -49,16 +49,19 @@ export function imageUpload(fData){
         .then(response => {
             console.log(response);
             id = response.data["0"].id;
-
-
-
+            console.log("FData: ");
             console.log(fData);
 
-            return  axios({
+            return fetch('http://localhost:3000/'+ type +'/' + id + '/pictures',{
+                method: 'POST',
+                data: fData
+            })
+
+            /* return  axios({
                 method: 'POST',
                 url: 'http://localhost:3000/'+ type +'/' + id + '/pictures',
                 data: fData
-            });
+            }); */
         });
 
         
