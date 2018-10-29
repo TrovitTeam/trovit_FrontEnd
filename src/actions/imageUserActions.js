@@ -50,8 +50,6 @@ export function imageUpload(fData){
             console.log(response);
             id = response.data["0"].id;
 
-
-
             console.log(fData);
 
             return  axios({

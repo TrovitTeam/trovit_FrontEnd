@@ -5,6 +5,7 @@ import srcUP from "../resources/upload.png"
 import axios from 'axios';
 import {connect} from "react-redux";
 import {imageUpload} from "../actions/imageUserActions";
+import $ from 'jquery';
 
 class ImageInUser extends Component {
     constructor(props) {
@@ -32,11 +33,15 @@ class ImageInUser extends Component {
         console.log(this.state.image);
 
         let formData = new FormData();
-        formData.append(this.state.image, this.state.pictureType, this.state.pictureUrl);
+        
+        formData.append('picture[:image]', this.state.image);
+        formData.append('picture[:pictureType]', this.state.pictureType);
+        formData.append('picture[:pictureUrl]', this.state.pictureUrl);
         
         console.log(this.state.pictureType);
 
         this.props.imageUpload(formData);
+
       }
     
       render() {
