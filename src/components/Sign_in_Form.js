@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
+import {Input, Row, Icon, Button, Col, ProgressBar, Modal} from 'react-materialize'
 import glogo from "../resources/glogo.svg"
 import flogo from "../resources/flogo.svg"
 import PropTypes from "prop-types"
@@ -27,6 +27,9 @@ class Sign_in_Form extends Component {
   }
   
   responseFacebook = (response) => {
+    console.log(response);
+
+    response.userType = this.state.userType;
     console.log(response);
 
     this.props.loginFacebook(response).then(
@@ -167,17 +170,33 @@ class Sign_in_Form extends Component {
               <p className="flow-text">Google</p>
               <img className="btn-floating btn-large waves-effect white" width="10%" alt="" src={glogo}/>
             </Col>
-            <Col s={12} m={6}>   
-              <p className="flow-text">Facebook</p>
-              <FacebookLogin
-              appId="287332921890045"
-              autoLoad
-              fields="name,email,picture"
-              callback={this.responseFacebook}
-              render={renderProps => (
-                <img className="btn-floating btn-large waves-effect waves-light white" width="10%" alt="" src={flogo} onClick={renderProps.onClick}/>
-              )}
-              />
+            <Col s={12} m={6}>
+            
+            <p className="flow-text">Facebook</p>
+            <Modal 
+              header='Who are you?'
+              trigger={<img className="btn-floating btn-large waves-effect white" width="10%" alt="" src={flogo}/>}>
+              <Row className="center">
+              <Row id="signOptionsBoxes">
+                <Col className="offset-s2 offset-m2" s={12} m={4}>
+                  <Input name='userType' type='radio' value='distributor' label={<span className=" flow-text black-text">Distributor</span>} onClick={this.handleChange}/>
+                </Col>
+                <Col s={12} m={4}>
+                  <Input name='userType' type='radio' value='businessmanager' label={<span className="flow-text black-text">Business Manager</span>} onClick={this.handleChange}/>
+                </Col> 
+              </Row>
+                <FacebookLogin
+                  appId="287332921890045"
+                  autoLoad
+                  fields="name,email,picture"
+                  callback={this.responseFacebook}
+                  render={renderProps => (
+                    <Button width="10%" alt="" src={flogo} onClick={renderProps.onClick}>Acept</Button>
+                  )}
+                />
+              </Row>
+            </Modal>
+              
             </Col>
           </Row>
         </div>

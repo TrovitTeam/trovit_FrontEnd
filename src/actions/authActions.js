@@ -63,38 +63,29 @@ export function login(data)
 
 export function loginFacebook(data)
 {
+    console.log(data.userType);
+
     return dispatch => {
 
         return  axios({
-            method:'post',
-            url:'http://localhost:3000/user_token',
+            method:'POST',
+            url:'http://localhost:3000/users/fb_create/',
             responseType: "json",
             data: {
-                "auth":
-                {
-                "email": data.email,
-                "accessToken": data.accessToken
+                "accessToken": data.accessToken,
+                "user": {
+                    "email": data.email,
+                    "name":data.name,
+                    "userType": data.userType,
+                    "password": data.id
                 }
             }
+            
         })
         .then(response =>  {
 
-            const token = response.data.jwt;
-            localStorage.setItem("jwtToken", token);
-            setAuthorizationToken(token);
-            const decoded = jwt_decode(token);
-            const id = decoded.sub;
-
-            axios({
-                    method: "get",
-                    url:'http://localhost:3000/users/' + id,
-                    responseType: "json"
-            })
-            .then(response => {
-
-                console.log(response);
-                dispatch(setCurrentUser(response.data));
-            })            
+            console.log(response);
+            dispatch(login(response));
         });
     }
 } 
