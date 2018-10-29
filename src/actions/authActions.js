@@ -59,3 +59,33 @@ export function login(data)
         });
     }
 } 
+
+
+export function loginFacebook(data)
+{
+    console.log(data.userType);
+
+    return dispatch => {
+
+        return  axios({
+            method:'POST',
+            url:'http://localhost:3000/users/fb_create/',
+            responseType: "json",
+            data: {
+                "accessToken": data.accessToken,
+                "user": {
+                    "email": data.email,
+                    "name":data.name,
+                    "userType": data.userType,
+                    "password": data.id
+                }
+            }
+            
+        })
+        .then(response =>  {
+
+            console.log(response);
+            dispatch(login(response));
+        });
+    }
+} 

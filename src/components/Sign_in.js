@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input, Row, Icon, Button, Col, ProgressBar} from 'react-materialize'
+import {Row} from 'react-materialize'
 import Sign_in_Form from "./Sign_in_Form.js"
 import {connect} from "react-redux"
 import {userSigninRequest} from "../actions/signinActions.js";

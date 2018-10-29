@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export function userSigninRequest(userData){
+export function userUpdateRequest(userData){
     return dispatch => {
         //return axios.post('http://localhost:3000/users', userData);
         console.log(userData.name);
         return axios({
-                    method:'post',
-                    url:'http://localhost:3000/users',
+                    method:'put',
+                    url:'http://localhost:3000/users/' + userData.id,
                     responseType: "json",
                     data: {
                         "user":
@@ -21,11 +21,12 @@ export function userSigninRequest(userData){
                     }
                 })
                 .then(function(response) {
+
                     console.log(response);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                console.log(error);
+
                 });
     }
 }
-
