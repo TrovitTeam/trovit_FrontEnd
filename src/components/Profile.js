@@ -8,6 +8,7 @@ import {userUpdateRequest} from "../actions/updateActions.js";
 import  Company from "./Company.js";
 import {companySigninRequest} from "../actions/companyinActions";
 import ImageUser from './ImageUser';
+import ImageInUser from './ImageInUser';
 
 
 class Profile extends Component {
@@ -71,7 +72,7 @@ class Profile extends Component {
               header={
                 <div>
                   <CardTitle reveal image={srcBP} waves='light'/> 
-                  <ImageUser />
+                  <ImageInUser />
                 </div>
               }
               title={user.name}

@@ -146,7 +146,7 @@ class Sign_in_Form extends Component {
                 <Input name='userType' type='radio' value='distributor' label={<span className=" flow-text black-text">Distributor</span>} onClick={this.handleChange}/>
               </Col>
               <Col s={12} m={4}>
-                <Input name='userType' type='radio' value='businessManager' label={<span className="flow-text black-text">Business Manager</span>} onClick={this.handleChange}/>
+                <Input name='userType' type='radio' value='businessmanager' label={<span className="flow-text black-text">Business Manager</span>} onClick={this.handleChange}/>
               </Col> 
             </Row>
           </Col>  

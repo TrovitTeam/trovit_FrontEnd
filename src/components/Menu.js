@@ -82,7 +82,7 @@ class Menu extends Component {
 
 Menu.propTypes = {
   auth: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequiered
+  logout: PropTypes.func.isRequired
 }
 
 Menu.contextTypes = {
