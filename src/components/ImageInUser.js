@@ -12,8 +12,8 @@ class ImageInUser extends Component {
         super(props);
         this.state = {
           image: null,
-          pictureType: "user",
-          pictureUrl: "image_url"
+          pictureType: 'jpeg',
+          pictureUrl: 'urlnotafakeokjustalittle'
         };
     
         this.fileChangedHandler = this.fileChangedHandler.bind(this);
@@ -33,12 +33,10 @@ class ImageInUser extends Component {
         console.log(this.state.image);
 
         let formData = new FormData();
-        
-        formData.append('picture[:image]', this.state.image);
-        formData.append('picture[:pictureType]', this.state.pictureType);
-        formData.append('picture[:pictureUrl]', this.state.pictureUrl);
-        
-        console.log(this.state.pictureType);
+
+        formData.append('image', this.state.image);
+        formData.append('pictureType', this.state.pictureType);
+        formData.append('pictureUrl', this.state.pictureUrl);
 
         this.props.imageUpload(formData);
 
