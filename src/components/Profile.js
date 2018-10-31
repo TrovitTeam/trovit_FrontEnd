@@ -9,6 +9,7 @@ import  Company from "./Company.js";
 import {companySigninRequest} from "../actions/companyinActions";
 import ImageUser from './ImageUser';
 import ImageInUser from './ImageInUser';
+import Preloader from 'react-materialize/lib/Preloader';
 
 
 class Profile extends Component {

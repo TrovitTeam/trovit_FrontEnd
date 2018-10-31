@@ -85,7 +85,7 @@ export function loginFacebook(data)
         .then(response =>  {
 
             console.log(response);
-            dispatch(login(response));
+            dispatch(login(response.data));
         });
     }
 } 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Input, Row, Icon, Button, Col, ProgressBar, TextArea} from 'react-materialize'
+import {Input, Row, Icon, Button, Col, ProgressBar, Preloader} from 'react-materialize'
 import PropTypes from "prop-types"
 import srcUP from "../resources/upload.png"
 import axios from 'axios';
@@ -12,42 +12,52 @@ class ImageInUser extends Component {
         super(props);
         this.state = {
           image: null,
-          pictureType: 'jpeg',
-          pictureUrl: 'urlnotafakeokjustalittle'
+          imageName: 'ImageUpload',
+          loading: false
         };
     
         this.fileChangedHandler = this.fileChangedHandler.bind(this);
         this.uploadHandler = this.uploadHandler.bind(this);
       }
+      
 
       fileChangedHandler = (event) => {
         this.setState({
-          image: event.target.files[0]
+          image: event.target.files[0],
+          loading: true
         });
-
-        
+        function later(value) {
+            return new Promise(resolve => setTimeout(resolve, value));
+        }
+        later(1500).then(()=>{
+          this.setState({
+            loading: false
+          })
+        });
       }
       
       uploadHandler = () => { 
 
         console.log(this.state.image);
 
-        let formData = new FormData();
+        var formData = new FormData();
 
         formData.append('image', this.state.image);
-        formData.append('pictureType', this.state.pictureType);
-        formData.append('pictureUrl', this.state.pictureUrl);
+        formData.set('imageName', this.state.imageName);
 
         this.props.imageUpload(formData);
 
       }
+
     
       render() {
         return (
           <div className="container">
-            <Row>
-              <Col className="offset-s2" s={8}>
-                  <input s={12} name="image" label="Select your Profile Image" type="file" onChange={this.fileChangedHandler} validate></input>
+            <br></br>
+            <Row className="center">
+              <Col s={12}>
+                  <Input name="image" label="Select Profile Image" type="file" onChange={this.fileChangedHandler} validate></Input>
+                  { this.state.loading && <Row><Preloader></Preloader></Row> }
                   <Button onClick={this.uploadHandler}>Upload</Button>
               </Col>  
             </Row>
