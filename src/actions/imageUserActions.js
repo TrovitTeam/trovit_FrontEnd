@@ -52,16 +52,16 @@ export function imageUpload(fData){
             console.log("FData: ");
             console.log(fData);
 
-            return fetch('http://localhost:3000/'+ type +'/' + id + '/pictures',{
+            /* return fetch('http://localhost:3000/'+ type +'/' + id + '/pictures',{
                 method: 'POST',
                 data: fData
-            })
+            }) */
 
-            /* return  axios({
+            return  axios({
                 method: 'POST',
                 url: 'http://localhost:3000/'+ type +'/' + id + '/pictures',
                 data: fData
-            }); */
+            });
         });
 
         
