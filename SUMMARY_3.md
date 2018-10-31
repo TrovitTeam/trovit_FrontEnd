@@ -5,5 +5,6 @@ Implementación de los endpoints necesarios para realizar los 2 flujos propios d
 (Creación y visualización de productos; Creación de Compañias) -> Arkai Julián Ariza y Miguel Ángel Castro
 Implementaación del SignIn y SignUp con redes sociales (Facebook) -> Arkai Julián Ariza y Miguel Ángel Castro
 Enviar archivos al backend (Imágen de Perfil para Distributors y Business Managers) -> Arkai Julián Ariza y Miguel Ángel Castro
+Animación de Carga (Cuando carga la imágen de Perfil para Distributors y Business Managers) -> Arkai Julián Ariza y Miguel Ángel Castro
 
 LINK HEROKU FRONT: https://trovit-se2.herokuapp.com/
