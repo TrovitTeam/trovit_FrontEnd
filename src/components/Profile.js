@@ -145,28 +145,35 @@ class Profile extends Component {
                   <th>
                     <p className="flow-text">Location</p>
                     <p className="flow-text">{user.location}</p>
-                      <Modal 
-                        header='Change Location'
-                        trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
-                        <Row className="center">
-                          <Input name="location" value={this.state.location} className="offset-s2" s={10} label="New Location"/>
-                          <Button onClick={this.handleSubmit}><span>Change Location</span></Button>
-                        </Row>
-                      </Modal>
-                      <Modal 
-                        header='Current Location'
-                        trigger={<Button className="grey lighten-2 z-depth-0 blue-text">View Current Location</Button>}>
-                        <Row>
-                          <Map  
-                          containerElement={
-                            <div style={{ height: '30vh' }} />
-                        }
-                        mapElement={
-                            <div style={{ height: '100%' }} />
-                        }/>
-                        </Row>
-                      </Modal>
+                    <Row  className="center">
+                        <Col s={12} m={6}>
+                          <Modal 
+                          header='Change Location'
+                          trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
+                            <Row className="center">
+                              <Input name="location" value={this.state.location} className="offset-s2" s={10} label="New Location"/>
+                              <Button onClick={this.handleSubmit}><span>Change Location</span></Button>
+                            </Row>
+                          </Modal>
+                        </Col>
+                        <Col s={12} m={6}>
+                          <Modal 
+                          header='Current Location'
+                          trigger={<Button className="grey lighten-2 z-depth-0 blue-text">View Current Location</Button>}>
+                            <Row>
+                              <Map  
+                              containerElement={
+                                <div style={{ height: '30vh' }} />
+                            }
+                            mapElement={
+                                <div style={{ height: '100%' }} />
+                            }/>
+                            </Row>
+                          </Modal>
+                        </Col>
                     <ProgressBar progress={100}/>
+                    </Row>
+                      
                   </th>
                 </tr>
               </tbody>
