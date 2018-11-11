@@ -11,6 +11,7 @@ import ImageUser from './ImageUser';
 import ImageInUser from './ImageInUser';
 import Preloader from 'react-materialize/lib/Preloader';
 import Map from './Map.js'
+import { stringify } from 'querystring';
 
 
 class Profile extends Component {
@@ -23,7 +24,9 @@ class Profile extends Component {
       name: user.name,
       userType: user.userType,
       phone: user.phone,
-      email: user.email
+      email: user.email,
+      location: user.location,
+      loading: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -54,11 +57,22 @@ class Profile extends Component {
   }
 
   handleSubmit(event){
+    this.setState({
+      loading: true
+    });
     console.log(this.state);
     this.props.userUpdateRequest(this.state).then(
-      (res) => this.context.router.history.replace("/Profile") 
+      (res) => this.context.router.history.replace("/Profile")      
     );
-    window.location.reload();
+    function later(value) {
+      return new Promise(resolve => setTimeout(resolve, value));
+    }
+    later(1500).then(()=>{
+      this.setState({
+        loading: false
+      })
+      window.location.reload()
+    });
   }
 
   render() {
@@ -98,7 +112,8 @@ class Profile extends Component {
                       header='Change Email'
                       trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
                       <Row className="center">
-                        <Input name="email" value={this.state.email} className="offset-s2" s={10} label="New Email"/>
+                        <Input name="email" value={this.state.email} onChange={this.handleChange} className="offset-s2" s={10} label="New Email"/>
+                        { this.state.loading && <Row><Preloader></Preloader></Row> }
                         <Button onClick={this.handleSubmit}><span>Change Email</span></Button>
                       </Row>
                       </Modal>
