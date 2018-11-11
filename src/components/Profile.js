@@ -10,6 +10,7 @@ import {companySigninRequest} from "../actions/companyinActions";
 import ImageUser from './ImageUser';
 import ImageInUser from './ImageInUser';
 import Preloader from 'react-materialize/lib/Preloader';
+import Map from './Map.js'
 
 
 class Profile extends Component {
@@ -42,7 +43,8 @@ class Profile extends Component {
         name: user.name,
         userType: user.userType,
         phone: user.phone,
-        email: user.email
+        email: user.email,
+        location: user.location
       }
     );
 
@@ -138,6 +140,34 @@ class Profile extends Component {
                      { user.userType === "businessManager" ? <Button waves='light' node='a' target="_blank" href={"http://localhost:3000/companies/"+user.id+".pdf"} >Company PDF</Button> : null } 
                     </Col>
                   </Row>
+                </tr>
+                <tr>
+                  <th>
+                    <p className="flow-text">Location</p>
+                    <p className="flow-text">{user.location}</p>
+                      <Modal 
+                        header='Change Location'
+                        trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
+                        <Row className="center">
+                          <Input name="location" value={this.state.location} className="offset-s2" s={10} label="New Location"/>
+                          <Button onClick={this.handleSubmit}><span>Change Location</span></Button>
+                        </Row>
+                      </Modal>
+                      <Modal 
+                        header='Current Location'
+                        trigger={<Button className="grey lighten-2 z-depth-0 blue-text">View Current Location</Button>}>
+                        <Row>
+                          <Map  
+                          containerElement={
+                            <div style={{ height: '30vh' }} />
+                        }
+                        mapElement={
+                            <div style={{ height: '100%' }} />
+                        }/>
+                        </Row>
+                      </Modal>
+                    <ProgressBar progress={100}/>
+                  </th>
                 </tr>
               </tbody>
             </Table>
