@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import {connect} from "react-redux";
 import {Input, Row, Icon, Button, Col, ProgressBar, TextArea} from 'react-materialize'
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import {productCreateRequest} from "../actions/productActions";
 
 class ProductIn extends Component {
     constructor(props) {
@@ -37,6 +39,10 @@ class ProductIn extends Component {
         );
         window.location.reload();
       }
+
+      componentDidCatch(error){
+        window.location.reload();
+      }
     
       handleDataError(data_int, number_min){
         if(data_int.length<number_min){
@@ -70,11 +76,19 @@ class ProductIn extends Component {
     }
     
     ProductIn.propTypes = {
-      productCreateRequest: PropTypes.func.isRequired,
+      auth: PropTypes.object.isRequired,
+      productCreateRequest: PropTypes.func.isRequired
     }
     
     ProductIn.contextTypes = {
       router: PropTypes.object.isRequired
     }
 
-export default ProductIn;
+    function mapStateToProps(state)
+    {
+      return{
+        auth: state.auth
+      }
+    }
+
+export default  connect(mapStateToProps, {productCreateRequest}) (ProductIn);

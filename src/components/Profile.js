@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Card, Col, CardTitle, Table, ProgressBar, Input, Dropdown, Button, NavItem, Navbar, Modal} from 'react-materialize'
+import {Row, Card, Col, CardTitle, Table, ProgressBar, Input, Dropdown, Button, Modal} from 'react-materialize'
 import srcBP from "../resources/blank-profile.png"
 import axios from 'axios';
 import {connect} from "react-redux";
@@ -10,7 +10,11 @@ import {companySigninRequest} from "../actions/companyinActions";
 import ImageUser from './ImageUser';
 import ImageInUser from './ImageInUser';
 import Preloader from 'react-materialize/lib/Preloader';
+import Map from './Map.js';
+import { stringify } from 'querystring';
 
+var UserImage;
+var dataIn = '';
 
 class Profile extends Component {
 
@@ -22,11 +26,69 @@ class Profile extends Component {
       name: user.name,
       userType: user.userType,
       phone: user.phone,
-      email: user.email
+      email: user.email,
+      location: user.location,
+      loading: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount(){
+
+    const {user} = this.props.auth;
+    let type = '';
+    console.log('this.props.auth');
+    console.log(this.props.auth);
+
+    if(user.userType === 'distributor')
+    {
+        type = 'distributors';
+    }
+    else
+    {
+        type = 'business_managers';
+    }
+
+    let id = 0;
+
+    axios({
+      method: 'GET',
+      url: 'http://localhost:3000/users/' + user.id + '/user_type',
+      responseType: 'json',
+    }).then(response => {
+        console.log('response');
+        console.log(response);
+        id = response.data["0"].id;
+        axios({
+          method: 'GET',
+          url: 'http://localhost:3000/'+ type +'/' + id + '/pictures',
+          responseType: 'json',
+        })
+        .then(response => {
+            dataIn = response.data[0].image.url;
+            console.log('dataIn');
+            console.log(dataIn);
+            axios({
+              method: 'GET',
+              url: 'http://localhost:3000'+dataIn,
+              responseType: 'arraybuffer',
+            })
+            .then(response => {
+              let image = btoa(
+                new Uint8Array(response.data)
+                  .reduce((data, byte) => data + String.fromCharCode(byte), '')
+              );
+              UserImage = `data:${response.headers['content-type'].toLowerCase()};base64,${image}`;
+                this.forceUpdate();
+            });    
+            this.forceUpdate();
+        });
+        this.forceUpdate();
+    });
+    
+    
   }
 
   handleChange(event) {
@@ -42,7 +104,8 @@ class Profile extends Component {
         name: user.name,
         userType: user.userType,
         phone: user.phone,
-        email: user.email
+        email: user.email,
+        location: user.location
       }
     );
 
@@ -52,15 +115,25 @@ class Profile extends Component {
   }
 
   handleSubmit(event){
+    this.setState({
+      loading: true
+    });
     console.log(this.state);
     this.props.userUpdateRequest(this.state).then(
-      (res) => this.context.router.history.replace("/Profile") 
+      (res) => this.context.router.history.replace("/Profile")      
     );
-    window.location.reload();
-  }
+    function later(value) {
+      return new Promise(resolve => setTimeout(resolve, value));
+    }
+    later(1500).then(()=>{
+      this.setState({
+        loading: false
+      })
+      window.location.reload()
+    });
+  };
 
   render() {
-
     const {user} = this.props.auth;
     
     console.log(this.state);
@@ -72,7 +145,7 @@ class Profile extends Component {
             <Card 
               header={
                 <div>
-                  <CardTitle reveal image={srcBP} waves='light'/> 
+                  <CardTitle reveal image={UserImage} waves='light'/> 
                   <ImageInUser />
                 </div>
               }
@@ -96,7 +169,8 @@ class Profile extends Component {
                       header='Change Email'
                       trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
                       <Row className="center">
-                        <Input name="email" value={this.state.email} className="offset-s2" s={10} label="New Email"/>
+                        <Input name="email" value={this.state.email} onChange={this.handleChange} className="offset-s2" s={10} label="New Email"/>
+                        { this.state.loading && <Row><Preloader></Preloader></Row> }
                         <Button onClick={this.handleSubmit}><span>Change Email</span></Button>
                       </Row>
                       </Modal>
@@ -111,8 +185,9 @@ class Profile extends Component {
                       header='Change Number'
                       trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
                       <Row className="center">
-                        <Input className="offset-s2" s={10} label="New Phone" />
-                        <Button><span>Change Phone</span></Button>
+                        <Input name="phone"  value={this.state.phone} onChange={this.handleChange} className="offset-s2" s={10} label="New Phone" />
+                        { this.state.loading && <Row><Preloader></Preloader></Row> }
+                        <Button onClick={this.handleSubmit}><span>Change Phone</span></Button>
                       </Row>
                     </Modal>
                     <ProgressBar progress={100}/>
@@ -138,6 +213,41 @@ class Profile extends Component {
                      { user.userType === "businessManager" ? <Button waves='light' node='a' target="_blank" href={"http://localhost:3000/companies/"+user.id+".pdf"} >Company PDF</Button> : null } 
                     </Col>
                   </Row>
+                </tr>
+                <tr>
+                  <th>
+                    <p className="flow-text">Location</p>
+                    <p className="flow-text">{user.location}</p>
+                    <Row  className="center">
+                        <Col s={12} m={6}>
+                          <Modal 
+                          header='Change Location'
+                          trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
+                            <Row className="center">
+                              <Input name="location" value={this.state.location} className="offset-s2" s={10} label="New Location"/>
+                              <Button onClick={this.handleSubmit}><span>Change Location</span></Button>
+                            </Row>
+                          </Modal>
+                        </Col>
+                        <Col s={12} m={6}>
+                          <Modal 
+                          header='Current Location'
+                          trigger={<Button className="grey lighten-2 z-depth-0 blue-text">View Current Location</Button>}>
+                            <Row>
+                              <Map  
+                              containerElement={
+                                <div style={{ height: '40vh' }} />
+                            }
+                            mapElement={
+                                <div style={{ height: '100%' }} />
+                            }/>
+                            </Row>
+                          </Modal>
+                        </Col>
+                    <ProgressBar progress={100}/>
+                    </Row>
+                      
+                  </th>
                 </tr>
               </tbody>
             </Table>
