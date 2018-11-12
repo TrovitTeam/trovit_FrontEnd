@@ -27,6 +27,7 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReducer from './components/rootReducer';
 import { SET_CURRENT_USER } from './actions/types';
 import { setCurrentUser } from './actions/authActions';
+import statistics from './components/statistics';
 
 const store = createStore(
     rootReducer,
@@ -74,6 +75,7 @@ ReactDOM.render(
                     <Route path = '/Search_result' component = {Search_result}/>
                     <Route path = '/Send_email' component = {Send_email}/>
                     <Route path = '/Setting' component = {Setting}/>
+                    <Route path = '/Statistics' component = {statistics}/>
                 </div>
                 <FooterPage/>
             </div>

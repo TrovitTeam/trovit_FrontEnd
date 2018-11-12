@@ -22,10 +22,14 @@ class Menu extends Component {
 
   render() {
     const {isAuthenticated} = this.props.auth;
+    const {user} = this.props.auth;
 
     const contactsLink = (
-
       <Link to='/Contact'>Contacts</Link>
+    );
+
+    const productsLink = (
+      <Link className="right" to='/Product_Info'>Products</Link>
     );
 
     const userLinks = (
@@ -52,12 +56,15 @@ class Menu extends Component {
             <Col s={1}>
               {isAuthenticated ? contactsLink : null}
             </Col>
+            <Col s={1}>
+              {user.userType === 'distributor' ? productsLink : null}
+            </Col>
             <Col className="center" s={2}>
               <a className="brand-logo active" id="logo-container">
                 <img className="material-boxed" width="100%" height="100%" style={{padding:3 +"%"}} src={logo} alt="Trovit"/>
               </a>
             </Col>
-            <Col className="offset-s1" s={5}>
+            <Col className="offset-s1" s={4}>
               <nav>
                 <div className="nav-wrapper grey lighten-2">
                   <form>

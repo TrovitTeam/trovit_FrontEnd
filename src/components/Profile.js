@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Card, Col, CardTitle, Table, ProgressBar, Input, Dropdown, Button, NavItem, Navbar, Modal} from 'react-materialize'
+import {Row, Card, Col, CardTitle, Table, ProgressBar, Input, Dropdown, Button, Modal} from 'react-materialize'
 import srcBP from "../resources/blank-profile.png"
 import axios from 'axios';
 import {connect} from "react-redux";
@@ -10,9 +10,11 @@ import {companySigninRequest} from "../actions/companyinActions";
 import ImageUser from './ImageUser';
 import ImageInUser from './ImageInUser';
 import Preloader from 'react-materialize/lib/Preloader';
-import Map from './Map.js'
+import Map from './Map.js';
 import { stringify } from 'querystring';
 
+var UserImage;
+var dataIn = '';
 
 class Profile extends Component {
 
@@ -31,6 +33,62 @@ class Profile extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount(){
+
+    const {user} = this.props.auth;
+    let type = '';
+    console.log('this.props.auth');
+    console.log(this.props.auth);
+
+    if(user.userType === 'distributor')
+    {
+        type = 'distributors';
+    }
+    else
+    {
+        type = 'business_managers';
+    }
+
+    let id = 0;
+
+    axios({
+      method: 'GET',
+      url: 'http://localhost:3000/users/' + user.id + '/user_type',
+      responseType: 'json',
+    }).then(response => {
+        console.log('response');
+        console.log(response);
+        id = response.data["0"].id;
+        axios({
+          method: 'GET',
+          url: 'http://localhost:3000/'+ type +'/' + id + '/pictures',
+          responseType: 'json',
+        })
+        .then(response => {
+            dataIn = response.data[0].image.url;
+            console.log('dataIn');
+            console.log(dataIn);
+            axios({
+              method: 'GET',
+              url: 'http://localhost:3000'+dataIn,
+              responseType: 'arraybuffer',
+            })
+            .then(response => {
+              let image = btoa(
+                new Uint8Array(response.data)
+                  .reduce((data, byte) => data + String.fromCharCode(byte), '')
+              );
+              UserImage = `data:${response.headers['content-type'].toLowerCase()};base64,${image}`;
+                this.forceUpdate();
+            });    
+            this.forceUpdate();
+        });
+        this.forceUpdate();
+    });
+    
+    
   }
 
   handleChange(event) {
@@ -73,10 +131,9 @@ class Profile extends Component {
       })
       window.location.reload()
     });
-  }
+  };
 
   render() {
-
     const {user} = this.props.auth;
     
     console.log(this.state);
@@ -88,7 +145,7 @@ class Profile extends Component {
             <Card 
               header={
                 <div>
-                  <CardTitle reveal image={srcBP} waves='light'/> 
+                  <CardTitle reveal image={UserImage} waves='light'/> 
                   <ImageInUser />
                 </div>
               }
@@ -128,8 +185,9 @@ class Profile extends Component {
                       header='Change Number'
                       trigger={<Button className="grey lighten-2 z-depth-0 blue-text">Edit</Button>}>
                       <Row className="center">
-                        <Input className="offset-s2" s={10} label="New Phone" />
-                        <Button><span>Change Phone</span></Button>
+                        <Input name="phone"  value={this.state.phone} onChange={this.handleChange} className="offset-s2" s={10} label="New Phone" />
+                        { this.state.loading && <Row><Preloader></Preloader></Row> }
+                        <Button onClick={this.handleSubmit}><span>Change Phone</span></Button>
                       </Row>
                     </Modal>
                     <ProgressBar progress={100}/>
@@ -178,7 +236,7 @@ class Profile extends Component {
                             <Row>
                               <Map  
                               containerElement={
-                                <div style={{ height: '30vh' }} />
+                                <div style={{ height: '40vh' }} />
                             }
                             mapElement={
                                 <div style={{ height: '100%' }} />

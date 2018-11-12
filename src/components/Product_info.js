@@ -3,6 +3,8 @@ import {Row, Card, Col, CardTitle, Table, ProgressBar, Input, Dropdown, Button, 
 import srcUP from "../resources/upload.png"
 import axios from 'axios';
 import Product from './Product';
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 class Product_info extends Component {
   constructor(props){
@@ -16,24 +18,32 @@ class Product_info extends Component {
 
   componentDidMount(){
       var _this = this;
+      const {user} = this.props.auth;
+      let id = 0;
       axios({
+        method: 'GET',
+        url: 'http://localhost:3000/users/' + user.id + '/user_type',
+        responseType: 'json',
+    }).then(response => {
+        id = response.data["0"].id;
+        axios({
           method:'get',
-          url:'http://localhost:3000/distributors/1/products',
+          url:'http://localhost:3000/distributors/'+id+'/products',
+        }).then((response) => {
+            console.log(response);
+            this.createProducts(response);
+            _this.setState({
+              products: response.data
+            });
+            _this.setState({
+              name: response.data.message
+            });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       })
-      .then((response) => {
-
-          console.log(response);
-          this.createProducts(response);
-          _this.setState({
-            products: response.data
-          });
-          _this.setState({
-            name: response.data.message
-          });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      
   }
   
   createProducts = (response) => {
@@ -115,5 +125,18 @@ class Product_info extends Component {
     );
   }
 }
+Product_info.propTypes = {
+  auth: PropTypes.object.isRequired
+}
 
-export default Product_info;
+Product_info.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
+function mapStateToProps(state)
+{
+  return{
+    auth: state.auth
+  }
+}
+export default connect(mapStateToProps) (Product_info);
