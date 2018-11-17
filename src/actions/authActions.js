@@ -2,16 +2,8 @@ import axios from "axios";
 import setAuthorizationToken from "../utils/setAuthorizationToken";
 import jwt_decode from "jwt-decode";
 import {SET_CURRENT_USER} from "./types";
+import {baseUrl} from "../resources/url.js";
 
-
-
-export function setCurrentUser(user)
-{
-    return {
-        type: SET_CURRENT_USER,
-        user
-    };
-}
 
 export function logout()
 {
@@ -28,7 +20,7 @@ export function login(data)
 
         return  axios({
             method:'post',
-            url:'http://localhost:3000/user_token',
+            url: baseUrl + "user_token",
             responseType: "json",
             data: {
                 "auth":
@@ -48,7 +40,7 @@ export function login(data)
 
             axios({
                     method: "get",
-                    url:'http://localhost:3000/users/' + id,
+                    url:'https://trovit.herokuapp.com/users/' + id,
                     responseType: "json"
             })
             .then(response => {
@@ -69,7 +61,7 @@ export function loginFacebook(data)
 
         return  axios({
             method:'POST',
-            url:'http://localhost:3000/users/fb_create/',
+            url:'https://trovit.herokuapp.com/users/fb_create/',
             responseType: "json",
             data: {
                 "accessToken": data.accessToken,

@@ -6,7 +6,7 @@ export function companySigninRequest(companyData){
         console.log(companyData.name);
         return axios({
             method:'POST',
-            url:'http://localhost:3000/companies',
+            url:'https://trovit.herokuapp.com/companies',
             responseType: "json",
             data: {
                 "name": companyData.name,
