@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {baseUrl} from "../resources/url.js";
 
 export function userUpdateRequest(userData){
     return dispatch => {
@@ -6,7 +7,7 @@ export function userUpdateRequest(userData){
         console.log(userData.name);
         return axios({
                     method:'put',
-                    url:'http://localhost:3000/users/' + userData.id,
+                    url: baseUrl + 'users/' + userData.id,
                     responseType: "json",
                     data: {
                         "user":

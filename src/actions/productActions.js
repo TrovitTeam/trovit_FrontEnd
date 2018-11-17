@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {baseUrl} from "../resources/url.js";
 
 export function productCreateRequest(productData){
     return (dispatch, getState)  => {
@@ -8,13 +9,13 @@ export function productCreateRequest(productData){
 
         axios({
             method: 'GET',
-            url: 'http://localhost:3000/users/' + user.id + '/user_type',
+            url: baseUrl + 'users/' + user.id + '/user_type',
             responseType: 'json',
         }).then(response => {
             id = response.data["0"].id;
             return axios({
                 method:'POST',
-                url:'http://localhost:3000/distributors/'+id+'/products',
+                url: baseUrl + 'distributors/' + id + '/products',
                 responseType: "json",
                 data: {
                     "quantity": productData.quantity,

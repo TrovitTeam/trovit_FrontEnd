@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {baseUrl} from "../resources/url.js";
 
 export function companySigninRequest(companyData){
     
@@ -6,7 +7,7 @@ export function companySigninRequest(companyData){
         console.log(companyData.name);
         return axios({
             method:'POST',
-            url:'https://trovit.herokuapp.com/companies',
+            url: baseUrl + 'companies',
             responseType: "json",
             data: {
                 "name": companyData.name,

@@ -1,10 +1,11 @@
 import axios from 'axios';
+import {baseUrl} from "../resources/url.js";
 
 export function userProfileRequest(userData){
     return dispatch => {
         //return axios.post('http://localhost:3000/users', userData);
         console.log(userData.name);
-        const Start_url = 'http://localhost:3000/';
+        const Start_url =  baseUrl;
         const Act_url;
         if (userData.userType==="businessManager"){
             Act_url = Start_url + "business_managers/"

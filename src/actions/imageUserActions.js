@@ -1,11 +1,11 @@
 import axios from 'axios';
-
+import {baseUrl} from "../resources/url.js";
 
 export function imageUserCreateRequest(pictureData){
     return dispatch => {
         return axios({
                     method:'POST',
-                    url:'http://localhost:3000/users/1/pictures',
+                    url: baseUrl + 'users/1/pictures',
                     responseType: "json",
                     data: {
                         "image": pictureData.image,
@@ -43,7 +43,7 @@ export function imageUpload(fData){
         
         axios({
             method: 'GET',
-            url: 'http://localhost:3000/users/' + user.id + '/user_type',
+            url: baseUrl + 'users/' + user.id + '/user_type',
             responseType: 'json',
         })
         .then(response => {
@@ -54,7 +54,7 @@ export function imageUpload(fData){
 
             return  axios({
                 method: 'POST',
-                url: 'http://localhost:3000/'+ type +'/' + id + '/pictures',
+                url: baseUrl + type +'/' + id + '/pictures',
                 data: fData
             });
         });
