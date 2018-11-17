@@ -5,6 +5,15 @@ import {SET_CURRENT_USER} from "./types";
 import {baseUrl} from "../resources/url.js";
 
 
+
+export function setCurrentUser(user)
+{
+    return {
+        type: SET_CURRENT_USER,
+        user
+    };
+}
+
 export function logout()
 {
     return dispatch => {
@@ -20,7 +29,7 @@ export function login(data)
 
         return  axios({
             method:'post',
-            url: baseUrl + "user_token",
+            url: baseUrl + 'user_token',
             responseType: "json",
             data: {
                 "auth":
