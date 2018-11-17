@@ -34,7 +34,7 @@ class Menu extends Component {
 
     const userLinks = (
       <div className="right">
-        <a   className="right" href= {baseUrl} onClick={this.logout.bind(this)}>Logout</a>
+        <a   className="right" href={'/'} onClick={this.logout.bind(this)}>Logout</a>
         <Link className="right" to="/Profile"  >Profile</Link>
       </div>
     );
