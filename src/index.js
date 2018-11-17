@@ -49,7 +49,7 @@ if(localStorage.jwtToken)
 
     axios({
             method: "get",
-            url:baseUrl+'/users/' + id,
+            url: baseUrl + 'users/' + id,
             responseType: "json"
     })
     .then(response => {

@@ -14,8 +14,10 @@ class Product_info extends Component {
 
     const {user} = (this.props.auth);
 
+    console.log(this.props.auth);
+
     this.state = {
-        id: user.id,
+        id: -1,
         name: [],
         products: { 
         }
@@ -25,7 +27,18 @@ class Product_info extends Component {
 
 
     this.createProducts = this.createProducts.bind(this);
+    this.getData = this.getData.bind(this);
   }
+
+ /* componentWillReceiveProps(newProps)
+  {
+    const {user} = this.props.auth;
+    this.setState({
+      id: user.id
+    });
+
+    console.log(this.state);
+  }*/
 
   componentDidMount(){
       var _this = this;
@@ -59,6 +72,47 @@ class Product_info extends Component {
         });
       })
       
+  }
+
+  getData()
+  {
+    var _this = this;
+    const {user} = this.props.auth;
+
+    if(user.id !== undefined)
+    {
+      this.setState((prevState, props) => ({
+        id: user.id
+      }));
+    }
+
+    let id = 0;
+
+    axios({
+      method: 'GET',
+      url: baseUrl + 'users/' + user.id + '/user_type',
+      responseType: 'json',
+    })
+    .then(response => {
+      id = response.data["0"].id;
+      axios({
+        method:'GET',
+        url: baseUrl + 'distributors/'+id+'/products',
+      })
+      .then((response) => {
+          console.log(response);
+          this.createProducts(response);
+          this.setState({
+            products: response.data
+          });
+          this.setState({
+            name: response.data.message
+          });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    })
   }
   
   createProducts(response) {
@@ -121,6 +175,14 @@ class Product_info extends Component {
 
   render(){
 
+    console.log(this.props.auth);
+    console.log(this.state);
+
+    if(this.state.id === undefined || this.state.id === -1)
+    {
+      this.getData();
+    }
+
     return (
       <div>
         {this.createProducts()}
@@ -149,7 +211,6 @@ Product_info.contextTypes = {
 
 function mapStateToProps(state)
 {
-  console.log(state);
   return{
     auth: state.auth
   }

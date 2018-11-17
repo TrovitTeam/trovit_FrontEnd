@@ -31,7 +31,7 @@ class Profile extends Component {
       loading: false
     };
 
-    console.log(this.state);
+    console.log(this.props.auth);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,8 +41,6 @@ class Profile extends Component {
 
     const {user} = this.props.auth;
     let type = '';
-    console.log('this.props.auth');
-    console.log(this.props.auth);
 
     if(user.userType === 'distributor')
     {
@@ -57,7 +55,7 @@ class Profile extends Component {
 
     axios({
       method: 'GET',
-      url: baseUrl+'/users/' + user.id + '/user_type',
+      url: baseUrl + 'users/' + user.id + '/user_type',
       responseType: 'json',
     }).then(response => {
         console.log('response');
@@ -65,7 +63,7 @@ class Profile extends Component {
         id = response.data["0"].id;
         axios({
           method: 'GET',
-          url: baseUrl+ type +'/' + id + '/pictures',
+          url: baseUrl + type +'/' + id + '/pictures',
           responseType: 'json',
         })
         .then(response => {
@@ -142,9 +140,10 @@ class Profile extends Component {
   };
 
   render() {
+
     const {user} = this.props.auth;
     
-    console.log(this.state);
+    console.log(this.props.auth);
 
     return (
       <div className="container">
@@ -278,6 +277,7 @@ Profile.contextTypes = {
 
 function mapStateToProps(state)
 {
+  console.log(state);
   return{
     auth: state.auth
   }
