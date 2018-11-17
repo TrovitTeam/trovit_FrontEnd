@@ -7,13 +7,14 @@ export function productCreateRequest(productData){
         const {user} = getState().auth;
         let id = 0;
 
-        axios({
+        return axios({
             method: 'GET',
             url: baseUrl + 'users/' + user.id + '/user_type',
             responseType: 'json',
-        }).then(response => {
+        })
+        .then(response => {
             id = response.data["0"].id;
-            return axios({
+            axios({
                 method:'POST',
                 url: baseUrl + 'distributors/' + id + '/products',
                 responseType: "json",

@@ -91,4 +91,4 @@ class ProductIn extends Component {
       }
     }
 
-export default  connect(mapStateToProps, {productCreateRequest}) (ProductIn);
+export default  connect(mapStateToProps, {}) (ProductIn);
