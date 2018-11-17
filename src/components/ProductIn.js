@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
-import {Input, Row, Icon, Button, Col, ProgressBar, TextArea} from 'react-materialize'
+import {Input, Row, Button, Col, Preloader} from 'react-materialize'
 import PropTypes from "prop-types";
 import {productCreateRequest} from "../actions/productActions";
 
@@ -13,7 +13,8 @@ class ProductIn extends Component {
           price: '',
           brand: '',
           quantity: '',
-          description: ''
+          description: '',
+          loading: false
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -32,12 +33,23 @@ class ProductIn extends Component {
       }
       
       handleSubmit(event){
+        this.setState({
+          loading: true
+        });
         this.props.productCreateRequest(this.state).then(
           () => {
             this.context.router.history.push("/Product_Info");
           }
         );
-        window.location.reload();
+        function later(value) {
+          return new Promise(resolve => setTimeout(resolve, value));
+        }
+        later(1500).then(()=>{
+          this.setState({
+            loading: false
+          })
+          window.location.reload()
+        });
       }
 
       componentDidCatch(error){
@@ -64,6 +76,7 @@ class ProductIn extends Component {
               </Col>  
             </Row>
               <div className="center">
+                { this.state.loading && <Row><Preloader></Preloader></Row> }
                 <Row>
                   <Col className="offset-s2" s={8}>
                     <Button className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Commit Product</Button>
