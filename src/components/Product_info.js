@@ -149,6 +149,7 @@ Product_info.contextTypes = {
 
 function mapStateToProps(state)
 {
+  console.log(state);
   return{
     auth: state.auth
   }

@@ -31,6 +31,8 @@ class Profile extends Component {
       loading: false
     };
 
+    console.log(this.state);
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }

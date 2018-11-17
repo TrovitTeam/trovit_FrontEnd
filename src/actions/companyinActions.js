@@ -7,7 +7,7 @@ export function companySigninRequest(companyData){
         console.log(companyData.name);
         return axios({
             method:'POST',
-            url: baseUrl + 'companies',
+            url: baseUrl + 'companies/',
             responseType: "json",
             data: {
                 "name": companyData.name,
