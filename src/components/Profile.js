@@ -11,7 +11,6 @@ import ImageUser from './ImageUser';
 import ImageInUser from './ImageInUser';
 import Preloader from 'react-materialize/lib/Preloader';
 import Map from './Map.js';
-import { stringify } from 'querystring';
 import {baseUrl} from "../resources/url.js";
 
 var UserImage;
