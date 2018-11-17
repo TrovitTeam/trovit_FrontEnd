@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import {logout} from "../actions/authActions"
 
 import PropTypes from "prop-types";
-
+import {baseUrl} from "../resources/url.js";
 
 
 class Menu extends Component {
@@ -34,7 +34,7 @@ class Menu extends Component {
 
     const userLinks = (
       <div className="right">
-        <a   className="right" href="http://localhost:3001/" onClick={this.logout.bind(this)}>Logout</a>
+        <a   className="right" href= {baseUrl} onClick={this.logout.bind(this)}>Logout</a>
         <Link className="right" to="/Profile"  >Profile</Link>
       </div>
     );

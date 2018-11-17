@@ -5,9 +5,10 @@ export function userSigninRequest(userData){
     return dispatch => {
         //return axios.post('http://localhost:3000/users', userData);
         console.log(userData.name);
+        console.log(baseUrl);
         return axios({
                     method:'post',
-                    url:baseUrl+'/users',
+                    url: baseUrl+'/users',
                     responseType: "json",
                     data: {
                         "user":

@@ -1,1 +1,1 @@
-let baseUrl = "https://trovit.herokuapp.com/";
+export let baseUrl = "https://trovit.herokuapp.com/";

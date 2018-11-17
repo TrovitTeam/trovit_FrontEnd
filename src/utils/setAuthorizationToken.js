@@ -1,9 +1,10 @@
 import axios from "axios"
+import {baseUrl} from "../resources/url.js";
 
 export default function setAuthorizationToken(token)
 {
     const instance = axios.create({
-        baseURL: 'http://localhost:3000/',
+        baseURL:  baseUrl,
         /*headers: {
           'Authorization': `Bearer ${token}`
         }*/

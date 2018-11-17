@@ -3,6 +3,7 @@ import {Row, Card, Col, CardTitle, Table, ProgressBar, Input, Pagination} from '
 import srcBP from "../resources/blank-profile.png"
 import axios from 'axios';
 import $ from 'jquery';
+import {baseUrl} from "../resources/url.js";
 
 class Contact extends Component {
  
@@ -24,7 +25,7 @@ class Contact extends Component {
       var _this = this;
       axios({
           method:'get',
-          url:'http://localhost:3000/users',
+          url: baseUrl+'/users',
       })
       .then((response) => {
 

@@ -5,6 +5,7 @@ import axios from 'axios';
 import Product from './Product';
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {baseUrl} from "../resources/url.js";
 
 class Product_info extends Component {
   constructor(props){
@@ -22,13 +23,13 @@ class Product_info extends Component {
       let id = 0;
       axios({
         method: 'GET',
-        url: 'http://localhost:3000/users/' + user.id + '/user_type',
+        url: baseUrl+'/users/' + user.id + '/user_type',
         responseType: 'json',
     }).then(response => {
         id = response.data["0"].id;
         axios({
           method:'get',
-          url:'http://localhost:3000/distributors/'+id+'/products',
+          url: baseUrl+'/distributors/'+id+'/products',
         }).then((response) => {
             console.log(response);
             this.createProducts(response);

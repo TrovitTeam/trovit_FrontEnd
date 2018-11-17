@@ -3,6 +3,7 @@ import averageStatistics from './averageStatistics';
 import ChartistGraph  from 'react-chartist';
 import {Row, Preloader} from 'react-materialize';
 import axios from 'axios';
+import {baseUrl} from "../resources/url.js";
 
 var dataIn = {};
 var data2In = {};
@@ -11,7 +12,7 @@ class statistics extends Component {
     componentWillMount(){
         axios({
             method: 'GET',
-            url: 'http://localhost:3000/products/averages',
+            url: baseUrl+'/products/averages',
             responseType: 'json',
         })
         .then(response => {
@@ -22,7 +23,7 @@ class statistics extends Component {
         });
         axios({
             method: 'GET',
-            url: 'http://localhost:3000/products/count',
+            url: baseUrl+'/products/count',
             responseType: 'json',
         })
         .then(response2 => {

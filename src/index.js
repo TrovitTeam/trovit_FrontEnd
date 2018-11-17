@@ -28,6 +28,7 @@ import rootReducer from './components/rootReducer';
 import { SET_CURRENT_USER } from './actions/types';
 import { setCurrentUser } from './actions/authActions';
 import statistics from './components/statistics';
+import {baseUrl} from "./resources/url.js";
 
 const store = createStore(
     rootReducer,
@@ -48,7 +49,7 @@ if(localStorage.jwtToken)
 
     axios({
             method: "get",
-            url:'http://localhost:3000/users/' + id,
+            url:baseUrl+'/users/' + id,
             responseType: "json"
     })
     .then(response => {

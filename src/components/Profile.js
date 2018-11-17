@@ -12,6 +12,7 @@ import ImageInUser from './ImageInUser';
 import Preloader from 'react-materialize/lib/Preloader';
 import Map from './Map.js';
 import { stringify } from 'querystring';
+import {baseUrl} from "../resources/url.js";
 
 var UserImage;
 var dataIn = '';
@@ -55,7 +56,7 @@ class Profile extends Component {
 
     axios({
       method: 'GET',
-      url: 'http://localhost:3000/users/' + user.id + '/user_type',
+      url: baseUrl+'/users/' + user.id + '/user_type',
       responseType: 'json',
     }).then(response => {
         console.log('response');
@@ -63,7 +64,7 @@ class Profile extends Component {
         id = response.data["0"].id;
         axios({
           method: 'GET',
-          url: 'http://localhost:3000/'+ type +'/' + id + '/pictures',
+          url: baseUrl+ type +'/' + id + '/pictures',
           responseType: 'json',
         })
         .then(response => {
@@ -72,7 +73,7 @@ class Profile extends Component {
             console.log(dataIn);
             axios({
               method: 'GET',
-              url: 'http://localhost:3000'+dataIn,
+              url: baseUrl+dataIn,
               responseType: 'arraybuffer',
             })
             .then(response => {
@@ -210,7 +211,7 @@ class Profile extends Component {
                       </Modal> : null } 
                     </Col>
                     <Col s={6}>
-                     { user.userType === "businessManager" ? <Button waves='light' node='a' target="_blank" href={"http://localhost:3000/companies/"+user.id+".pdf"} >Company PDF</Button> : null } 
+                     { user.userType === "businessManager" ? <Button waves='light' node='a' target="_blank" href={baseUrl+"/companies/"+user.id+".pdf"} >Company PDF</Button> : null } 
                     </Col>
                   </Row>
                 </tr>
