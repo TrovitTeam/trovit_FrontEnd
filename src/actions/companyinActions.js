@@ -16,6 +16,7 @@ export function companySigninRequest(companyData){
             }
         })
         .then(function(response) {
+            console.log('Company response');
             console.log(response);
         })
         .catch(function (error) {

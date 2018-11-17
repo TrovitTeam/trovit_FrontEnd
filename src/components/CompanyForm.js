@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input, Row, Button, Col} from 'react-materialize'
+import {Input, Row, Button, Col, Preloader} from 'react-materialize'
 import PropTypes from "prop-types"
 
 class CompanyForm extends Component {
@@ -8,7 +8,8 @@ class CompanyForm extends Component {
         this.state = {
           name: '',
           location: '',
-          companyType: ''
+          companyType: '',
+          loading: false
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -27,12 +28,23 @@ class CompanyForm extends Component {
       }
       
       handleSubmit(event){
+        this.setState({
+          loading: true
+        });
         this.props.companySigninRequest(this.state).then(
           () => {
             this.context.router.history.push("/");
           }
         );
-        window.location.reload();
+        function later(value) {
+          return new Promise(resolve => setTimeout(resolve, value));
+        }
+        later(1500).then(()=>{
+          this.setState({
+            loading: false
+          })
+          window.location.reload()
+        });
       }
     
       handleDataError(data_int, number_min){
@@ -52,6 +64,7 @@ class CompanyForm extends Component {
                 </Col>
             </Row>
               <div className="center">
+              { this.state.loading && <Row><Preloader></Preloader></Row> }
                 <Row>
                   <Col className="offset-s2" s={8}>
                     <Button className="light-blue darken-4" waves='light' onClick={this.handleSubmit}>Commit Changes</Button>
