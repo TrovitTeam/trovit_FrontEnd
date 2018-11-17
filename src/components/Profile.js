@@ -67,22 +67,28 @@ class Profile extends Component {
           responseType: 'json',
         })
         .then(response => {
-            dataIn = response.data[0].image.url;
-            console.log('dataIn');
-            console.log(dataIn);
-            axios({
-              method: 'GET',
-              url: baseUrl+dataIn,
-              responseType: 'arraybuffer',
-            })
-            .then(response => {
-              let image = btoa(
-                new Uint8Array(response.data)
-                  .reduce((data, byte) => data + String.fromCharCode(byte), '')
-              );
-              UserImage = `data:${response.headers['content-type'].toLowerCase()};base64,${image}`;
-                this.forceUpdate();
-            });    
+            if(response.data[0] !== undefined){
+              dataIn = response.data[0].image.url;
+              console.log('dataIn');
+              console.log(dataIn);
+              axios({
+                method: 'GET',
+                url: baseUrl+dataIn,
+                responseType: 'arraybuffer',
+              })
+              .then(response => {
+                let image = btoa(
+                  new Uint8Array(response.data)
+                    .reduce((data, byte) => data + String.fromCharCode(byte), '')
+                );
+                UserImage = `data:${response.headers['content-type'].toLowerCase()};base64,${image}`;
+                  this.forceUpdate();
+              });    
+            } else {
+              console.log('dataIn');
+              console.log(response);
+              UserImage = srcBP;
+            }
             this.forceUpdate();
         });
         this.forceUpdate();
@@ -201,20 +207,6 @@ class Profile extends Component {
                   </th>
                 </tr>
                 <tr>
-                  <Row className="center">
-                    <Col s={6}>
-                      { user.userType === "businessManager" ? <Modal 
-                      header='Modify Company Data'
-                      trigger={<Button waves='light' >Create Company</Button>}>
-                      <Company/>
-                      </Modal> : null } 
-                    </Col>
-                    <Col s={6}>
-                     { user.userType === "businessManager" ? <Button waves='light' node='a' target="_blank" href={baseUrl+"/companies/"+user.id+".pdf"} >Company PDF</Button> : null } 
-                    </Col>
-                  </Row>
-                </tr>
-                <tr>
                   <th>
                     <p className="flow-text">Location</p>
                     <p className="flow-text">{user.location}</p>
@@ -248,6 +240,20 @@ class Profile extends Component {
                     </Row>
                       
                   </th>
+                </tr>
+                <tr>
+                  <Row className="center">
+                    <Col s={6}>
+                      { user.userType === "businessmanager" ? <Modal 
+                      header='Modify Company Data'
+                      trigger={<Button waves='light' >Create Company</Button>}>
+                      <Company/>
+                      </Modal> : null } 
+                    </Col>
+                    <Col s={6}>
+                     { user.userType === "businessmanager" ? <Button waves='light' node='a' target="_blank" href={baseUrl+"companies/"+user.id+".pdf"} >Company PDF</Button> : null } 
+                    </Col>
+                  </Row>
                 </tr>
               </tbody>
             </Table>
