@@ -49,7 +49,7 @@ export function login(data)
 
             axios({
                     method: "get",
-                    url:'https://trovit.herokuapp.com/users/' + id,
+                    url: baseUrl+'/users/' + id,
                     responseType: "json"
             })
             .then(response => {
@@ -70,7 +70,7 @@ export function loginFacebook(data)
 
         return  axios({
             method:'POST',
-            url:'https://trovit.herokuapp.com/users/fb_create/',
+            url: baseUrl+'/users/fb_create/',
             responseType: "json",
             data: {
                 "accessToken": data.accessToken,

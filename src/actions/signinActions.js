@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {baseUrl} from "../resources/url.js";
 
 export function userSigninRequest(userData){
     return dispatch => {
@@ -6,7 +7,7 @@ export function userSigninRequest(userData){
         console.log(userData.name);
         return axios({
                     method:'post',
-                    url:'http://localhost:3000/users',
+                    url:baseUrl+'/users',
                     responseType: "json",
                     data: {
                         "user":
