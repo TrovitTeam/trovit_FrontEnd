@@ -7,36 +7,50 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {baseUrl} from "../resources/url.js";
 
+
 class Product_info extends Component {
   constructor(props){
     super(props);
+
+    const {user} = (this.props.auth);
+
     this.state = {
+        id: user.id,
         name: [],
-        products: {
+        products: { 
         }
     };
+
+    console.log(this.state);
+
+
+    this.createProducts = this.createProducts.bind(this);
   }
 
   componentDidMount(){
       var _this = this;
-      const {user} = this.props.auth;
+      //const {user} = this.props.auth;
+      let userid = this.state.id;
       let id = 0;
+
       axios({
         method: 'GET',
-        url: baseUrl+'/users/' + user.id + '/user_type',
+        url: baseUrl + 'users/' + userid + '/user_type',
         responseType: 'json',
-    }).then(response => {
+      })
+      .then(response => {
         id = response.data["0"].id;
         axios({
-          method:'get',
-          url: baseUrl+'/distributors/'+id+'/products',
-        }).then((response) => {
+          method:'GET',
+          url: baseUrl + 'distributors/'+id+'/products',
+        })
+        .then((response) => {
             console.log(response);
             this.createProducts(response);
-            _this.setState({
+            this.setState({
               products: response.data
             });
-            _this.setState({
+            this.setState({
               name: response.data.message
             });
         })
@@ -47,12 +61,11 @@ class Product_info extends Component {
       
   }
   
-  createProducts = (response) => {
+  createProducts(response) {
 
     let products = []
     
     const productsInfo = this.state.products;
-    console.log(this.state.contacts);
 
     for(let index = 0; index < productsInfo.length; index++) {
       
@@ -140,4 +153,4 @@ function mapStateToProps(state)
     auth: state.auth
   }
 }
-export default connect(mapStateToProps) (Product_info);
+export default connect(mapStateToProps, {}) (Product_info);
