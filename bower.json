@@ -1,0 +1,21 @@
+{
+  "name": "trovit",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Arka Ariza <arjarizami@unal.edu.co>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/TrovitTeam/trovit_FrontEnd",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chartist": "^0.11.0"
+  }
+}
