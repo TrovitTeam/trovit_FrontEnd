@@ -16,7 +16,7 @@ class SearchBar extends Component {
       <div>
         <form onSubmit = {this.onFormSubmit}>
           <div className="input-field">
-            <input type="text" value={this.state.term}/>
+            <input type="text" value={this.state.term} onChange={(e)=>this.setState({term: e.target.value})}/>
             <label className="label-icon" htmlFor="search"></label>
             <i className="material-icons">close</i>
           </div>
