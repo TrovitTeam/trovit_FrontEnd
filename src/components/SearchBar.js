@@ -8,13 +8,9 @@ class SearchBar extends Component {
     term: ' '
   }
 
-  componentDidMount = () => {
-		this.props.fetchSearchResults(this.state.term);
-	};
-
   onFormSubmit = (e) => {
     e.preventDefault();
-    this.props.onSubmit(this.state.term);
+    
   }
 
   render() {
