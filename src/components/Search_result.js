@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import searchAction from '../actions/searchAction';
-import {Card} from 'react-materialize'
+import fetchSearchResults from '../actions/searchAction';
+import {Card} from 'react-materialize';
+import src02 from "../resources/Captura02.PNG";
+
 
 class Search_result extends Component {
 
@@ -10,12 +12,12 @@ class Search_result extends Component {
   }
 
   renderList = () => {
-    return this.props.searchAction.map( act => {
+    return this.props.fetchSearchResults.map( result => {
       return(
         <Card className='small blue-grey'
-          header={<CardTitle image={src02}>Product Title</CardTitle>}
+          header={<CardTitle image={src02}>{result.title}</CardTitle>}
           actions={[<a href='/'>Product Link</a>]}>
-          Product Description.
+          {/*result.description*/}
         </Card>
       )
     })
@@ -24,10 +26,14 @@ class Search_result extends Component {
   render() {
     return (
       <div className="container">
-
+        {this.renderList()}
       </div>
     );
   }
 }
 
-export default Search_result;
+const mapStateToProps = (state) => {
+  return { searchResults: state.props}
+}
+
+export default connect(mapStateToProps, {fetchSearchResults}) (Search_result);
