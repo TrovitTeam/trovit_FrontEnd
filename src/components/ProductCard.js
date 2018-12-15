@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchProductInfo } from "../actions/selectedProductAction";
 import { Card, CardTitle } from "react-materialize";
+import { Link } from "react-router-dom";
 
 class ProductCard extends React.Component {
 	onProductSelect = e => {
-		e.preventDefault();
-		this.props.fetchProductInfo(5);
+		this.props.fetchProductInfo(this.props.id);
 	};
 
 	render() {
@@ -18,9 +18,9 @@ class ProductCard extends React.Component {
 					<CardTitle image={this.props.image}>{this.props.title}</CardTitle>
 				}
 				actions={
-					<a onClick={this.onProductSelect} href="/ProductPage">
+					<Link onClick={this.onProductSelect} to="/ProductPage">
 						Detalles
-					</a>
+					</Link>
 				}
 			>
 				{this.props.description}
