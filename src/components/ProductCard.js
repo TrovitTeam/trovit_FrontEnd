@@ -5,7 +5,7 @@ import { Card, CardTitle } from "react-materialize";
 
 class ProductCard extends React.Component {
 	onProductSelect = id => {
-		this.fetchProductInfo(id);
+		this.props.fetchProductInfo(id);
 	};
 
 	render() {
@@ -17,7 +17,7 @@ class ProductCard extends React.Component {
 					<CardTitle image={this.props.image}>{this.props.title}</CardTitle>
 				}
 				actions={
-					<a onClick={this.onProductSelect(this.props.id)} href="/Product_page">
+					<a onClick={this.onProductSelect(this.props.id)} href="/ProductPage">
 						Detalles
 					</a>
 				}
