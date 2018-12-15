@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Col, Row, Pagination } from "react-materialize";
-import ProductCard from "./ProductCard";
-import src12 from "../resources/Captura12.PNG";
 
 class Search_result extends Component {
 	render() {
@@ -68,14 +66,6 @@ class Search_result extends Component {
 								</li>
 							</ul>
 						</div>
-					</Col>
-					<Col s={5} m={8}>
-						<ProductCard
-							image={src12}
-							title="Product 1"
-							description="This is a product"
-							rating="3"
-						/>
 					</Col>
 				</Row>
 				<div className="container center">
