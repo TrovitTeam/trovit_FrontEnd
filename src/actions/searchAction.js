@@ -5,8 +5,6 @@ export const fetchSearchResults = term => async dispatch => {
 		params: { query: term }
 	});
 
-	console.log(response);
-
 	dispatch({
 		type: "FETCH_SEARCH_RESULTS",
 		payload: response.data.results
