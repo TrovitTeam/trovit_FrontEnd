@@ -3,7 +3,7 @@ import { Card, CardTitle } from "react-materialize";
 
 const ProductCard = props => {
 	return (
-		<Card
+		<Card horizontal
 			className="blue-grey"
 			header={<CardTitle image={props.image}>{props.title}</CardTitle>}
 			actions={<a href="/">Detalles</a>}
