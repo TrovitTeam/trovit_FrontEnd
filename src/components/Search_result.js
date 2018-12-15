@@ -8,14 +8,16 @@ class Search_result extends Component {
 	renderList = () => {
 		return this.props.searchResults.map(result => {
 			return (
-				<ProductCard
-					image={result.urls.regular}
-					title={result.title}
-					description={this.props.searchResults.description}
-					actions={[<a href="/">Product Link</a>]}
-				>
-					{result.description}
-				</ProductCard>
+				<div>
+					<ProductCard
+						image={result.urls.regular}
+						title={result.id}
+						description={result.description}
+						actions={[<a href="/">Product Link</a>]}
+					>
+						{result.description}
+					</ProductCard>
+				</div>
 			);
 		});
 	};
