@@ -28,4 +28,8 @@ class ProductPage extends React.Component{
     }
 }
 
-export default ProductPage;
+const mapStateToProps = (state) => {
+    return { selectedProduct: state.props }
+}
+
+export default connect(mapStateToProps) (ProductPage);
