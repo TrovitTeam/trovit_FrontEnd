@@ -1,20 +1,25 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import {Row, Card, CardPanel, Col, Collection, CollectionItem, ProgressBar} from 'react-materialize';
+import {Row, Card, CardPanel, Col, Collection, CollectionItem, ProgressBar, Preloader} from 'react-materialize';
 
 class ProductPage extends React.Component{
 
-    componentDidMount = () => {
-        console.log(this.props.selectedProduct);
+    renderContent(){
+        if(!this.props.selectedProduct){
+            return <div className="center"><Preloader /></div>
+        } else {
+            return <Card image={this.props.selectedProduct.urls.small}></Card>
+        }
     }
-    
+
     render(){
+
         return(
             <div className="container">
                 <Row>
                     <Col s={6}>
-                        <Card image={this.props.selectedProduct}></Card>
+                        {this.renderContent()}
                     </Col>
                     <Col s={6}>
                         <Collection className="blue-grey">
