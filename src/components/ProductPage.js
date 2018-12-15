@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import { connect } from "react-redux";
 import {Row, Card, CardPanel, Col, Collection, CollectionItem, ProgressBar} from 'react-materialize';
@@ -41,4 +41,4 @@ const mapStateToProps = (state) => {
     return { selectedProduct: state.selectedProduct }
 }
 
-export default connect(mapStateToProps) (ProductPage);
+export default connect(mapStateToProps)(ProductPage);
