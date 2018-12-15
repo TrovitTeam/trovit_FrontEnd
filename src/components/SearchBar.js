@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { fetchSearchResults } from "../actions/searchAction";
 
 class SearchBar extends Component {
 
   state = {
     term: ' '
   }
+
+  componentDidMount = () => {
+		this.props.fetchSearchResults(this.state.term);
+	};
 
   onFormSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +22,7 @@ class SearchBar extends Component {
       <div>
         <form onSubmit = {this.onFormSubmit}>
           <div className="input-field">
-            <input type="text" value={this.state.term} onChange={(e)=>this.setState({term: e.target.value})}/>
+            <input className="black-text" type="text" value={this.state.term} onChange={(e)=>this.setState({term: e.target.value})}/>
             <label className="label-icon" htmlFor="search"></label>
             <i className="material-icons">close</i>
           </div>
@@ -26,4 +32,8 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => {
+	return { searchResults: state.props };
+};
+
+export default connect(mapStateToProps, {fetchSearchResults})(SearchBar);
