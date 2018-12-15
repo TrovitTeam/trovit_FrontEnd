@@ -1,30 +1,36 @@
 import React from 'react';
 
 import { connect } from "react-redux";
-import {Row, Card, Col, CardTitle, Button} from 'react-materialize';
+import {Row, Card, CardPanel, Col, Collection, CollectionItem, ProgressBar} from 'react-materialize';
 
 class ProductPage extends React.Component{
 
-
+    componentDidMount = () => {
+        console.log(this.props.selectedProduct);
+    }
     
     render(){
         return(
             <div className="container">
                 <Row>
                     <Col s={6}>
-                        <h1 className ="center">Imagen</h1>
+                        <Card image={this.props.selectedProduct}></Card>
                     </Col>
                     <Col s={6}>
-                        <h1 className ="center">Titulo</h1>
-                        <h3 className ="center">Distribuidor</h3>
-                        <h1 className ="center">Puntuación</h1>
+                        <Collection className="blue-grey">
+                            <CollectionItem><h2 className ="center">Titulo</h2></CollectionItem>
+                            <CollectionItem><h4 className ="center">Puntuación</h4></CollectionItem>
+                            <CollectionItem><h6 className ="center">Distribuidor</h6></CollectionItem>
+                        </Collection>
                     </Col>
                 </Row>
+                <ProgressBar progress={100}/>
                 <Row>
-                    <h1 className ="center">.</h1>
-                    <h1 className ="center">.</h1>
-                    <h1 className ="center">.</h1>
-                    <h1 className ="center">Descripción</h1>
+                    <CardPanel className="blue-grey">
+                        <h1 className="center">.</h1>
+                        <h1 className="center">Descripción</h1>
+                        <h1 className="center">.</h1>
+                    </CardPanel>
                 </Row>
             </div>
         )
@@ -32,7 +38,7 @@ class ProductPage extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return { selectedProduct: state.props }
+    return { selectedProduct: state.selectedProduct }
 }
 
 export default connect(mapStateToProps) (ProductPage);
