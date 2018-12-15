@@ -1,18 +1,36 @@
 import React from "react";
+import { connect } from "react-redux";
+import { fetchProductInfo } from "../actions/selectedProductAction";
 import { Card, CardTitle } from "react-materialize";
 
-const ProductCard = props => {
-	return (
-		<Card horizontal
-			className="blue-grey"
-			header={<CardTitle image={props.image}>{props.title}</CardTitle>}
-			actions={<a href="/">Detalles</a>}
-		>
-			{props.description}
-			<br />
-			{props.rating}
-		</Card>
-	);
-};
+class ProductCard extends React.Component {
+	onProductSelect = id => {
+		this.fetchProductInfo(id);
+	};
 
-export default ProductCard;
+	render() {
+		return (
+			<Card
+				horizontal
+				className="blue-grey"
+				header={
+					<CardTitle image={this.props.image}>{this.props.title}</CardTitle>
+				}
+				actions={
+					<a onClick={this.onProductSelect(this.props.id)} href="/Product_page">
+						Detalles
+					</a>
+				}
+			>
+				{this.props.description}
+				<br />
+				{this.props.rating}
+			</Card>
+		);
+	}
+}
+
+export default connect(
+	null,
+	{ fetchProductInfo }
+)(ProductCard);

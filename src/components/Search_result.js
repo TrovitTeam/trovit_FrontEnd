@@ -10,6 +10,7 @@ class Search_result extends Component {
 			return (
 				<ProductCard
 					className="product-card"
+					id={result.id}
 					image={result.urls.regular}
 					title={result.title}
 					description={this.props.searchResults.description}
