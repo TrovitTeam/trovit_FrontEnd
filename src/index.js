@@ -15,7 +15,7 @@ import Search_result from "./components/Search_result";
 import Send_email from "./components/Send_email";
 import Setting from "./components/Setting";
 import FooterPage from "./components/FooterPage";
-
+import ProductPage from './components/ProductPage';
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
@@ -73,6 +73,7 @@ ReactDOM.render(
 					<Route path="/Send_email" component={Send_email} />
 					<Route path="/Setting" component={Setting} />
 					<Route path="/Statistics" component={statistics} />
+					<Route path="/ProductPage" component={ProductPage} />
 				</div>
 				<FooterPage />
 			</div>

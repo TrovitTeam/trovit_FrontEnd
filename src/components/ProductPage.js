@@ -12,16 +12,19 @@ class ProductPage extends React.Component{
             <div className="container">
                 <Row>
                     <Col s={6}>
-                        <h1>Imagen</h1>
+                        <h1 className ="center">Imagen</h1>
                     </Col>
                     <Col s={6}>
-                        <h1>Titulo</h1>
-                        <h3>Distribuidor</h3>
-                        <h1>Puntuación</h1>
+                        <h1 className ="center">Titulo</h1>
+                        <h3 className ="center">Distribuidor</h3>
+                        <h1 className ="center">Puntuación</h1>
                     </Col>
                 </Row>
                 <Row>
-                    <h1>Descripción</h1>
+                    <h1 className ="center">.</h1>
+                    <h1 className ="center">.</h1>
+                    <h1 className ="center">.</h1>
+                    <h1 className ="center">Descripción</h1>
                 </Row>
             </div>
         )
