@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { logout } from "../actions/authActions";
 
 import SearchBar from "./SearchBar";
+import UnsplashSearchBar from './UnsplashSearchBar';
 import PropTypes from "prop-types";
 import { baseUrl } from "../resources/url.js";
 
@@ -77,7 +78,7 @@ class Menu extends Component {
 						<Col className="offset-s1" s={4}>
 							<nav>
 								<div className="nav-wrapper grey lighten-2">
-									<SearchBar history={this.props.history} />
+									<UnsplashSearchBar history={this.props.history} />
 								</div>
 							</nav>
 						</Col>

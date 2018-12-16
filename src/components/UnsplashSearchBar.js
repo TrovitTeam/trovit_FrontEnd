@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchProductsSearch } from "../actions/searchAction";
+import { fetchSearchResults } from "../actions/searchAction";
 
-class SearchBar extends Component {
+class UnsplashSearchBar extends Component {
 	state = {
 		term: ""
 	};
 
 	onFormSubmit = e => {
 		e.preventDefault();
-		this.props.fetchProductsSearch(this.state.term);
+		this.props.fetchSearchResults(this.state.term);
 		this.props.history.push("Search_result");
 	};
 
@@ -39,5 +39,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ fetchProductsSearch }
-)(SearchBar);
+	{ fetchSearchResults }
+)(UnsplashSearchBar);

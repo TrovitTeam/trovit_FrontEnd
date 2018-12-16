@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
 import {Card, Col, CardTitle, Table, Row} from 'react-materialize'
+import axios from 'axios';
+import {baseUrl} from '../resources/url';
+import ProductCard from "./ProductCard";
 import Slider from "react-slick";
 import src12 from "../resources/Captura12.PNG"
 import src11 from "../resources/Captura11.PNG"
@@ -16,7 +19,19 @@ import src08 from "../resources/Captura08.PNG"
 import src09 from "../resources/Captura09.PNG"
 
 class Landing_page extends Component {
+
+  state = {
+    products: []
+  }
+
+  /* componentDidMount = async ()  => {
+    const response = await axios.get(baseUrl+'/products');
+    this.setState({ products: response.data})
+  } */
+
   render() {
+    console.log( 'this.state.products.length');
+    console.log( this.state.products.length);
     var settings = {
       dots: true,
       infinite: true,
@@ -52,24 +67,33 @@ class Landing_page extends Component {
                     <tbody>
                       <tr>
                         <td>
+                        {/*                     
+                        <div key = {0}>
+                          <ProductCard
+                            className="product-card"
+                            product={this.state.products[0]}>
+                            {this.state.products[0].description}
+                          </ProductCard> 
+                        </div>
+                        */}
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src01}>  Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={this.state.products.length !== 0 ? this.state.products[0].urls : src01}>  {this.state.products.length !== 0 ? this.state.products[0].title : 'Trovit Papers'}</CardTitle>}
+                            actions={<a href='/'>Details</a>}>
+                            This are Trovit official Papers!
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src02}>Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={src02}>Door Hangers</CardTitle>}
+                            actions={[<a href='/'>Details</a>]}>
+                            This are Trovit official door hangers!
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src03}>Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={src03}>Trovit Book</CardTitle>}
+                            actions={<a href='/'>Details</a>}>
+                            This are Trovit official books!
                           </Card>
                         </td>
                         
@@ -77,46 +101,46 @@ class Landing_page extends Component {
                       <tr>
                         <td>
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src04}>Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={src04}>Trovit Bottle</CardTitle>}
+                            actions={[<a href='/'>Details</a>]}>
+                            This are Trovit official bottles!
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src05}>Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={src05}>Trovit Cup</CardTitle>}
+                            actions={[<a href='/'>Details</a>]}>
+                            This are Trovit official cups!
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src06}>Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={src06}>Trovit Envelope</CardTitle>}
+                            actions={[<a href='/'>Details</a>]}>
+                            This are Trovit official envelopes!
                           </Card>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src07}>Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={src07}>Trovit Block Notes</CardTitle>}
+                            actions={[<a href='/'>Details</a>]}>
+                            This are Trovit official blocks notes!
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src08}>Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={src08}>Trovit Shirt</CardTitle>}
+                            actions={[<a href='/'>Details</a>]}>
+                            This are Trovit official shirts!
                           </Card>
                         </td>
                         <td>
                           <Card className='small blue-grey'
-                            header={<CardTitle image={src09}>Product Title</CardTitle>}
-                            actions={[<a href='/'>Product Link</a>]}>
-                            Product Description.
+                            header={<CardTitle image={src09}>Trovit Phone</CardTitle>}
+                            actions={[<a href='/'>Details</a>]}>
+                            This are Trovit official phones!
                           </Card>
                         </td>
                       </tr>

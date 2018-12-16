@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchSelectedProduct } from "../actions/selectedProductAction";
+import { fetchProductInfo } from "../actions/selectedProductAction";
 import { Card, CardTitle } from "react-materialize";
 import { Link } from "react-router-dom";
 
-class ProductCard extends React.Component {
+class ProductCardUnsplash extends React.Component {
 	onProductSelect = e => {
-		this.props.fetchSelectedProduct(this.props.id);
+		this.props.fetchProductInfo(this.props.id);
 	};
 
 	render() {
@@ -15,7 +15,7 @@ class ProductCard extends React.Component {
 				horizontal
 				className="blue-grey"
 				header={
-					<CardTitle image={this.props.product.urls}>
+					<CardTitle image={this.props.product.urls.small}>
 						{this.props.product.title}
 					</CardTitle>
 				}
@@ -35,5 +35,5 @@ class ProductCard extends React.Component {
 
 export default connect(
 	null,
-	{ fetchSelectedProduct }
-)(ProductCard);
+	{ fetchProductInfo }
+)(ProductCardUnsplash);

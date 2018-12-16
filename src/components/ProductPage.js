@@ -14,17 +14,6 @@ import {
 } from "react-materialize";
 
 class ProductPage extends React.Component {
-	renderContent() {
-		if (!this.props.selectedProduct) {
-			return (
-				<div className="center">
-					<Preloader />
-				</div>
-			);
-		} else {
-			return;
-		}
-	}
 
 	render() {
 		if (!this.props.selectedProduct.urls) {

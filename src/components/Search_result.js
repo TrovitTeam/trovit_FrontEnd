@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSearchResults } from "../actions/searchAction";
 import ProductCard from "./ProductCard";
+import ProductCardUnsplash from "./ProductCardUnsplash";
 import { Preloader } from "react-materialize";
 
 class Search_result extends Component {
@@ -9,13 +10,12 @@ class Search_result extends Component {
 		return this.props.searchResults.map(result => {
 			return (
 				<div key={result.id}>
-					<ProductCard
+					<ProductCardUnsplash
 						className="product-card"
 						product={result}
-						actions={[<a href="/">Product Link</a>]}
 					>
 						{result.description}
-					</ProductCard>
+					</ProductCardUnsplash>
 				</div>
 			);
 		});
