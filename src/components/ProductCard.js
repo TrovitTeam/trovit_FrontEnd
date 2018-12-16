@@ -15,7 +15,9 @@ class ProductCard extends React.Component {
 				horizontal
 				className="blue-grey"
 				header={
-					<CardTitle image={this.props.image}>{this.props.title}</CardTitle>
+					<CardTitle image={this.props.product.urls.small}>
+						{this.props.product.title}
+					</CardTitle>
 				}
 				actions={
 					<Link onClick={this.onProductSelect} to="/ProductPage">
@@ -23,9 +25,9 @@ class ProductCard extends React.Component {
 					</Link>
 				}
 			>
-				{this.props.description}
+				{this.props.product.description}
 				<br />
-				{this.props.rating}
+				{this.props.product.rating}
 			</Card>
 		);
 	}

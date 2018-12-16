@@ -77,7 +77,7 @@ class Menu extends Component {
 						<Col className="offset-s1" s={4}>
 							<nav>
 								<div className="nav-wrapper grey lighten-2">
-									<SearchBar />
+									<SearchBar history={this.props.history} />
 								</div>
 							</nav>
 						</Col>

@@ -1,23 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSearchResults } from "../actions/searchAction";
-import { Col, Table } from "react-materialize";
 import ProductCard from "./ProductCard";
+import { Preloader } from "react-materialize";
 
 class Search_result extends Component {
 	renderList = () => {
 		return this.props.searchResults.map(result => {
 			return (
-				<ProductCard
-					className="product-card"
-					id={result.id}
-					image={result.urls.regular}
-					title={result.title}
-					description={this.props.searchResults.description}
-					actions={[<a href="/">Product Link</a>]}
-				>
-					{result.description}
-				</ProductCard>
+				<div key={result.id}>
+					<ProductCard
+						className="product-card"
+						product={result}
+						actions={[<a href="/">Product Link</a>]}
+					>
+						{result.description}
+					</ProductCard>
+				</div>
 			);
 		});
 	};
@@ -26,7 +25,11 @@ class Search_result extends Component {
 		console.log(this.props.searchResults);
 
 		if (!this.props.searchResults) {
-			return <div>No results</div>;
+			return (
+				<div className="center">
+					<Preloader />
+				</div>
+			);
 		}
 
 		return <div className="container">{this.renderList()}</div>;
