@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 class ProductCardUnsplash extends React.Component {
 	onProductSelect = e => {
-		this.props.fetchProductInfo(this.props.id);
+		this.props.fetchProductInfo(this.props.product.id);
 	};
 
 	render() {
