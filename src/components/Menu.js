@@ -7,20 +7,18 @@ import { connect } from "react-redux";
 import { logout } from "../actions/authActions";
 
 import SearchBar from "./SearchBar";
-import UnsplashSearchBar from './UnsplashSearchBar';
+import UnsplashSearchBar from "./UnsplashSearchBar";
 import PropTypes from "prop-types";
-import { baseUrl } from "../resources/url.js";
 
 class Menu extends Component {
-	logout(event) {
+	logout = event => {
 		event.preventDefault();
 		this.props.logout();
 		this.context.router.history.push("/");
-	}
+	};
 
 	render() {
-		const { isAuthenticated } = this.props.auth;
-		const { user } = this.props.auth;
+		const { isAuthenticated, user } = this.props.auth;
 
 		const contactsLink = <Link to="/Contact">Contacts</Link>;
 
@@ -32,7 +30,7 @@ class Menu extends Component {
 
 		const userLinks = (
 			<div className="right">
-				<a className="right" href={"/"} onClick={this.logout.bind(this)}>
+				<a className="right" href={"/"} onClick={this.logout}>
 					Logout
 				</a>
 				<Link className="right" to="/Profile">
@@ -51,6 +49,8 @@ class Menu extends Component {
 				</Link>
 			</div>
 		);
+
+		let a = false;
 
 		return (
 			<div className="container-fluid">
