@@ -6,27 +6,21 @@ import { Link } from "react-router-dom";
 
 class ProductCard extends React.Component {
 	onProductSelect = e => {
-		this.props.fetchSelectedProduct(this.props.id);
+		this.props.fetchSelectedProduct(this.props.product.id);
 	};
 
 	render() {
 		return (
 			<Card
-				horizontal
 				className="blue-grey"
-				header={
-					<CardTitle image={this.props.product.urls}>
-						{this.props.product.title}
-					</CardTitle>
-				}
+				header={<CardTitle image={this.props.product.urls.regular} />}
+				title={this.props.product.id}
 				actions={
 					<Link onClick={this.onProductSelect} to="/ProductPage">
 						<p>Details</p>
 					</Link>
 				}
 			>
-				<p className="flow-text truncate">{this.props.product.description}</p>
-				<br />
 				{this.props.product.rating}
 			</Card>
 		);

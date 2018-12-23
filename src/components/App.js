@@ -7,7 +7,10 @@ import { createStore, applyMiddleware, compose } from "redux";
 
 import Header from "../components/Header";
 import Menu from "../components/Menu";
-import Landing_page from "../components/Landing_page";
+
+//import Landing_page from "../components/Landing_page";
+import Landing_page from "../components/LandingPageRe";
+
 import Product_info from "../components/Product_info";
 import Profile from "../components/Profile";
 import Log_in from "../components/Log_in";
@@ -19,6 +22,7 @@ import Setting from "../components/Setting";
 import FooterPage from "../components/FooterPage";
 import ProductPage from "../components/ProductPage";
 import setAuthorizationToken from "../utils/setAuthorizationToken";
+import LandingPageRE from "./LandingPageRe";
 import "../styles/index.css";
 import rootReducer from "../components/rootReducer";
 import { setCurrentUser } from "../actions/authActions";

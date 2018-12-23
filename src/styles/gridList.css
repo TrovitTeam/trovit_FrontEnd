@@ -1,0 +1,13 @@
+.grid-list {
+	margin: 40px auto;
+	width: 90%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-gap: 40px;
+	grid-auto-rows: 1fr;
+	align-items: stretch;
+}
+
+.card .card-image img {
+	height: 250px;
+}

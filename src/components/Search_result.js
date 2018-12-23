@@ -10,10 +10,7 @@ class Search_result extends Component {
 		return this.props.searchResults.map(result => {
 			return (
 				<div key={result.id}>
-					<ProductCardUnsplash
-						className="product-card"
-						product={result}
-					>
+					<ProductCardUnsplash className="product-card" product={result}>
 						{result.description}
 					</ProductCardUnsplash>
 				</div>
