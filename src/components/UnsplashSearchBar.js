@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSearchResults } from "../actions/searchAction";
+import { Input, Icon } from "react-materialize";
 
 class UnsplashSearchBar extends Component {
 	state = {
@@ -18,14 +19,15 @@ class UnsplashSearchBar extends Component {
 			<div>
 				<form onSubmit={this.onFormSubmit}>
 					<div className="input-field">
-						<input
+						<Input
+							s={6}
 							className="black-text"
 							type="text"
 							value={this.state.term}
 							onChange={e => this.setState({ term: e.target.value })}
-						/>
-						<label className="label-icon" htmlFor="search" />
-						<i className="material-icons">close</i>
+						>
+							<Icon>search</Icon>
+						</Input>
 					</div>
 				</form>
 			</div>

@@ -3,7 +3,9 @@ export default (state = {}, action) => {
 		case "SELECT_PRODUCT":
 			return action.payload;
 		case "SELECTED_PRODUCT":
-			return action.payload;	
+			return action.payload;
+		case "UNSELECT_PRODUCT":
+			return {};
 		default:
 			return state;
 	}

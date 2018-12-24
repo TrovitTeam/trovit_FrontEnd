@@ -3,15 +3,17 @@ import ProductCard from "./ProductCard";
 import "../styles/gridList.css";
 
 const GridList = props => {
-	console.log(props.list);
+	let renderList = [];
 
-	const renderList = props.list.map(item => {
-		return (
-			<div key={item.id}>
-				<ProductCard product={item} />
-			</div>
-		);
-	});
+	if (props.list) {
+		renderList = props.list.map(item => {
+			return (
+				<div key={item.id}>
+					<ProductCard product={item} />
+				</div>
+			);
+		});
+	}
 
 	return (
 		<div>

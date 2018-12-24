@@ -11,18 +11,15 @@ class ProductCard extends React.Component {
 
 	render() {
 		return (
-			<Card
-				className="blue-grey"
-				header={<CardTitle image={this.props.product.urls.regular} />}
-				title={this.props.product.id}
-				actions={
-					<Link onClick={this.onProductSelect} to="/ProductPage">
-						<p>Details</p>
-					</Link>
-				}
-			>
-				{this.props.product.rating}
-			</Card>
+			<Link onClick={this.onProductSelect} to="/ProductPage">
+				<Card
+					className="blue-grey"
+					header={<CardTitle image={this.props.product.urls.regular} />}
+					title={this.props.product.id}
+				>
+					{this.props.product.rating}
+				</Card>
+			</Link>
 		);
 	}
 }

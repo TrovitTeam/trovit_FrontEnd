@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchProductsSearch } from "../actions/searchAction";
+import { fetchSearchResults } from "../actions/searchAction";
+import { Input, Icon } from "react-materialize";
 
 class SearchBar extends Component {
 	state = {
@@ -9,24 +10,25 @@ class SearchBar extends Component {
 
 	onFormSubmit = e => {
 		e.preventDefault();
-		this.props.fetchProductsSearch(this.state.term);
-		this.props.history.push("Search_result");
+		this.props.fetchSearchResults(this.state.term);
+		if (this.props.history) {
+			this.props.history.push("Search_result");
+		}
 	};
 
 	render() {
 		return (
 			<div>
 				<form onSubmit={this.onFormSubmit}>
-					<div className="input-field">
-						<input
-							className="black-text"
-							type="text"
-							value={this.state.term}
-							onChange={e => this.setState({ term: e.target.value })}
-						/>
-						<label className="label-icon" htmlFor="search" />
-						<i className="material-icons">close</i>
-					</div>
+					<Input
+						s={6}
+						className="black-text"
+						type="text"
+						value={this.state.term}
+						onChange={e => this.setState({ term: e.target.value })}
+					>
+						<Icon>search</Icon>
+					</Input>
 				</form>
 			</div>
 		);
@@ -39,5 +41,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ fetchProductsSearch }
+	{ fetchSearchResults }
 )(SearchBar);

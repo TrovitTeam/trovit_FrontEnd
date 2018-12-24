@@ -31,7 +31,7 @@ class LandingPageRe extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-		products: state.searchResults
+		products: state.searchResults.results
 	};
 };
 

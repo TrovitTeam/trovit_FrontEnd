@@ -76,11 +76,12 @@ class Menu extends Component {
 							</a>
 						</Col>
 						<Col className="offset-s1" s={4}>
-							<nav>
-								<div className="nav-wrapper grey lighten-2">
-									<UnsplashSearchBar history={this.props.history} />
-								</div>
-							</nav>
+							<NavItem
+								onClick={e => e.preventDefault()}
+								className="grey lighten-2"
+							>
+								<UnsplashSearchBar history={this.props.history} />
+							</NavItem>
 						</Col>
 						<Col s={2}>{isAuthenticated ? userLinks : guestLinks}</Col>
 					</Row>
@@ -89,15 +90,6 @@ class Menu extends Component {
 		);
 	}
 }
-
-Menu.propTypes = {
-	auth: PropTypes.object.isRequired,
-	logout: PropTypes.func.isRequired
-};
-
-Menu.contextTypes = {
-	router: PropTypes.object.isRequired
-};
 
 function mapStateToProps(state) {
 	return {

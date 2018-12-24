@@ -6,7 +6,8 @@ import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose } from "redux";
 
 import Header from "../components/Header";
-import Menu from "../components/Menu";
+//import Menu from "../components/Menu";
+import Menu from "../components/MenuRe";
 
 //import Landing_page from "../components/Landing_page";
 import Landing_page from "../components/LandingPageRe";

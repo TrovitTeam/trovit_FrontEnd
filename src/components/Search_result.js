@@ -3,38 +3,39 @@ import { connect } from "react-redux";
 import { fetchSearchResults } from "../actions/searchAction";
 import ProductCard from "./ProductCard";
 import ProductCardUnsplash from "./ProductCardUnsplash";
-import { Preloader } from "react-materialize";
+import { Preloader, Col, Row } from "react-materialize";
+import GridList from "./GridList";
+import SearchBar from "./SearchBar";
+
+import "../styles/basic.css";
 
 class Search_result extends Component {
-	renderList = () => {
-		return this.props.searchResults.map(result => {
-			return (
-				<div key={result.id}>
-					<ProductCardUnsplash className="product-card" product={result}>
-						{result.description}
-					</ProductCardUnsplash>
-				</div>
-			);
-		});
-	};
-
 	render() {
 		console.log(this.props.searchResults);
 
-		if (!this.props.searchResults) {
+		if (!this.props.searchResults.results) {
 			return (
-				<div className="center">
+				<div className="center" style={{ height: "100%", marginTop: "200px" }}>
 					<Preloader />
 				</div>
 			);
 		}
 
-		return <div className="container">{this.renderList()}</div>;
+		return (
+			<div className="my-container">
+				<Row style={{ margin: "10px 0" }}>
+					<SearchBar />
+				</Row>
+				<div>
+					<h3>{this.props.searchResults.total} resultados.</h3>
+				</div>
+				<GridList list={this.props.searchResults.results} />
+			</div>
+		);
 	}
 }
 
 const mapStateToProps = state => {
-	console.log(state);
 	return { searchResults: state.searchResults };
 };
 
