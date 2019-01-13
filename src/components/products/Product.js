@@ -1,31 +1,31 @@
 import React, { Component } from "react";
 import { Row } from "react-materialize";
-import ImageInUser from "./ImageInUser.js";
+import ProductIn from "./ProductIn.js";
 import { connect } from "react-redux";
-import { imageUserCreateRequest } from "../actions/imageUserActions.js";
+import { productCreateRequest } from "../../actions/productActions.js";
 import PropTypes from "prop-types";
 
-class ImageUser extends Component {
+class Product extends Component {
   render() {
-    const { imageUserCreateRequest } = this.props;
+    const { productCreateRequest } = this.props;
     return (
       <Row>
-        <ImageInUser imageUserCreateRequest={imageUserCreateRequest} />
+        <ProductIn productCreateRequest={productCreateRequest} />
       </Row>
     );
   }
 }
 
-ImageUser.propTypes = {
+Product.propTypes = {
   auth: PropTypes.object.isRequired,
   productCreateRequest: PropTypes.func.isRequired
 };
 
-ImageUser.contextTypes = {
+Product.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
 export default connect(
   null,
-  { imageUserCreateRequest }
-)(ImageUser);
+  { productCreateRequest }
+)(Product);

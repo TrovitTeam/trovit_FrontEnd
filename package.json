@@ -1,40 +1,41 @@
 {
-  "name": "trovit",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^3.1.1",
-    "@material-ui/icons": "^3.0.1",
-    "@vx/vx": "0.0.179",
-    "axios": "^0.18.0",
-    "chartist": "^0.11.0",
-    "jquery": "^3.3.1",
-    "jsonwebtoken": "^8.3.0",
-    "jwt-decode": "^2.2.0",
-    "material-icons": "^0.2.3",
-    "react": "^16.5.2",
-    "react-chartist": "^0.13.1",
-    "react-dom": "^16.5.2",
-    "react-facebook-login": "^4.1.1",
-    "react-google-maps": "^9.4.5",
-    "react-materialize": "^2.4.5",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
-    "react-slick": "^0.23.1",
-    "react-swipeable-views": "^0.13.0",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "slick-carousel": "^1.8.1",
-    "webpack": "^3.11.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "webpack-dev-middleware": "^3.4.0"
-  }
+	"name": "trovit",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@material-ui/core": "^3.1.1",
+		"@material-ui/icons": "^3.0.1",
+		"@vx/vx": "0.0.179",
+		"axios": "^0.18.0",
+		"chartist": "^0.11.0",
+		"jquery": "^3.3.1",
+		"jsonwebtoken": "^8.3.0",
+		"jwt-decode": "^2.2.0",
+		"material-icons": "^0.2.3",
+		"react": "^16.5.2",
+		"react-chartist": "^0.13.1",
+		"react-dom": "^16.5.2",
+		"react-facebook-login": "^4.1.1",
+		"react-google-maps": "^9.4.5",
+		"react-materialize": "^2.4.5",
+		"react-redux": "^5.0.7",
+		"react-router-dom": "^4.3.1",
+		"react-scripts": "1.1.5",
+		"react-slick": "^0.23.1",
+		"react-swipeable-views": "^0.13.0",
+		"redux": "^4.0.1",
+		"redux-form": "^8.1.0",
+		"redux-thunk": "^2.3.0",
+		"slick-carousel": "^1.8.1",
+		"webpack": "^3.11.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"devDependencies": {
+		"webpack-dev-middleware": "^3.4.0"
+	}
 }

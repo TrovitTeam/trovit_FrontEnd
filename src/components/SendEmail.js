@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-class Setting extends Component {
+class SendEmail extends Component {
   render() {
     return <div />;
   }
 }
 
-export default Setting;
+export default SendEmail;

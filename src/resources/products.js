@@ -11,32 +11,32 @@ import src09 from "../resources/Captura09.PNG";
 export const products = makeProducts();
 
 function makeProducts() {
-	let pro = [];
-	const list = [
-		src01,
-		src02,
-		src03,
-		src04,
-		src05,
-		src06,
-		src07,
-		src08,
-		src09,
-		src01,
-		src02,
-		src03
-	];
+  let pro = [];
+  const list = [
+    src01,
+    src02,
+    src03,
+    src04,
+    src05,
+    src06,
+    src07,
+    src08,
+    src09,
+    src01,
+    src02,
+    src03
+  ];
 
-	list.forEach(product => {
-		const p = {
-			id: 1,
-			urls: product,
-			title: "Product",
-			description: "Description",
-			reating: 2
-		};
-		pro.push(p);
-	});
-	console.log(pro);
-	return pro;
+  list.forEach(product => {
+    const p = {
+      id: 1,
+      urls: product,
+      title: "Product",
+      description: "Description",
+      reating: 2
+    };
+    pro.push(p);
+  });
+  console.log(pro);
+  return pro;
 }

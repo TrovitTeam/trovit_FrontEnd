@@ -1,11 +1,9 @@
+import { FETCH_USER_INFO } from "../actions/types";
+
 export default (state = {}, action) => {
   switch (action.type) {
-    case "SELECT_PRODUCT":
+    case FETCH_USER_INFO:
       return action.payload;
-    case "SELECTED_PRODUCT":
-      return action.payload;
-    case "UNSELECT_PRODUCT":
-      return {};
     default:
       return state;
   }
