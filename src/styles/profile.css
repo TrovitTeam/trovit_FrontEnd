@@ -1,18 +1,3 @@
-.profile img {
-  padding: 0.5rem;
-  width: 100%;
-}
-
-.profile .info {
-  padding: 0 2rem;
-}
-
-.item.header {
-  margin: 2rem 1.2rem;
-  color: gray;
-}
-
-.item.header .content {
-  margin: 1.2rem 1.2rem;
-  color: black;
+.profile {
+  height: 100%;
 }

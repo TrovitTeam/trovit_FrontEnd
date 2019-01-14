@@ -12,7 +12,7 @@ import ProductInfo from "./products/ProductInfo";
 import Profile from "../components/ProfileRe";
 import LogIn from "../components/auth/LogIn";
 import SignIn from "../components/auth/SignIn";
-import Contact from "./Contacts";
+import Contact from "./ContactsRe";
 import SearchResult from "../components/SearchResult";
 import SendEmail from "../components/SendEmail";
 import Setting from "../components/Setting";
@@ -40,7 +40,7 @@ const App = props => {
         <div className="normal">
           <Route path="/" component={Menu} />
           <Route exact path="/" component={LandingPage} />
-          <Route path="/Contact" component={Contact} />
+          <Route path="/Contacts" component={Contact} />
           <Route path="/LogIn" component={LogIn} />
           <Route path="/SignIn" component={SignIn} />
           <Route path="/ProductInfo" component={ProductInfo} />

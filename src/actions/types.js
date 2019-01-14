@@ -2,3 +2,4 @@ export const ADD_FLASH_MESSAGE = "ADD";
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const FETCH_USER_INFO = "FETCH_USER_INFO";
+export const FETCH_USERS_INFO = "FETCH_USERS_INFO";
