@@ -27,26 +27,13 @@ body {
   position: relative;
 }
 
-#Register_Button {
-  margin: 2em;
+.main-container .normal {
+  padding-bottom: 200px;
 }
 
-#Log_Button {
-  margin-bottom: 2em;
-}
-
-#land_slider {
-  margin-left: 10%;
-  margin-top: 0.1%;
-}
-
-#signOptionsBoxes {
-  margin-top: 55%;
-}
-
-/*.footer {
-  position: fixed;
+.footer {
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-}*/
+}

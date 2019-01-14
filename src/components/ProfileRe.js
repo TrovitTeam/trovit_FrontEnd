@@ -46,44 +46,56 @@ class ProfileRe extends Component {
     const { user } = this.props.auth;
 
     return (
-      <div className="container">
-        <Row>
-          <Col s={6}>
+      <div className="container profile">
+        <Row className="white" style={{ margin: "10px 0" }}>
+          <Col s={4}>
             <img src={defaultImage} />
             <div>{this.renderActions()}</div>
           </Col>
-          <Col s={6}>
-            <Collection>
-              <CollectionItem>
-                <div>
-                  <h4>{user.name}</h4>
-                </div>
-              </CollectionItem>
-              <CollectionItem>
-                <div>
-                  <h4>{user.email}</h4>
-                </div>
-              </CollectionItem>
-              <CollectionItem>
-                <div>
-                  <h4>Phone: {user.phone}</h4>
-                </div>
-              </CollectionItem>
-              <CollectionItem>
-                <div>
+          <Col s={8}>
+            <ul>
+              <li className="info">
+                <h3>{user.name}</h3>
+                <div className="divider" />
+                <li className="type">
                   <h4>
                     {user.userType === "distributor"
                       ? "Distributor"
                       : "Bussinnes Manager"}
                   </h4>
-                </div>
-              </CollectionItem>
-              <CollectionItem>
+                </li>
                 <div>
-                  <h4>Location: {user.location}</h4>
+                  <ul>
+                    <li className="item header">
+                      <h5>Email</h5>
+                      <ul>
+                        <li className="content">
+                          <h5>{user.email}</h5>
+                        </li>
+                      </ul>
+                    </li>
+                    <li className="item header">
+                      <h5>Telephone</h5>
+                      <ul>
+                        <li className="content">
+                          <h5>{user.phone ? user.phone : "Not Defined"}</h5>
+                        </li>
+                      </ul>
+                    </li>
+                    <li className="item header">
+                      <h5>Address</h5>
+                      <ul>
+                        <li className="content">
+                          <h5>
+                            {user.location ? user.location : "Not Defined"}
+                          </h5>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
-              </CollectionItem>
-            </Collection>
+              </li>
+            </ul>
           </Col>
         </Row>
       </div>

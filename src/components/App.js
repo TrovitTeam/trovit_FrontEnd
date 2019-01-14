@@ -37,18 +37,20 @@ const App = props => {
   return (
     <Router history={history}>
       <div className="main-container">
-        <Route path="/" component={Menu} />
-        <Route exact path="/" component={LandingPage} />
-        <Route path="/Contact" component={Contact} />
-        <Route path="/LogIn" component={LogIn} />
-        <Route path="/SignIn" component={SignIn} />
-        <Route path="/ProductInfo" component={ProductInfo} />
-        <Route path="/Profile/:id" component={Profile} />
-        <Route path="/SearchResult/:term" component={SearchResult} />
-        <Route path="/SendEmail" component={SendEmail} />
-        <Route path="/Setting" component={Setting} />
-        <Route path="/Statistics" component={Statistics} />
-        <Route path="/ProductPage/:id" component={ProductPage} />
+        <div className="normal">
+          <Route path="/" component={Menu} />
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/Contact" component={Contact} />
+          <Route path="/LogIn" component={LogIn} />
+          <Route path="/SignIn" component={SignIn} />
+          <Route path="/ProductInfo" component={ProductInfo} />
+          <Route path="/Profile/:id" component={Profile} />
+          <Route path="/SearchResult/:term" component={SearchResult} />
+          <Route path="/SendEmail" component={SendEmail} />
+          <Route path="/Setting" component={Setting} />
+          <Route path="/Statistics" component={Statistics} />
+          <Route path="/ProductPage/:id" component={ProductPage} />
+        </div>
         <div className="footer">
           <Route path="/" component={FooterPage} />
         </div>
