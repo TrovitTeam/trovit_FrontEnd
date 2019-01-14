@@ -23,14 +23,14 @@ class ProfileRe extends Component {
   renderActions() {
     if (this.props.auth.user.id != this.props.match.params.id) {
       return (
-        <div>
-          <Button style={{ margin: "2px" }}>Send Message</Button>
+        <div style={{ padding: "20px" }}>
+          <Button>Send Message</Button>
         </div>
       );
     }
 
     return (
-      <div>
+      <div style={{ padding: "20px" }}>
         <Button>Edit Profile</Button>
       </div>
     );

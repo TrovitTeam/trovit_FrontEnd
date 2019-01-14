@@ -12,7 +12,7 @@ const UserInfoCard = props => {
     <Row className="white userInfoCard">
       <Col s={4}>
         <img src={defaultImage} />
-        <div>{actions}</div>
+        {actions}
       </Col>
       <Col s={8}>
         <ul>
