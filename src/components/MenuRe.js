@@ -24,7 +24,7 @@ class MenuRe extends Component {
       <MenuItem
         history={this.props.history}
         text="Products"
-        link="/ProductInfo"
+        link={`/ProductInfo/${this.props.auth.user.id}`}
       />
     );
     const loginLink = (

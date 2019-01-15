@@ -3,25 +3,47 @@ import { connect } from "react-redux";
 import { fetchSelectedProduct } from "../../actions/selectedProductAction";
 import { Card, CardTitle } from "react-materialize";
 import { Link } from "react-router-dom";
+import defaultImage from "../../resources/upload.png";
 
 class ProductCard extends React.Component {
   onProductSelect = e => {
     this.props.fetchSelectedProduct(this.props.product.id);
   };
 
-  render() {
+  renderCard() {
+    const { urls } = this.props.product;
+    if (this.props.detailed) {
+      console.log(this.props.product);
+      return (
+        <Link
+          onClick={this.onProductSelect}
+          to={`/ProductPage/${this.props.product.id}`}>
+          <Card
+            horizontal
+            className="white"
+            header={<CardTitle image={urls ? urls.regular : defaultImage} />}
+            title={this.props.product.id}>
+            {this.props.product.rating}
+          </Card>
+        </Link>
+      );
+    }
     return (
       <Link
         onClick={this.onProductSelect}
         to={`/ProductPage/${this.props.product.id}`}>
         <Card
-          className="blue-grey"
-          header={<CardTitle image={this.props.product.urls.regular} />}
+          className="white"
+          header={<CardTitle image={urls ? urls.regular : defaultImage} />}
           title={this.props.product.id}>
           {this.props.product.rating}
         </Card>
       </Link>
     );
+  }
+
+  render() {
+    return <div>{this.renderCard()}</div>;
   }
 }
 

@@ -9,7 +9,7 @@ const GridList = props => {
     renderList = props.list.map(item => {
       return (
         <div key={item.id}>
-          <ProductCard product={item} />
+          <ProductCard detailed={props.detailed} product={item} />
         </div>
       );
     });
@@ -17,7 +17,15 @@ const GridList = props => {
 
   return (
     <div>
-      <div className="grid-list">{renderList}</div>
+      <div
+        className="grid-list"
+        style={{
+          gridTemplateColumns: `repeat(auto-fill, minmax(${
+            props.col == 3 ? "500px" : "300px"
+          }, 1fr))`
+        }}>
+        {renderList}
+      </div>
     </div>
   );
 };

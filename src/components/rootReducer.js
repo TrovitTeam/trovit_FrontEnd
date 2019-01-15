@@ -6,6 +6,7 @@ import selectedProductReducer from "../reducers/selectedProductReducer";
 import userReducer from "../reducers/userReducer";
 import { reducer as formReducer } from "redux-form";
 import contactsListReducer from "../reducers/contactsListReducer";
+import userProductsReducer from "../reducers/userProductsReducer";
 
 export default combineReducers({
   searchResults: searchResultsReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   auth,
   form: formReducer,
   selectedUser: userReducer,
-  contactsList: contactsListReducer
+  contactsList: contactsListReducer,
+  userProducts: userProductsReducer
 });

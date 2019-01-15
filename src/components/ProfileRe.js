@@ -12,7 +12,6 @@ class ProfileRe extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.selectedUser);
     if (this.props.selectedUser === prevProps.selectedUser) {
       return;
     }

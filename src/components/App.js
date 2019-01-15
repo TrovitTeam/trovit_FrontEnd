@@ -43,7 +43,7 @@ const App = props => {
           <Route path="/Contacts" component={Contact} />
           <Route path="/LogIn" component={LogIn} />
           <Route path="/SignIn" component={SignIn} />
-          <Route path="/ProductInfo" component={ProductInfo} />
+          <Route path="/ProductInfo/:id" component={ProductInfo} />
           <Route path="/Profile/:id" component={Profile} />
           <Route path="/SearchResult/:term" component={SearchResult} />
           <Route path="/SendEmail" component={SendEmail} />
