@@ -20,18 +20,12 @@ import { fetchUserProducts } from "../../actions/productActions";
 import GridList from "../GridList";
 
 class ProductInfo extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      id: -1,
-      name: [],
-      products: {}
-    };
-  }
-
   componentDidMount() {
     this.props.fetchUserProducts(this.props.match.params.id);
+  }
+
+  componentWillUnmount() {
+    //this.props.cleanUserProducts();
   }
 
   render() {

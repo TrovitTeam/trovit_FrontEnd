@@ -51,3 +51,11 @@ export const fetchUserProducts = id => async dispatch => {
     payload: response2.data
   });
 };
+
+export const rateProduct = (id, rating, getState) => {
+  const user = getState().currentUser;
+  trovit.patch(`products/${id}`, {
+    userId: user.id,
+    userRating: rating
+  });
+};

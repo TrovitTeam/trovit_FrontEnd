@@ -18,7 +18,11 @@ class MenuRe extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const contactsLink = (
-      <MenuItem history={this.props.history} text="Contacts" link="/Contacts" />
+      <MenuItem
+        history={this.props.history}
+        text="Contacts"
+        link={`/Contacts/${this.props.auth.user.id}`}
+      />
     );
     const productsLink = (
       <MenuItem

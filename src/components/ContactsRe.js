@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Row,
-  Card,
-  Col,
-  CardTitle,
-  Table,
-  ProgressBar,
-  Pagination
-} from "react-materialize";
+import { Pagination } from "react-materialize";
 import { connect } from "react-redux";
 import { fetchUsersInfo } from "../actions/userActions";
 import UserInfoCard from "./UserInfoCard";
@@ -15,6 +7,11 @@ import UserInfoCard from "./UserInfoCard";
 class Contacts extends Component {
   componentDidMount() {
     this.props.fetchUsersInfo();
+    //this.props.fetchUserContacts();
+  }
+
+  componentWillUnmount() {
+    this.props.cleanUserContacts();
   }
 
   renderContacts() {
