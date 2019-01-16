@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 import { loginFacebook } from "../../actions/authActions";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import SignInFormRe from "./SignInFormRe.js";
 class SignInForm extends Component {
   constructor(props) {
     super(props);
@@ -16,9 +17,7 @@ class SignInForm extends Component {
       phone: "",
       email: "",
       password: "",
-      cPassword: "",
-      confirmPassword: false,
-      confirmPhone: false
+      cPassword: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,37 +37,8 @@ class SignInForm extends Component {
     const name = target.name;
     const value = target.value;
 
-    this.setState(
-      {
-        [name]: value
-      },
-      () => {
-        if (name === "cPassword") {
-          this.handlePassword();
-        }
-      }
-    );
-
-    /*if(name === "cPassword")
-    {
-      this.handlePassword();
-    }*/
+    this.setState({[name]: value});
   }
-
-  handlePassword = () => {
-    const cPassword = this.state.cPassword;
-    const password = this.state.password;
-
-    if (cPassword !== password) {
-      this.setState({
-        confirmPassword: false
-      });
-    } else {
-      this.setState({
-        confirmPassword: true
-      });
-    }
-  };
 
   handleSubmit(event) {
     this.props.userSigninRequest(this.state).then(() => {
@@ -76,154 +46,15 @@ class SignInForm extends Component {
     });
   }
 
-  handleDataError(data_int, number_min) {
-    if (data_int.length < number_min) {
-      return "Minimum " + number_min + " characters.";
-    }
-  }
-
-  handlePhoneDataError(data_int, number_min) {
-    if (data_int.length < number_min) {
-      return "Minimum " + number_min + " characters.";
-    } else {
-      if (/^[0-9]{+}$/.test(data_int) === false) {
-        this.minLength = 45;
-        return "Only Numbers Allowed";
-      }
-    }
-  }
-
-  handleClassPhoneDataError = () => {
-    const data_int = this.state.phone;
-    if (data_int.length < 7) {
-      this.setState({
-        confirmPhone: false
-      });
-    } else {
-      if (/^[0-9]{+}$/.test(data_int) === false) {
-        this.setState({
-          confirmPhone: false
-        });
-      } else {
-        this.setState({
-          confirmPhone: true
-        });
-      }
-    }
+  onSubmit = formValues => {
+    this.props.login(formValues);
   };
 
   render() {
-    var className = this.state.confirmPassword ? "valid" : "invalid";
-    var phoneClass = this.state.confirmPhone ? "valid" : "invalid";
     return (
       <div className="container">
-        <Row>
-          <Col className="offset-s4" s={4}>
-            <blockquote>
-              <h1 className="center">Sign In</h1>
-            </blockquote>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="offset-s2" s={8}>
-            <Input
-              s={12}
-              name="name"
-              label="Name"
-              value={this.state.name}
-              onChange={this.handleChange}
-              validate
-              data-length="45"
-              minLength={3}
-              error={this.handleDataError(this.state.name, 3)}
-            />
-            <Input
-              s={12}
-              name="password"
-              type="password"
-              label="Password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              validate
-              data-length="45"
-              minLength={8}
-              error={this.handleDataError(this.state.password, 8)}
-            />
-            <Input
-              s={12}
-              name="cPassword"
-              type="password"
-              className={className}
-              label="Confirm password"
-              value={this.state.cPassword}
-              onChange={this.handleChange}
-              data-length="45"
-              minLength={8}
-            />
-            <Input
-              s={12}
-              name="email"
-              type="email"
-              label="Email"
-              value={this.state.email}
-              onChange={this.handleChange}
-              validate
-              data-length="45"
-              minLength={5}
-              error={this.handleDataError(this.state.email, 5)}
-            />
-            <Input
-              s={12}
-              name="phone"
-              label="Telephone"
-              className={phoneClass}
-              value={this.state.phone}
-              onChange={this.handleChange}
-              validate
-              data-length="45"
-              minLength={7}
-              error={this.handlePhoneDataError(this.state.phone, 7)}
-            />
-            <Row id="signOptionsBoxes">
-              <Col className="offset-s2 offset-m2" s={12} m={4}>
-                <Input
-                  name="userType"
-                  type="radio"
-                  value="distributor"
-                  label={
-                    <span className=" flow-text black-text">Distributor</span>
-                  }
-                  onClick={this.handleChange}
-                />
-              </Col>
-              <Col s={12} m={4}>
-                <Input
-                  name="userType"
-                  type="radio"
-                  value="businessmanager"
-                  label={
-                    <span className="flow-text black-text">
-                      Business Manager
-                    </span>
-                  }
-                  onClick={this.handleChange}
-                />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <div className="center">
-          <Row>
-            <Col className="offset-s2" s={8}>
-              <Button
-                id="Register_Button"
-                className="light-blue darken-4"
-                waves="light"
-                onClick={this.handleSubmit}>
-                Register
-              </Button>
-            </Col>
-          </Row>
+        <div>
+          <SignInFormRe onClick={this.onSubmit}/>
         </div>
         <div className="center">
           <Row>
@@ -256,7 +87,7 @@ class SignInForm extends Component {
                     <Col className="offset-s2 offset-m2" s={12} m={4}>
                       <Input
                         name="userType"
-                        type="radio"
+                        type="checkbox"
                         value="distributor"
                         label={
                           <span className=" flow-text black-text">
@@ -269,7 +100,7 @@ class SignInForm extends Component {
                     <Col s={12} m={4}>
                       <Input
                         name="userType"
-                        type="radio"
+                        type="checkbox"
                         value="businessmanager"
                         label={
                           <span className="flow-text black-text">
@@ -279,7 +110,7 @@ class SignInForm extends Component {
                         onClick={this.handleChange}
                       />
                     </Col>
-                  </Row>
+                  </Row>  
                   <FacebookLogin
                     appId="287332921890045"
                     autoLoad
