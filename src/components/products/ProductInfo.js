@@ -1,21 +1,6 @@
 import React, { Component } from "react";
-import {
-  Row,
-  Card,
-  Col,
-  CardTitle,
-  Table,
-  ProgressBar,
-  Button,
-  Pagination,
-  Modal
-} from "react-materialize";
-import srcUP from "../../resources/upload.png";
-import axios from "axios";
-import Product from "./Product";
-import PropTypes from "prop-types";
+import { Pagination, Preloader } from "react-materialize";
 import { connect } from "react-redux";
-import { baseUrl } from "../../resources/url.js";
 import {
   fetchUserProducts,
   cleanUserProducts
@@ -33,8 +18,13 @@ class ProductInfo extends Component {
 
   render() {
     if (!this.props.userProducts) {
-      return <div>Loading...</div>;
+      return (
+        <div className="preloader-container">
+          <Preloader className="preloader" />
+        </div>
+      );
     }
+
     return (
       <div>
         <GridList col="3" detailed list={this.props.userProducts} />

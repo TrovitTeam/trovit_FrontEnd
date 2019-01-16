@@ -37,7 +37,7 @@ class SignInForm extends Component {
     const name = target.name;
     const value = target.value;
 
-    this.setState({[name]: value});
+    this.setState({ [name]: value });
   }
 
   handleSubmit(event) {
@@ -54,7 +54,7 @@ class SignInForm extends Component {
     return (
       <div className="container">
         <div>
-          <SignInFormRe onClick={this.onSubmit}/>
+          <SignInFormRe onClick={this.onSubmit} />
         </div>
         <div className="center">
           <Row>
@@ -110,7 +110,7 @@ class SignInForm extends Component {
                         onClick={this.handleChange}
                       />
                     </Col>
-                  </Row>  
+                  </Row>
                   <FacebookLogin
                     appId="287332921890045"
                     autoLoad

@@ -12,6 +12,10 @@
   padding: 0 2rem;
 }
 
+.userInfoCard .type {
+  padding-top: 1rem;
+}
+
 .userInfoCard .item.header {
   margin: 2rem 1.2rem;
   color: gray;

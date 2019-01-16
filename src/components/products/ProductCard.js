@@ -9,10 +9,15 @@ import "../../styles/rating.css";
 import { rateProduct } from "../../actions/productActions";
 
 class ProductCard extends React.Component {
+  onRated = value => {
+    this.props.rateProduct(this.props.product.id, value);
+  };
+
   renderRating() {
     return (
       <div>
         <Rating
+          onChange={this.onRated}
           className="rating"
           readonly={this.props.product.rated ? true : false}
           initialRating={this.props.product.rating}
@@ -50,15 +55,12 @@ class ProductCard extends React.Component {
       );
     }
     return (
-      <Link
-        onClick={this.onProductSelect}
-        to={`/ProductPage/${this.props.product.id}`}>
+      <Link to={`/ProductPage/${this.props.product.id}`}>
         <Card
           className="white"
           header={<CardTitle image={urls ? urls.regular : defaultImage} />}
-          title={this.props.product.id}>
-          {this.renderRating()}
-        </Card>
+          title={this.props.product.id}
+        />
       </Link>
     );
   }
