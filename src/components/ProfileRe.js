@@ -42,6 +42,15 @@ class ProfileRe extends Component {
   render() {
     const { selectedUser } = this.props;
 
+    if (!selectedUser.id) {
+      console.log("asd");
+      return (
+        <div className="preloader-container">
+          <Preloader className="preloader" />
+        </div>
+      );
+    }
+
     return (
       <div className="container profile">
         <UserInfoCard user={selectedUser} actions={this.renderActions()} />

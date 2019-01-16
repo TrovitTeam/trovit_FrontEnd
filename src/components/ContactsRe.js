@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Pagination } from "react-materialize";
+import { Pagination, Preloader } from "react-materialize";
 import { connect } from "react-redux";
 import { fetchUsersInfo, cleanUserContacts } from "../actions/userActions";
 import UserInfoCard from "./UserInfoCard";
@@ -26,6 +26,14 @@ class Contacts extends Component {
   }
 
   render() {
+    if (!this.props.contactsList) {
+      return (
+        <div className="preloader-container">
+          <Preloader className="preloader" />
+        </div>
+      );
+    }
+
     return (
       <div>
         <div className="container">

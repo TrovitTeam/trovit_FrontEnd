@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Carrousel from "./Carrousel";
 import GridList from "./GridList";
 import { fetchSearchResults } from "../actions/searchAction";
+import { Preloader } from "react-materialize";
 
 import "../styles/landingPage.css";
 
@@ -13,6 +14,14 @@ class LandingPageRe extends React.Component {
 
   render() {
     const products = this.props.products;
+
+    if (!products) {
+      return (
+        <div className="preloader-container">
+          <Preloader className="preloader" />
+        </div>
+      );
+    }
 
     return (
       <div className="landing-page">

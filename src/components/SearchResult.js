@@ -28,8 +28,8 @@ class SearchResult extends Component {
   render() {
     if (!this.props.searchResults.results) {
       return (
-        <div className="center" style={{ height: "100%", marginTop: "200px" }}>
-          <Preloader />
+        <div className="preloader-container">
+          <Preloader className="preloader" />
         </div>
       );
     }
