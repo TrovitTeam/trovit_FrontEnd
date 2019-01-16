@@ -16,7 +16,10 @@ import Product from "./Product";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { baseUrl } from "../../resources/url.js";
-import { fetchUserProducts } from "../../actions/productActions";
+import {
+  fetchUserProducts,
+  cleanUserProducts
+} from "../../actions/productActions";
 import GridList from "../GridList";
 
 class ProductInfo extends Component {
@@ -25,7 +28,7 @@ class ProductInfo extends Component {
   }
 
   componentWillUnmount() {
-    //this.props.cleanUserProducts();
+    this.props.cleanUserProducts();
   }
 
   render() {
@@ -51,5 +54,5 @@ function mapStateToProps(state) {
 }
 export default connect(
   mapStateToProps,
-  { fetchUserProducts }
+  { fetchUserProducts, cleanUserProducts }
 )(ProductInfo);

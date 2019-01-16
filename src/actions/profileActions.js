@@ -4,7 +4,6 @@ import {baseUrl} from "../resources/url.js";
 export function userProfileRequest(userData){
     return dispatch => {
         //return axios.post('http://localhost:3000/users', userData);
-        console.log(userData.name);
         const Start_url =  baseUrl;
         const Act_url;
         if (userData.userType==="businessManager"){
@@ -27,7 +26,6 @@ export function userProfileRequest(userData){
             })
             .then(function(response) {
 
-                console.log(response);
             })
             .catch(function (error) {
             console.log(error);
@@ -53,7 +51,6 @@ export function userProfileRequest(userData){
             })
             .then(function(response) {
 
-                console.log(response);
             })
             .catch(function (error) {
             console.log(error);

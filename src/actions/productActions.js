@@ -1,7 +1,7 @@
 import axios from "axios";
 import { baseUrl } from "../resources/url.js";
 import trovit from "../apis/trovit.js";
-import { FETCH_USER_PRODUCTS } from "./types";
+import { FETCH_USER_PRODUCTS, CLEAN_USER_PRODUCTS } from "./types";
 
 export function productCreateRequest(productData) {
   return (dispatch, getState) => {
@@ -50,6 +50,10 @@ export const fetchUserProducts = id => async dispatch => {
     type: FETCH_USER_PRODUCTS,
     payload: response2.data
   });
+};
+
+export const cleanUserProducts = () => {
+  return { type: CLEAN_USER_PRODUCTS };
 };
 
 export const rateProduct = (id, rating, getState) => {

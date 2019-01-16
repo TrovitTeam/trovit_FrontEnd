@@ -14,10 +14,7 @@ export function companySigninRequest(companyData) {
         companyType: companyData.companyType
       }
     })
-      .then(function(response) {
-        console.log("Company response");
-        console.log(response);
-      })
+      .then(function(response) {})
       .catch(function(error) {
         console.log(error);
       });

@@ -1,4 +1,5 @@
 import unsplash from "../apis/unsplash";
+import { CLEAN_SELECTED_PRODUCT } from "./types";
 
 export const fetchProductInfo = id => async dispatch => {
   const response = await unsplash.get(`/photos/${id}`);
@@ -18,8 +19,8 @@ export const fetchSelectedProduct = id => async dispatch => {
   });
 };
 
-export const unselectProduct = () => async dispatch => {
+export const cleanSelectedProduct = () => async dispatch => {
   dispatch({
-    type: "UNSELECT_PRODUCT"
+    type: CLEAN_SELECTED_PRODUCT
   });
 };

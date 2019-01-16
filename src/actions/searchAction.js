@@ -1,6 +1,7 @@
 import unsplash from "../apis/unsplash";
 import { baseUrl } from "../resources/url";
 import axios from "axios";
+import { CLEAN_SEARCH_RESULTS } from "./types";
 
 export const fetchSearchResults = term => async dispatch => {
   const response = await unsplash.get("/search/photos", {
@@ -19,4 +20,8 @@ export const fetchProductsSearch = term => async dispatch => {
     type: "FETCH_PRODUCTS_SEARCH",
     payload: response.data
   });
+};
+
+export const cleanSearchResults = () => {
+  return { type: CLEAN_SEARCH_RESULTS };
 };
