@@ -4,10 +4,11 @@ import glogo from "../../resources/glogo.svg";
 import flogo from "../../resources/flogo.svg";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { login } from "../../actions/authActions";
+import { userSigninRequest } from "../../actions/signinActions";
 import { loginFacebook } from "../../actions/authActions";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import SignInFormRe from "./SignInFormRe.js";
+
 class SignInForm extends Component {
   constructor(props) {
     super(props);
@@ -47,14 +48,14 @@ class SignInForm extends Component {
   }
 
   onSubmit = formValues => {
-    this.props.login(formValues);
+    this.props.userSigninRequest(formValues);
   };
 
   render() {
     return (
       <div className="container">
         <div>
-          <SignInFormRe onClick={this.onSubmit}/>
+          <SignInFormRe onSubmit={this.onSubmit}/>
         </div>
         <div className="center">
           <Row>
@@ -147,5 +148,5 @@ SignInForm.contextTypes = {
 
 export default connect(
   null,
-  { login, loginFacebook }
+  { userSigninRequest, loginFacebook }
 )(SignInForm);

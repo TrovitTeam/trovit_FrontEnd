@@ -1,12 +1,10 @@
 import axios from "axios";
 import { baseUrl } from "../resources/url.js";
+import history from "../history";
 
-export function userSigninRequest(userData) {
-  return dispatch => {
-    //return axios.post('http://localhost:3000/users', userData);
-    console.log(userData.name);
-    console.log(baseUrl);
-    return axios({
+export const userSigninRequest = userData => async dispatch => {
+    history.push("/");
+    await axios({
       method: "post",
       url: baseUrl + "users",
       responseType: "json",
@@ -28,4 +26,3 @@ export function userSigninRequest(userData) {
         console.log(error);
       });
   };
-}
