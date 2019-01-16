@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  unselectProduct,
+  cleanSelectedProduct,
   fetchSelectedProduct
 } from "../../actions/selectedProductAction";
 
@@ -26,6 +26,10 @@ class ProductPage extends React.Component {
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.props.fetchSelectedProduct(this.props.match.params.id);
     }
+  }
+
+  componentWillUnmount() {
+    this.props.cleanSelectedProduct();
   }
 
   render() {
@@ -82,5 +86,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { unselectProduct, fetchSelectedProduct }
+  { cleanSelectedProduct, fetchSelectedProduct }
 )(ProductPage);

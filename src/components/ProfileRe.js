@@ -1,22 +1,26 @@
 import React, { Component } from "react";
 import { Button } from "react-materialize";
 import { connect } from "react-redux";
-import { fetchUserInfo } from "../actions/userActions";
+import { fetchUserInfo, cleanSelectedUser } from "../actions/userActions";
 import Preloader from "react-materialize/lib/Preloader";
 import "../styles/profile.css";
 import UserInfoCard from "./UserInfoCard";
 
 class ProfileRe extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchUserInfo(this.props.match.params.id);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.selectedUser === prevProps.selectedUser) {
+    if (this.props.match.params.id == prevProps.selectedUser.id) {
       return;
     }
 
     this.props.fetchUserInfo(this.props.match.params.id);
+  }
+
+  componentWillUnmount() {
+    this.props.cleanSelectedUser();
   }
 
   renderActions() {
@@ -55,5 +59,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchUserInfo }
+  { fetchUserInfo, cleanSelectedUser }
 )(ProfileRe);

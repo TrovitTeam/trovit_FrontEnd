@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSearchResults } from "../actions/searchAction";
+import {
+  fetchSearchResults,
+  cleanSearchResults
+} from "../actions/searchAction";
 import { Preloader, Row } from "react-materialize";
 import GridList from "./GridList";
 import SearchBar from "./SearchBar";
@@ -16,6 +19,10 @@ class SearchResult extends Component {
     if (this.props.match.params.term !== prevProps.match.params.term) {
       this.props.fetchSearchResults(this.props.match.params.term);
     }
+  }
+
+  componentWillUnmount() {
+    this.props.cleanSearchResults();
   }
 
   render() {
@@ -46,5 +53,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchSearchResults }
+  { fetchSearchResults, cleanSearchResults }
 )(SearchResult);

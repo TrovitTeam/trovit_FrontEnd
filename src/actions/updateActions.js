@@ -4,7 +4,6 @@ import { baseUrl } from "../resources/url.js";
 export function userUpdateRequest(userData) {
   return dispatch => {
     //return axios.post('http://localhost:3000/users', userData);
-    console.log(userData.name);
     return axios({
       method: "put",
       url: baseUrl + "users/" + userData.id,

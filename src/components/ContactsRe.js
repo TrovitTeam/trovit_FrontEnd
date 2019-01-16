@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Pagination } from "react-materialize";
 import { connect } from "react-redux";
-import { fetchUsersInfo } from "../actions/userActions";
+import { fetchUsersInfo, cleanUserContacts } from "../actions/userActions";
 import UserInfoCard from "./UserInfoCard";
 
 class Contacts extends Component {
@@ -50,5 +50,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchUsersInfo }
+  { fetchUsersInfo, cleanUserContacts }
 )(Contacts);

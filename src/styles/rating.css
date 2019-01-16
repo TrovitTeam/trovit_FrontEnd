@@ -1,3 +1,7 @@
+.rating {
+  align-self: center;
+}
+
 i.empty {
   color: #607d8b;
 }

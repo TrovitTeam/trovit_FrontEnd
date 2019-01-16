@@ -5,7 +5,7 @@ import { Card, CardTitle, Icon } from "react-materialize";
 import { Link } from "react-router-dom";
 import defaultImage from "../../resources/upload.png";
 import Rating from "react-rating";
-import "../../styles/icons.css";
+import "../../styles/rating.css";
 import { rateProduct } from "../../actions/productActions";
 
 class ProductCard extends React.Component {
@@ -13,10 +13,19 @@ class ProductCard extends React.Component {
     return (
       <div>
         <Rating
+          className="rating"
           readonly={this.props.product.rated ? true : false}
           initialRating={this.props.product.rating}
-          emptySymbol={<Icon className="empty">star_border</Icon>}
-          fullSymbol={<Icon className="filled">star</Icon>}
+          emptySymbol={
+            <Icon small className="empty">
+              star_border
+            </Icon>
+          }
+          fullSymbol={
+            <Icon small className="filled">
+              star
+            </Icon>
+          }
         />
       </div>
     );
@@ -25,14 +34,16 @@ class ProductCard extends React.Component {
   renderCard() {
     const { urls } = this.props.product;
     if (this.props.detailed) {
-      console.log(this.props.product);
       return (
         <Link to={`/ProductPage/${this.props.product.id}`}>
           <Card
             horizontal
             className="white"
+            style={{ color: "black", display: "flex" }}
             header={<CardTitle image={urls ? urls.regular : defaultImage} />}
             title={this.props.product.id}>
+            {this.props.product.description}
+
             {this.renderRating()}
           </Card>
         </Link>
