@@ -1,11 +1,4 @@
 .my-container {
-  width: 90%;
-  margin: auto;
-}
-
-.preloader-container {
-  top: 40%;
-  width: 100%;
-  position: absolute;
-  text-align: center;
+	width: 90%;
+	margin: auto;
 }

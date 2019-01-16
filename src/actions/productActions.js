@@ -56,12 +56,10 @@ export const cleanUserProducts = () => {
   return { type: CLEAN_USER_PRODUCTS };
 };
 
-export const rateProduct = (id, rating) => async (dispatch, getState) => {
-  const { user } = getState().auth;
-  await trovit.patch(`products/${id}`, {
+export const rateProduct = (id, rating, getState) => {
+  const user = getState().currentUser;
+  trovit.patch(`products/${id}`, {
     userId: user.id,
     userRating: rating
   });
-
-  dispatch();
 };
