@@ -35,8 +35,8 @@ class ProductPage extends React.Component {
   render() {
     if (!this.props.selectedProduct.urls) {
       return (
-        <div className="center">
-          <Preloader />
+        <div className="preloader-container">
+          <Preloader className="preloader" />
         </div>
       );
     }
