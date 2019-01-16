@@ -58,7 +58,7 @@ class ProductCard extends React.Component {
       <Link to={`/ProductPage/${this.props.product.id}`}>
         <Card
           className="white"
-          header={<CardTitle image={urls ? urls.regular : defaultImage} />}
+          header={<CardTitle image={urls ? urls.small : defaultImage} />}
           title={this.props.product.id}
         />
       </Link>

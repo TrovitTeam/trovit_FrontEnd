@@ -5,20 +5,24 @@ import { fetchUsersInfo, cleanUserContacts } from "../actions/userActions";
 import UserInfoCard from "./UserInfoCard";
 
 class Contacts extends Component {
+  state = { page: 1 };
+
   componentDidMount() {
     this.props.fetchUsersInfo();
     //this.props.fetchUserContacts();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.page !== prevState.page) {
+      this.props.fetchUsersInfo(this.props.match.params.id, this.state.page);
+    }
+  }
   componentWillUnmount() {
     this.props.cleanUserContacts();
   }
 
   renderContacts() {
     const { contactsList } = this.props;
-    if (!contactsList) {
-      return <div>Loading...</div>;
-    }
 
     return contactsList.map(contact => {
       return <UserInfoCard user={contact} actions="" />;
@@ -38,8 +42,12 @@ class Contacts extends Component {
       <div>
         <div className="container">
           <div>{this.renderContacts()}</div>
+        </div>
+        <div className="container center">
           <Pagination
-            className="center"
+            onSelect={page => {
+              this.setState({ page });
+            }}
             items={10}
             activePage={1}
             maxButtons={8}

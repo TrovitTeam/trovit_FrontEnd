@@ -3,9 +3,9 @@ import { baseUrl } from "../resources/url";
 import axios from "axios";
 import { CLEAN_SEARCH_RESULTS } from "./types";
 
-export const fetchSearchResults = term => async dispatch => {
+export const fetchSearchResults = (term, page) => async dispatch => {
   const response = await unsplash.get("/search/photos", {
-    params: { query: term, per_page: 12 }
+    params: { query: term, per_page: 12, page }
   });
 
   dispatch({

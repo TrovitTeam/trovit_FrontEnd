@@ -8,8 +8,16 @@ import {
 import GridList from "../GridList";
 
 class ProductInfo extends Component {
+  state = { page: 1 };
+
   componentDidMount() {
-    this.props.fetchUserProducts(this.props.match.params.id);
+    this.props.fetchUserProducts(this.props.match.params.id, this.state.page);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.page !== prevState.page) {
+      this.props.fetchUserProducts(this.props.match.params.id, this.state.page);
+    }
   }
 
   componentWillUnmount() {
@@ -29,7 +37,14 @@ class ProductInfo extends Component {
       <div>
         <GridList col="3" detailed list={this.props.userProducts} />
         <div className="container center">
-          <Pagination items={10} activePage={1} maxButtons={8} />
+          <Pagination
+            onSelect={page => {
+              this.setState({ page });
+            }}
+            items={10}
+            activePage={1}
+            maxButtons={8}
+          />
         </div>
       </div>
     );

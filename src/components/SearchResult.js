@@ -4,20 +4,35 @@ import {
   fetchSearchResults,
   cleanSearchResults
 } from "../actions/searchAction";
-import { Preloader, Row } from "react-materialize";
+import { Preloader, Row, Pagination } from "react-materialize";
 import GridList from "./GridList";
 import SearchBar from "./SearchBar";
 
 import "../styles/basic.css";
 
 class SearchResult extends Component {
+  state = { page: 1 };
+
   componentDidMount() {
-    this.props.fetchSearchResults(this.props.match.params.term);
+    this.props.fetchSearchResults(
+      this.props.match.params.term,
+      this.state.page
+    );
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.match.params.term !== prevProps.match.params.term) {
-      this.props.fetchSearchResults(this.props.match.params.term);
+      this.props.fetchSearchResults(
+        this.props.match.params.term,
+        this.state.page
+      );
+    }
+
+    if (this.state.page !== prevState.page) {
+      this.props.fetchSearchResults(
+        this.props.match.params.term,
+        this.state.page
+      );
     }
   }
 
@@ -42,6 +57,16 @@ class SearchResult extends Component {
           <h3>{this.props.searchResults.total} resultados.</h3>
         </div>
         <GridList list={this.props.searchResults.results} />
+        <div className="container center">
+          <Pagination
+            onSelect={page => {
+              this.setState({ page });
+            }}
+            items={this.props.searchResults.total_pages}
+            activePage={1}
+            maxButtons={10}
+          />
+        </div>
       </div>
     );
   }

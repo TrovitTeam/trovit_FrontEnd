@@ -39,7 +39,7 @@ export function productCreateRequest(productData) {
   };
 }
 
-export const fetchUserProducts = id => async dispatch => {
+export const fetchUserProducts = (id, page) => async dispatch => {
   const response = await trovit.get(`/users/${id}/user_type`);
   console.log(response.data);
   const response2 = await trovit.get(
