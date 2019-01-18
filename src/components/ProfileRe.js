@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "react-materialize";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchUserInfo, cleanSelectedUser } from "../actions/userActions";
 import Preloader from "react-materialize/lib/Preloader";
 import "../styles/profile.css";
@@ -34,7 +35,9 @@ class ProfileRe extends Component {
 
     return (
       <div style={{ padding: "20px" }}>
-        <Button>Edit Profile</Button>
+        <Link to={`/ProfileEdit/${this.props.auth.user.id}`}>
+          <Button>Edit Profile</Button>
+        </Link>
       </div>
     );
   }

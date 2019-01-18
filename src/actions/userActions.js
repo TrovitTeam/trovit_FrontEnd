@@ -23,6 +23,10 @@ export const fetchUsersInfo = () => async dispatch => {
   });
 };
 
+export const updateUserInfo = () => {
+  console.log("updating");
+};
+
 export const cleanSelectedUser = () => {
   return { type: CLEAN_SELECTED_USER };
 };

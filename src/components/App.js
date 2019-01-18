@@ -9,7 +9,8 @@ import Menu from "../components/MenuRe";
 import LandingPage from "../components/LandingPageRe";
 
 import ProductInfo from "./products/ProductInfo";
-import Profile from "../components/ProfileRe";
+import Profile from "./ProfileRe";
+import ProfileEdit from "./ProfileEdit";
 import LogIn from "../components/auth/LogIn";
 import SignIn from "../components/auth/SignIn";
 import Contacts from "./ContactsRe";
@@ -45,6 +46,7 @@ const App = props => {
           <Route path="/SignIn" component={SignIn} />
           <Route path="/ProductInfo/:id" component={ProductInfo} />
           <Route path="/Profile/:id" component={Profile} />
+          <Route path="/ProfileEdit/:id" component={ProfileEdit} />
           <Route path="/SearchResult/:term" component={SearchResult} />
           <Route path="/SendEmail" component={SendEmail} />
           <Route path="/Setting" component={Setting} />
