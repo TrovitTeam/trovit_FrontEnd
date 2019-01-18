@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Pagination, Preloader } from "react-materialize";
+import { Pagination, Preloader, Button } from "react-materialize";
 import { connect } from "react-redux";
 import {
   fetchUserProducts,
   cleanUserProducts
 } from "../../actions/productActions";
 import GridList from "../GridList";
+import ProductCreate from "./ProductCreate";
 
 class ProductInfo extends Component {
   state = { page: 1 };
@@ -29,6 +30,9 @@ class ProductInfo extends Component {
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
+          <link to={<ProductCreate />}>
+            <Button>Create a Product</Button>
+          </link>
         </div>
       );
     }

@@ -4,6 +4,8 @@ import trovit from "../apis/trovit.js";
 import { FETCH_USER_PRODUCTS, CLEAN_USER_PRODUCTS } from "./types";
 
 export function productCreateRequest(productData) {
+  console.log("ProductData");
+  console.log(productData);
   return (dispatch, getState) => {
     const { user } = getState().auth;
     let id = 0;

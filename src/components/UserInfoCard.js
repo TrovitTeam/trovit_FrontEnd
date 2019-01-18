@@ -23,7 +23,7 @@ const UserInfoCard = props => {
             <h4>
               {user.userType === "distributor"
                 ? "Distributor"
-                : "Bussinnes Manager"}
+                : "Business Manager"}
             </h4>
           </li>
           <div>

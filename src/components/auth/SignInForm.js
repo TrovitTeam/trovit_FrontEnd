@@ -53,6 +53,13 @@ class SignInForm extends Component {
   render() {
     return (
       <div className="container">
+        <Row>
+          <Col className="offset-s4" s={4}>
+            <blockquote>
+              <h1 className="center">Sign In</h1>
+            </blockquote>
+          </Col>
+        </Row>
         <div>
           <SignInFormRe onSubmit={this.onSubmit} />
         </div>

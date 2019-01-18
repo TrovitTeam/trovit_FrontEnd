@@ -27,6 +27,8 @@ export const logout = () => {
 };
 
 export const login = data => async dispatch => {
+  console.log("Log Data")
+  console.log(data);
   const response = await axios({
     method: "post",
     url: baseUrl + "user_token",

@@ -19,6 +19,7 @@ import SendEmail from "../components/SendEmail";
 import Setting from "../components/Setting";
 import FooterPage from "../components/FooterPage";
 import ProductPage from "./products/ProductPage";
+import ProductCreate from "./products/ProductCreate";
 import setAuthorizationToken from "../utils/setAuthorizationToken";
 import "../styles/index.css";
 import { setCurrentUser } from "../actions/authActions";
@@ -52,6 +53,7 @@ const App = props => {
           <Route path="/Setting" component={Setting} />
           <Route path="/Statistics" component={Statistics} />
           <Route path="/ProductPage/:id" component={ProductPage} />
+          <Route path="/ProductsTemp" component={ProductCreate} />
         </div>
         <div className="footer">
           <Route path="/" component={FooterPage} />
