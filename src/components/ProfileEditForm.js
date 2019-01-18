@@ -7,6 +7,12 @@ class ProfileEditForm extends React.Component {
     this.props.onSubmit(formValues);
   };
 
+  renderError({ error, touched }) {
+    if (touched && error) {
+      return error;
+    }
+  }
+
   renderInput = ({ input, label, meta, l }) => {
     return (
       <Input
@@ -14,16 +20,14 @@ class ProfileEditForm extends React.Component {
         s={12}
         type={label}
         label={l}
-        //error={this.renderError(meta)}
+        error={this.renderError(meta)}
       />
     );
   };
 
   render() {
     return (
-      <form
-        onSubmit={this.props.handleSubmit(this.onSubmit)}
-        style={{ padding: "2rem 0 0 5rem" }}>
+      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field name="name" component={this.renderInput} label="text" l="Name" />
         <Field
           name="email"
@@ -52,7 +56,35 @@ class ProfileEditForm extends React.Component {
 }
 
 const validate = formValues => {
-  console.log(formValues);
+  const errors = {};
+
+  if (!formValues.name) {
+    errors.name = "You must enter a name";
+  }
+  if (formValues.name != undefined) {
+    if (formValues.name.length < 3) {
+      errors.name = "Min 3 characters";
+    }
+  }
+  if (!formValues.email) {
+    errors.email = "You must enter an email";
+  }
+  if (formValues.email != undefined) {
+    if (!(formValues.email.includes("@") && formValues.email.includes("."))) {
+      errors.email = "Doesn't match an email adress";
+    }
+  }
+  if (!formValues.phone) {
+    errors.phone = "You must enter a phone";
+  }
+  if (formValues.phone != undefined) {
+    if (formValues.phone.match(/[a-zA-z]/)) {
+      errors.phone = "Only Numbers";
+    } else if (formValues.phone.length < 7) {
+      errors.phone = "Min. 7 characters";
+    }
+  }
+  return errors;
 };
 
 export default reduxForm({ form: "profileEditForm", validate })(

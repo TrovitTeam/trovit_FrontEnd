@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Preloader, Input} from "react-materialize";
+import { Row, Col, Preloader, Input } from "react-materialize";
 import defaultImage from "../resources/blank-profile.png";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
@@ -76,10 +76,13 @@ class ProfileEdit extends React.Component {
             </label>
           </Col>
           <Col s={6}>
-            <ProfileEditForm
-              onSubmit={this.onSubmit}
-              initialValues={this.props.initialValues}
-            />
+            <div style={{ padding: "1rem 0 0 3rem" }}>
+              <h2>Edit Profile</h2>
+              <ProfileEditForm
+                onSubmit={this.onSubmit}
+                initialValues={this.props.initialValues}
+              />
+            </div>
           </Col>
         </Row>
       </div>
