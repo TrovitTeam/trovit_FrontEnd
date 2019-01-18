@@ -53,7 +53,7 @@ const App = props => {
           <Route path="/Setting" component={Setting} />
           <Route path="/Statistics" component={Statistics} />
           <Route path="/ProductPage/:id" component={ProductPage} />
-          <Route path="/ProductsTemp" component={ProductCreate} />
+          <Route path="/Product/new" component={ProductCreate} />
         </div>
         <div className="footer">
           <Route path="/" component={FooterPage} />

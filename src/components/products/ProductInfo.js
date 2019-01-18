@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Pagination, Preloader, Button } from "react-materialize";
 import { connect } from "react-redux";
 import {
@@ -30,9 +31,6 @@ class ProductInfo extends Component {
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
-          <link to={<ProductCreate />}>
-            <Button>Create a Product</Button>
-          </link>
         </div>
       );
     }
@@ -41,6 +39,9 @@ class ProductInfo extends Component {
       <div>
         <GridList col="3" detailed list={this.props.userProducts} />
         <div className="container center">
+          <Link to="/Product/new">
+            <Button>Create a New Product</Button>
+          </Link>
           <Pagination
             onSelect={page => {
               this.setState({ page });

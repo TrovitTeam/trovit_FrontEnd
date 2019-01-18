@@ -2,14 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import Carrousel from "./Carrousel";
 import GridList from "./GridList";
-import { fetchSearchResults } from "../actions/searchAction";
+import { fetchProductsSearch } from "../actions/searchAction";
 import { Preloader } from "react-materialize";
 
 import "../styles/landingPage.css";
 
 class LandingPageRe extends React.Component {
   componentDidMount() {
-    this.props.fetchSearchResults("computers");
+    this.props.fetchProductsSearch("Example");
   }
 
   render() {
@@ -44,5 +44,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchSearchResults }
+  { fetchProductsSearch }
 )(LandingPageRe);
