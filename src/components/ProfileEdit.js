@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Preloader, Input, Button } from "react-materialize";
+import { Row, Col, Preloader, Input} from "react-materialize";
 import defaultImage from "../resources/blank-profile.png";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
@@ -76,7 +76,7 @@ class ProfileEdit extends React.Component {
               src={this.state.image ? this.state.image : defaultImage}
               alt={{ defaultImage }}
             />
-            <label className="custom-file-input">
+            <label className="custom-file-input hoverable teal lighten-2 z-depth-2">
               <input
                 className=""
                 onChange={this.FileReader}
@@ -84,7 +84,7 @@ class ProfileEdit extends React.Component {
                 ref={this.imageRef}
                 style={{ display: "none" }}
               />
-              Select Image
+              <h6 className="white-text">Select Image</h6>
             </label>
           </Col>
           <Col s={8} />

@@ -13,7 +13,7 @@ class SignInFormRe extends React.Component {
     let type = "";
     let name = label;
     if (
-      !(label === "password", label === "email", label === "Confirm Password")
+      !(label === "password" ||  label === "email" || label === "Confirm Password")
     ) {
       type = "text";
     } else if (label === "Confirm Password") {
