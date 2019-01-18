@@ -4,6 +4,8 @@ import defaultImage from "../resources/blank-profile.png";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 import { fetchUserInfo, updateUserInfo } from "../actions/userActions";
+import _ from "lodash";
+import ProfileEditForm from "./ProfileEditForm";
 
 class ProfileEdit extends React.Component {
   constructor(props) {
@@ -16,39 +18,26 @@ class ProfileEdit extends React.Component {
     this.props.fetchUserInfo(this.props.match.params.id);
   }
 
-  renderInput = ({ input, label, meta }) => {
-    console.log(input);
-    return (
-      <Input
-        {...input}
-        value=""
-        s={12}
-        type={label}
-        //error={this.renderError(meta)}
-      />
-    );
-  };
-
   onSubmit = formValues => {
-    console.log("submitted");
-  };
-
-  onChange = e => {
-    console.log(e.target.value);
-    this.setState({ image: e.target.value });
+    if (this.state.image) {
+      formValues.image = this.state.image;
+    } else {
+      formValues.image = defaultImage;
+    }
+    this.props.updateUserInfo(this.props.match.params.id, formValues);
   };
 
   FileReader = () => {
     const input = this.imageRef.current;
-    console.log(input.files[0]);
 
-    var reader = new FileReader();
-    reader.onload = this.onImageLoad;
-    reader.readAsDataURL(input.files[0]);
+    if (input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = this.onImageLoad;
+      reader.readAsDataURL(input.files[0]);
+    }
   };
 
   onImageLoad = e => {
-    console.log(e);
     this.setState({ image: e.target.result });
   };
 
@@ -60,7 +49,6 @@ class ProfileEdit extends React.Component {
     }
 
     if (!user.id) {
-      console.log("asd");
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
@@ -87,28 +75,33 @@ class ProfileEdit extends React.Component {
               Select Image
             </label>
           </Col>
-          <Col s={8} />
-          <form onSubmit={this.props.handleSubmit(this.onSubmit)} />
+          <Col s={6}>
+            <ProfileEditForm
+              onSubmit={this.onSubmit}
+              initialValues={this.props.initialValues}
+            />
+          </Col>
         </Row>
       </div>
     );
   }
 }
 
-const validate = formValues => {
-  console.log(formValues);
-};
-
 const mapStateToProps = state => {
   return {
     selectedUser: state.selectedUser,
+    initialValues: _.pick(
+      state.selectedUser,
+      "name",
+      "phone",
+      "email",
+      "location"
+    ),
     currenUser: state.auth.user
   };
 };
 
-export default reduxForm({ form: "editProfileForm", validate })(
-  connect(
-    mapStateToProps,
-    { fetchUserInfo, updateUserInfo }
-  )(ProfileEdit)
-);
+export default connect(
+  mapStateToProps,
+  { fetchUserInfo, updateUserInfo }
+)(ProfileEdit);

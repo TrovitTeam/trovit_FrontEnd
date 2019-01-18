@@ -23,8 +23,9 @@ export const fetchUsersInfo = () => async dispatch => {
   });
 };
 
-export const updateUserInfo = () => {
-  console.log("updating");
+export const updateUserInfo = (id, formValues) => async dispatch => {
+  console.log(formValues);
+  dispatch({ type: "EDIT_PROFILE" });
 };
 
 export const cleanSelectedUser = () => {
