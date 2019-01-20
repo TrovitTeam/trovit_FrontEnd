@@ -15,7 +15,8 @@ import {
   Collection,
   CollectionItem,
   ProgressBar,
-  Preloader
+  Preloader,
+  Icon
 } from "react-materialize";
 
 class ProductPage extends React.Component {
@@ -37,7 +38,7 @@ class ProductPage extends React.Component {
   }
 
   render() {
-    if (!this.props.selectedProduct) {
+    if (!this.props.selectedProduct.id) {
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
@@ -64,11 +65,28 @@ class ProductPage extends React.Component {
               <CollectionItem>
                 <h2 className="center">{product.productName}</h2>
               </CollectionItem>
-              <CollectionItem>
-                <h4 className="center">{product.score}</h4>
+              <CollectionItem className="center">
+                <Rating
+                  readonly
+                  initialRating={product.score}
+                  emptySymbol={
+                    <Icon small className="empty">
+                      star_border
+                    </Icon>
+                  }
+                  fullSymbol={
+                    <Icon small className="filled">
+                      star
+                    </Icon>
+                  }
+                />
+                <h6 className="center">{`${product.score.substring(
+                  0,
+                  4
+                )} of 5`}</h6>
               </CollectionItem>
               <CollectionItem>
-                <h6 className="center">{product.brand}</h6>
+                <h4 className="center">{product.brand}</h4>
               </CollectionItem>
             </Collection>
           </Col>
@@ -77,7 +95,7 @@ class ProductPage extends React.Component {
         <Row>
           <CardPanel className="blue-grey">
             <h1 className="center">.</h1>
-            <h1 className="center">{this.props.selectedProduct.description}</h1>
+            <h4 className="center">{product.description}</h4>
             <h1 className="center">.</h1>
           </CardPanel>
         </Row>
