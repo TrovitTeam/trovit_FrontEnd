@@ -8,14 +8,17 @@ import { Preloader } from "react-materialize";
 import "../styles/landingPage.css";
 
 class LandingPageRe extends React.Component {
+  
   componentDidMount() {
-    this.props.fetchProductsSearch("Example");
+    this.props.fetchProductsSearch("iphone");
   }
 
   render() {
     const products = this.props.products;
-
-    if (!products) {
+    console.log("products");
+    console.log(products);
+    console.log(products.length)
+    if (!products || products.length === undefined) {
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
@@ -37,8 +40,10 @@ class LandingPageRe extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log("state.searchResults");
+  console.log(state.searchResults);
   return {
-    products: state.searchResults.results
+    products: state.searchResults
   };
 };
 

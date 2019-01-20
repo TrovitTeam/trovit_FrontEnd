@@ -38,7 +38,7 @@ class ProductCard extends React.Component {
 
   renderCard() {
     const { urls } = this.props.product;
-    if (this.props.detailed) {
+    if (this.props) {
       return (
         <Link to={`/ProductPage/${this.props.product.id}`}>
           <Card
