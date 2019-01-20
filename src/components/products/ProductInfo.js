@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Pagination, Preloader, Button } from "react-materialize";
+import { Pagination, Preloader, Button, Link } from "react-materialize";
 import { connect } from "react-redux";
 import {
   fetchUserProducts,
@@ -30,9 +30,7 @@ class ProductInfo extends Component {
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
-          <link to={<ProductCreate />}>
-            <Button>Create a Product</Button>
-          </link>
+          <Button>Create a Product</Button>
         </div>
       );
     }
@@ -40,6 +38,7 @@ class ProductInfo extends Component {
     return (
       <div>
         <GridList col="3" detailed list={this.props.userProducts} />
+        <Button>Create a Product</Button>
         <div className="container center">
           <Pagination
             onSelect={page => {

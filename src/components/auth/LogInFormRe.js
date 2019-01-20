@@ -19,7 +19,7 @@ class LogInForm extends React.Component {
         type={label}
         label={label}
         error={this.renderError(meta)}
-        autocomplete="off"
+        autoComplete="off"
         data-lenght="45"
       />
     );
