@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-  fetchSearchResults,
+  fetchProductsSearch,
   cleanSearchResults
 } from "../actions/searchAction";
 import { Preloader, Row, Pagination } from "react-materialize";
@@ -14,7 +14,7 @@ class SearchResult extends Component {
   state = { page: 1 };
 
   componentDidMount() {
-    this.props.fetchSearchResults(
+    this.props.fetchProductsSearch(
       this.props.match.params.term,
       this.state.page
     );
@@ -22,16 +22,14 @@ class SearchResult extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.match.params.term !== prevProps.match.params.term) {
-      this.props.fetchSearchResults(
-        this.props.match.params.term,
-        this.state.page
+      this.props.fetchProductsSearch(
+        this.props.match.params.term
       );
     }
 
     if (this.state.page !== prevState.page) {
-      this.props.fetchSearchResults(
-        this.props.match.params.term,
-        this.state.page
+      this.props.fetchProductsSearch(
+        this.props.match.params.term
       );
     }
   }
@@ -41,7 +39,7 @@ class SearchResult extends Component {
   }
 
   render() {
-    if (!this.props.searchResults.results) {
+    if (!this.props.searchResults.length) {
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
@@ -54,9 +52,9 @@ class SearchResult extends Component {
           <SearchBar />
         </Row>
         <div>
-          <h3>{this.props.searchResults.total} resultados.</h3>
+          <h3>{this.props.searchResults.length} resultado(s).</h3>
         </div>
-        <GridList list={this.props.searchResults.results} />
+        <GridList list={this.props.searchResults} />
         <div className="container center">
           <Pagination
             onSelect={page => {
@@ -78,5 +76,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchSearchResults, cleanSearchResults }
+  { fetchProductsSearch, cleanSearchResults }
 )(SearchResult);

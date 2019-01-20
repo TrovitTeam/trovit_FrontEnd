@@ -38,7 +38,7 @@ class ProductCard extends React.Component {
 
   renderCard() {
     const { urls } = this.props.product;
-    if (this.props.detailed) {
+    if (this.props) {
       return (
         <Link to={`/ProductPage/${this.props.product.id}`}>
           <Card
@@ -46,7 +46,7 @@ class ProductCard extends React.Component {
             className="white"
             style={{ color: "black", display: "flex" }}
             header={<CardTitle image={urls ? urls.regular : defaultImage} />}
-            title={this.props.product.id}>
+            title={this.props.product.productName}>
             {this.props.product.description}
 
             {this.renderRating()}
