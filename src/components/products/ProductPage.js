@@ -4,7 +4,8 @@ import {
   cleanSelectedProduct,
   fetchSelectedProduct
 } from "../../actions/selectedProductAction";
-
+import defaultImage from "../../resources/upload.png";
+import Rating from "react-rating";
 import "../../styles/basic.css";
 
 import {
@@ -19,7 +20,10 @@ import {
 
 class ProductPage extends React.Component {
   componentDidMount() {
-    this.props.fetchSelectedProduct(this.props.match.params.id);
+    this.props.fetchSelectedProduct(
+      this.props.match.params.did,
+      this.props.match.params.pid
+    );
   }
 
   componentDidUpdate(prevProps) {
@@ -33,13 +37,15 @@ class ProductPage extends React.Component {
   }
 
   render() {
-    if (!this.props.selectedProduct.urls) {
+    if (!this.props.selectedProduct) {
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
         </div>
       );
     }
+
+    const product = this.props.selectedProduct;
 
     return (
       <div className="my-container">
@@ -49,20 +55,20 @@ class ProductPage extends React.Component {
               <img
                 alt=""
                 style={{ height: "100%", width: "100%" }}
-                src={this.props.selectedProduct.urls.regular}
+                src={product.image ? product.image : defaultImage}
               />
             </CardPanel>
           </Col>
           <Col s={12} m={6} l={4}>
             <Collection className="blue-grey">
               <CollectionItem>
-                <h2 className="center">{this.props.selectedProduct.id}</h2>
+                <h2 className="center">{product.productName}</h2>
               </CollectionItem>
               <CollectionItem>
-                <h4 className="center">Puntuación</h4>
+                <h4 className="center">{product.score}</h4>
               </CollectionItem>
               <CollectionItem>
-                <h6 className="center">Distribuidor</h6>
+                <h6 className="center">{product.brand}</h6>
               </CollectionItem>
             </Collection>
           </Col>

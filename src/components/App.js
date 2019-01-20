@@ -52,7 +52,7 @@ const App = props => {
           <Route path="/SendEmail" component={SendEmail} />
           <Route path="/Setting" component={Setting} />
           <Route path="/Statistics" component={Statistics} />
-          <Route path="/ProductPage/:id" component={ProductPage} />
+          <Route path="/ProductPage/:did/:pid" component={ProductPage} />
           <Route path="/Product/new" component={ProductCreate} />
         </div>
         <div className="footer">

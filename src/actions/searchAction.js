@@ -16,8 +16,8 @@ export const fetchSearchResults = (term, page) => async dispatch => {
 };
 
 export const fetchProductsSearch = term => async dispatch => {
-  const response = await axios.get(baseUrl+"products/" + term);
-  console.log("searchResponse")
+  const response = await axios.get(baseUrl + "products/" + term);
+  console.log("searchResponse");
   console.log(response.data);
   dispatch({
     type: "FETCH_PRODUCTS_SEARCH",

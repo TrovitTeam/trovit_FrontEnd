@@ -40,7 +40,10 @@ class ProductCard extends React.Component {
     const { urls } = this.props.product;
     if (this.props) {
       return (
-        <Link to={`/ProductPage/${this.props.product.id}`}>
+        <Link
+          to={`/ProductPage/${this.props.product.distributor_id}/${
+            this.props.product.id
+          }`}>
           <Card
             horizontal
             className="white"
