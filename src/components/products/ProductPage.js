@@ -67,7 +67,7 @@ class ProductPage extends React.Component {
               </CollectionItem>
               <CollectionItem className="center">
                 <Rating
-                  readonly
+                  readonly={this.props.currentUser.id == product.distributor_id}
                   initialRating={product.score}
                   emptySymbol={
                     <Icon small className="empty">
@@ -80,10 +80,11 @@ class ProductPage extends React.Component {
                     </Icon>
                   }
                 />
-                <h6 className="center">{`${product.score.substring(
-                  0,
-                  4
-                )} of 5`}</h6>
+                <h6 className="center">
+                  {product.score
+                    ? `${product.score.substring(0, 4)} of 5`
+                    : 0.0}
+                </h6>
               </CollectionItem>
               <CollectionItem>
                 <h4 className="center">{product.brand}</h4>
@@ -105,7 +106,10 @@ class ProductPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { selectedProduct: state.selectedProduct };
+  return {
+    selectedProduct: state.selectedProduct,
+    currentUser: state.auth.user
+  };
 };
 
 export default connect(
