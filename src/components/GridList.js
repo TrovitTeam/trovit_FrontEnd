@@ -4,8 +4,6 @@ import "../styles/gridList.css";
 
 const GridList = props => {
   let renderList = [];
-  console.log("props");
-  console.log(props);
   if (props.list) {
     renderList = props.list.map(item => {
       return (

@@ -7,11 +7,23 @@ import defaultImage from "../../resources/upload.png";
 import Rating from "react-rating";
 import "../../styles/rating.css";
 import { rateProduct } from "../../actions/productActions";
+import {
+  fetchImageProduct,
+  cleanImageProduct
+} from "../../actions/imageProductActions";
 
 class ProductCard extends React.Component {
   onRated = value => {
     this.props.rateProduct(this.props.product.id, value);
   };
+
+  componentDidMount() {
+    this.props.fetchImageProduct();
+  }
+  
+  componentWillUnmount(){
+    this.props.cleanImageProduct();
+  }
 
   renderRating() {
     return (
@@ -37,7 +49,11 @@ class ProductCard extends React.Component {
   }
 
   renderCard() {
-    const { urls } = this.props.product;
+    if(this.props.productImage.length > 0){
+      console.log("this.props image");
+      console.log(this.props.productImage);
+    }
+    const { urls } = this.props.productImage;
     if (this.props) {
       return (
         <Link
@@ -73,7 +89,13 @@ class ProductCard extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    productImage: state.productImage
+  }
+}
+
 export default connect(
-  null,
-  { fetchSelectedProduct, rateProduct }
+  mapStateToProps,
+  { fetchSelectedProduct, rateProduct, fetchImageProduct, cleanImageProduct }
 )(ProductCard);

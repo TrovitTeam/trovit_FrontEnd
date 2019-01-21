@@ -9,7 +9,6 @@ import {
 import { fetchImageProduct, cleanImageProduct } from "../../actions/imageProductActions";
 import GridList from "../GridList";
 import ProductCreate from "./ProductCreate";
-import { threadId } from "worker_threads";
 
 class ProductInfo extends Component {
   state = { page: 1 };
@@ -41,7 +40,7 @@ class ProductInfo extends Component {
 
     return (
       <div>
-        <GridList col="3" detailed list={this.props.userProducts} />
+        <GridList col="3" detailed list={this.props.userProducts}/>
         <div className="container center">
           <Link to="/Product/new">
             <Button>Create a New Product</Button>
