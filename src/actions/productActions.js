@@ -5,6 +5,8 @@ import { FETCH_USER_PRODUCTS, CLEAN_USER_PRODUCTS } from "./types";
 import history from "../history";
 
 export const productCreateRequest = (productData) => async (dispatch, getState) => {
+    console.log("FormValue Sent");
+    console.log(productData);
     const { user } = getState().auth;
     let id = 0;
 
@@ -29,7 +31,8 @@ export const productCreateRequest = (productData) => async (dispatch, getState) 
         producType: productData.producType,
         brand: productData.brand,
         productName: productData.productName,
-        description: productData.description
+        description: productData.description,
+        image: productData.image
       }
     })
 };

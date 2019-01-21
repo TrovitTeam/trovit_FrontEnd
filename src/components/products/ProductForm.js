@@ -2,8 +2,17 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { Input, Button, Row, Col } from "react-materialize";
 import ProductImage from './ProductImage';
+import defaultImage from "../../resources/upload.png";
 
 class ProductForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.imageRef = React.createRef();
+    this.state = { image: "" };
+
+    this.getData = this.getData.bind(this);
+  }    
+
   renderError({ error, touched }) {
       if (touched && error) {
         return error;
@@ -11,8 +20,19 @@ class ProductForm extends React.Component {
     }
 
   onSubmit = formValues => {
+    if (this.state.image) {
+      formValues.image = this.state.image;
+    } else {
+      formValues.image = defaultImage;
+    }
     this.props.onSubmit(formValues);
   };
+
+  getData(data){
+    console.log("data sent");
+    console.log(data);
+    this.setState({image: data});
+  }
 
   renderInput = ({ name, input, label, meta, l}) => {
     return (
@@ -35,7 +55,7 @@ class ProductForm extends React.Component {
         
         <Row>
           <Col s={4}>
-            <ProductImage />
+            <ProductImage handleChangeImage={this.getData} />
           </Col>
           <Col s={6}>
             <Field name="productName" component={this.renderInput} label="text" l="Name" />

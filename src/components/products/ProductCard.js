@@ -7,23 +7,11 @@ import defaultImage from "../../resources/upload.png";
 import Rating from "react-rating";
 import "../../styles/rating.css";
 import { rateProduct } from "../../actions/productActions";
-import {
-  fetchImageProduct,
-  cleanImageProduct
-} from "../../actions/imageProductActions";
 
 class ProductCard extends React.Component {
   onRated = value => {
     this.props.rateProduct(this.props.product.id, value);
   };
-
-  componentDidMount() {
-    this.props.fetchImageProduct();
-  }
-  
-  componentWillUnmount(){
-    this.props.cleanImageProduct();
-  }
 
   renderRating() {
     return (
@@ -49,11 +37,6 @@ class ProductCard extends React.Component {
   }
 
   renderCard() {
-    if(this.props.productImage.length > 0){
-      console.log("this.props image");
-      console.log(this.props.productImage);
-    }
-    const { urls } = this.props.productImage;
     if (this.props) {
       return (
         <Link
@@ -64,7 +47,7 @@ class ProductCard extends React.Component {
             horizontal
             className="white"
             style={{ color: "black", display: "flex" }}
-            header={<CardTitle image={urls ? urls.regular : defaultImage} />}
+            header={<CardTitle image={this.props.product.image ? this.props.product.image : defaultImage} />}
             title={this.props.product.productName}>
             {this.props.product.description}
 
@@ -77,7 +60,7 @@ class ProductCard extends React.Component {
       <Link to={`/ProductPage/${this.props.product.id}`}>
         <Card
           className="white"
-          header={<CardTitle image={urls ? urls.small : defaultImage} />}
+          header={<CardTitle image={this.props.product.image ? this.props.product.image : defaultImage} />}
           title={this.props.product.id}
         />
       </Link>
@@ -85,17 +68,15 @@ class ProductCard extends React.Component {
   }
 
   render() {
+    console.log("this.props");
+    console.log(this.props);
     return <div>{this.renderCard()}</div>;
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    productImage: state.productImage
-  }
-}
+
 
 export default connect(
-  mapStateToProps,
-  { fetchSelectedProduct, rateProduct, fetchImageProduct, cleanImageProduct }
+  null,
+  { fetchSelectedProduct, rateProduct }
 )(ProductCard);

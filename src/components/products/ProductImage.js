@@ -1,9 +1,8 @@
 import React from 'react';
 import { Preloader, Row, Col } from "react-materialize";
-import { uploadImageProduct } from '../../actions/imageProductActions';
 import { fetchUserInfo } from "../../actions/userActions";
 import { connect } from "react-redux";
-import defaultImage from "../../resources/blank-profile.png";
+import defaultImage from "../../resources/upload.png";
 
 class ProductImage extends React.Component{
 
@@ -21,6 +20,14 @@ class ProductImage extends React.Component{
         }
     }
 
+    componentDidUpdate = () => {
+        this.handleChangeImage();
+    }
+    
+    handleChangeImage = () => {
+        this.props.handleChangeImage(this.state.image);
+    };
+
     FileReader = () => {
         const input = this.imageRef.current;
     
@@ -33,7 +40,6 @@ class ProductImage extends React.Component{
     
     onImageLoad = e => {
         this.setState({ image: e.target.result });
-        this.props.uploadImageProduct(this.state.image);
     };
     
     render(){
@@ -75,10 +81,9 @@ class ProductImage extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-      productImage: state.productImage,
       selectedUser: state.selectedUser,
       currenUser: state.auth.user
     };
   }
 
-export default connect (mapStateToProps, { uploadImageProduct, fetchUserInfo })(ProductImage);
+export default connect (mapStateToProps, { fetchUserInfo })(ProductImage);
