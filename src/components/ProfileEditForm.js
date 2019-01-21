@@ -78,7 +78,7 @@ const validate = formValues => {
     errors.phone = "You must enter a phone";
   }
   if (formValues.phone != undefined) {
-    if (formValues.phone.match(/[a-zA-z]/)) {
+    if (formValues.phone.toString().match(/[a-zA-z]/)) {
       errors.phone = "Only Numbers";
     } else if (formValues.phone.length < 7) {
       errors.phone = "Min. 7 characters";

@@ -5,6 +5,7 @@ import {
   CLEAN_SELECTED_USER,
   CLEAN_USER_CONTACTS
 } from "./types";
+import history from "../history";
 
 export const fetchUserInfo = id => async dispatch => {
   const response = await trovit.get(`/users/${id}`);
@@ -24,8 +25,12 @@ export const fetchUsersInfo = () => async dispatch => {
 };
 
 export const updateUserInfo = (id, formValues) => async dispatch => {
-  console.log(formValues);
+  const response = trovit.patch(`/users/${id}`, formValues);
+  console.log(response);
+
   dispatch({ type: "EDIT_PROFILE" });
+  dispatch({ type: CLEAN_SELECTED_USER });
+  history.push(`/Profile/${id}`);
 };
 
 export const cleanSelectedUser = () => {

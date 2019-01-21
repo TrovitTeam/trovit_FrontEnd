@@ -10,7 +10,7 @@ const UserInfoCard = props => {
   return (
     <Row className="white userInfoCard">
       <Col s={4}>
-        <img src={defaultImage} />
+        <img src={user.image ? user.image : defaultImage} />
         {actions}
       </Col>
       <Col s={8}>

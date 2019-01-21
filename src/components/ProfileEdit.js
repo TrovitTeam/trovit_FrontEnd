@@ -61,7 +61,13 @@ class ProfileEdit extends React.Component {
         <Row className="white">
           <Col s={4}>
             <img
-              src={this.state.image ? this.state.image : defaultImage}
+              src={
+                this.state.image
+                  ? this.state.image
+                  : user.image
+                  ? user.image
+                  : defaultImage
+              }
               alt={{ defaultImage }}
             />
             <label className="custom-file-input hoverable teal lighten-2 z-depth-2">

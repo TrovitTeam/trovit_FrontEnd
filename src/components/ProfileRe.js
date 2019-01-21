@@ -46,7 +46,6 @@ class ProfileRe extends Component {
     const { selectedUser } = this.props;
 
     if (!selectedUser.id) {
-      console.log("asd");
       return (
         <div className="preloader-container">
           <Preloader className="preloader" />
