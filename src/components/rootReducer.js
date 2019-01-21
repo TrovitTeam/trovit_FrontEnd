@@ -7,6 +7,8 @@ import userReducer from "../reducers/userReducer";
 import { reducer as formReducer } from "redux-form";
 import contactsListReducer from "../reducers/contactsListReducer";
 import userProductsReducer from "../reducers/userProductsReducer";
+import imageProductReducer from "../reducers/imageProductReducer";
+import imageUserReducer from "../reducers/imageUserReducer";
 
 export default combineReducers({
   searchResults: searchResultsReducer,
@@ -15,5 +17,7 @@ export default combineReducers({
   form: formReducer,
   selectedUser: userReducer,
   contactsList: contactsListReducer,
-  userProducts: userProductsReducer
+  userProducts: userProductsReducer,
+  userImage: imageUserReducer,
+  productImage: imageProductReducer
 });

@@ -1,13 +1,14 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
-import { Input, Button } from "react-materialize";
+import { Input, Button, Row } from "react-materialize";
+import ProductImage from './ProductImage';
 
 class ProductForm extends React.Component {
-    renderError({ error, touched }) {
-        if (touched && error) {
-          return error;
-        }
+  renderError({ error, touched }) {
+      if (touched && error) {
+        return error;
       }
+    }
 
   onSubmit = formValues => {
     this.props.onSubmit(formValues);
@@ -62,6 +63,9 @@ class ProductForm extends React.Component {
           label="text"
           l="Description"
         />
+        <Row>
+          <ProductImage />
+        </Row>
         <div className="center">
           <Button style={{ margin: "1rem" }}>Submit</Button>
         </div>

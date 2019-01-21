@@ -38,7 +38,6 @@ class ProductInfo extends Component {
     return (
       <div>
         <GridList col="3" detailed list={this.props.userProducts} />
-        <Button>Create a Product</Button>
         <div className="container center">
           <Link to="/Product/new">
             <Button>Create a New Product</Button>
