@@ -1,9 +1,10 @@
 import React from 'react';
-import { Preloader } from "react-materialize";
+import { Preloader, Row, Col } from "react-materialize";
 import { uploadImageProduct } from '../../actions/imageProductActions';
 import { fetchUserInfo } from "../../actions/userActions";
 import { connect } from "react-redux";
 import defaultImage from "../../resources/blank-profile.png";
+
 class ProductImage extends React.Component{
 
     constructor(props) {
@@ -41,24 +42,32 @@ class ProductImage extends React.Component{
             if (!user.id) {
                 return (
                     <div className="preloader-container">
-                    <Preloader className="preloader" />
+                        <Preloader className="preloader" />
                     </div>
                 );
             }
         }
 
         return(
-            <div>
-                <label className="custom-file-input hoverable teal lighten-2 z-depth-2">
-                    <input
-                        className=""
-                        onChange={this.FileReader}
-                        type="file"
-                        ref={this.imageRef}
-                        style={{ display: "none" }}
+            <div className="container userInfoCard">
+                <Row>
+                    <img
+                        src={this.state.image ? this.state.image : defaultImage}
+                        alt={{ defaultImage }}
                     />
-                    <h6 className="white-text">Select Image</h6>
-                </label>
+                </Row>
+                <Row>
+                    <label className="custom-file-input hoverable teal lighten-2 z-depth-2">
+                        <input
+                            className=""
+                            onChange={this.FileReader}
+                            type="file"
+                            ref={this.imageRef}
+                            style={{ display: "none" }}
+                        />
+                        <h6 className="white-text">Select Image</h6>
+                    </label>
+                </Row>
             </div>
         )
     }

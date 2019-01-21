@@ -1,6 +1,6 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
-import { Input, Button, Row } from "react-materialize";
+import { Input, Button, Row, Col } from "react-materialize";
 import ProductImage from './ProductImage';
 
 class ProductForm extends React.Component {
@@ -32,39 +32,44 @@ class ProductForm extends React.Component {
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
         style={{ padding: "2rem 0 0 5rem" }}>
-        <Field name="productName" component={this.renderInput} label="text" l="Name" />
-        <Field
-          name="producType"
-          component={this.renderInput}
-          label="text"
-          l="Type"
-        />
-        <Field
-          name="price"
-          component={this.renderInput}
-          label="text"
-          l="Price"
-        />
-        <Field
-          name="brand"
-          component={this.renderInput}
-          label="text"
-          l="Brand"
-        />
-        <Field
-          name="quantity"
-          component={this.renderInput}
-          label="text"
-          l="Quantity"
-        />
-        <Field
-          name="description"
-          component={this.renderInput}
-          label="text"
-          l="Description"
-        />
+        
         <Row>
-          <ProductImage />
+          <Col s={4}>
+            <ProductImage />
+          </Col>
+          <Col s={6}>
+            <Field name="productName" component={this.renderInput} label="text" l="Name" />
+            <Field
+              name="producType"
+              component={this.renderInput}
+              label="text"
+              l="Type"
+            />
+            <Field
+              name="price"
+              component={this.renderInput}
+              label="text"
+              l="Price"
+            />
+            <Field
+              name="brand"
+              component={this.renderInput}
+              label="text"
+              l="Brand"
+            />
+            <Field
+              name="quantity"
+              component={this.renderInput}
+              label="text"
+              l="Quantity"
+            />
+            <Field
+              name="description"
+              component={this.renderInput}
+              label="text"
+              l="Description"
+            />
+          </Col>
         </Row>
         <div className="center">
           <Button style={{ margin: "1rem" }}>Submit</Button>

@@ -6,14 +6,17 @@ import {
   fetchUserProducts,
   cleanUserProducts
 } from "../../actions/productActions";
+import { fetchImageProduct, cleanImageProduct } from "../../actions/imageProductActions";
 import GridList from "../GridList";
 import ProductCreate from "./ProductCreate";
+import { threadId } from "worker_threads";
 
 class ProductInfo extends Component {
   state = { page: 1 };
 
   componentDidMount() {
     this.props.fetchUserProducts(this.props.match.params.id, this.state.page);
+    this.props.fetchImageProduct();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -24,6 +27,7 @@ class ProductInfo extends Component {
 
   componentWillUnmount() {
     this.props.cleanUserProducts();
+    this.props.cleanImageProduct();
   }
 
   render() {
@@ -59,10 +63,11 @@ class ProductInfo extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
-    userProducts: state.userProducts
+    userProducts: state.userProducts,
+    productImage: state.productImage
   };
 }
 export default connect(
   mapStateToProps,
-  { fetchUserProducts, cleanUserProducts }
+  { fetchUserProducts, cleanUserProducts, fetchImageProduct, cleanImageProduct }
 )(ProductInfo);
