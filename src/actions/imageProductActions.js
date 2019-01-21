@@ -1,7 +1,7 @@
 import trovitAPI from "../apis/trovit";
 import { baseUrl } from "../resources/url";
 import axios from "axios";
-import { CLEAN_IMAGE_USER } from "./types";
+import { CLEAN_IMAGE_PRODUCT } from "./types";
 
 const loggedID = () => async getState =>{
     const { user } = getState().auth;
@@ -30,41 +30,36 @@ const loggedType = () => async getState =>{
     return type;
 }
 
-export const fetchImageUser = () => async dispatch => {
-    const type = loggedType();
+export const fetchImageProduct = () => async dispatch => {
     const id = loggedID();
+    const response = await trovitAPI.get("/products/"+id+"/pictures");
 
-    const response = await axios({
-        method: "GET",
-        url: baseUrl + type + "/" + id + "/pictures",
-        data: fData
-    });
     dispatch({
-        type: "FETCH_IMAGE_USER",
+        type: "FETCH_IMAGE_PRODUCT",
         payload: response.data
     });
 };
 
-
-export const uploadImageUser = (fData) => async dispatch => {
+export const uploadImageProduct = (fData) => async dispatch => {
     const type = loggedType();
     const id = loggedID();
 
     const response = await axios({
         method: "POST",
-        url: baseUrl + type + "/" + id + "/pictures",
+        url: baseUrl +"products/" + id + "/pictures",
         data: fData
     });
 
     dispatch({
-        type: "UPLOAD_IMAGE_USER",
+        type: "UPLOAD_IMAGE_PRODUCT",
         payload: response.data
     });
 };
 
-export const cleanImageUser = () => async dispatch => {
+
+export const cleanImageProduct = () => async dispatch => {
     dispatch({
-        type: CLEAN_IMAGE_USER
+        type: CLEAN_IMAGE_PRODUCT
     });
 };
   
