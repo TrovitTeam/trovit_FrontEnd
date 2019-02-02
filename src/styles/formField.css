@@ -1,0 +1,12 @@
+label.active {
+  transform: translateY(-70%) !important;
+}
+
+label::after {
+  position: relative !important;
+  top: 30px !important;
+  transition: top 0.2s ease-out !important;
+}
+label.active::after {
+  top: 40px !important;
+}

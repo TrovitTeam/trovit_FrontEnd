@@ -1,0 +1,10 @@
+.landing-page {
+	width: 90%;
+	margin: auto;
+}
+
+.card
+	.card-action
+	a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+	margin: 0;
+}

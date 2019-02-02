@@ -1,0 +1,27 @@
+.userInfoCard {
+  margin-top: 30px;
+  height: 100%;
+}
+
+.userInfoCard img {
+  padding: 1.8rem 0 1.8rem 1rem;
+  width: 100%;
+}
+
+.userInfoCard .info {
+  padding: 0 2rem;
+}
+
+.userInfoCard .type {
+  padding-top: 1rem;
+}
+
+.userInfoCard .item.header {
+  margin: 2rem 1.2rem;
+  color: gray;
+}
+
+.userInfoCard .item.header .content {
+  margin: 1.2rem 1.2rem;
+  color: black;
+}

@@ -1,91 +1,78 @@
 import axios from "axios";
 import setAuthorizationToken from "../utils/setAuthorizationToken";
 import jwt_decode from "jwt-decode";
-import {SET_CURRENT_USER} from "./types";
+import { baseUrl } from "../resources/url.js";
+import history from "../history";
 
+export const setCurrentUser = id => async dispatch => {
+  const response = await axios({
+    method: "get",
+    url: baseUrl + "users/" + id,
+    responseType: "json"
+  });
 
+  dispatch({
+    type: "SET_CURRENT_USER",
+    payload: response.data
+  });
+};
 
-export function setCurrentUser(user)
-{
-    return {
-        type: SET_CURRENT_USER,
-        user
-    };
-}
+export const logout = () => {
+  localStorage.removeItem("jwtToken");
+  setAuthorizationToken(false);
+  history.push("/");
+  return {
+    type: "UNSET_CURRENT_USER"
+  };
+};
 
-export function logout()
-{
-    return dispatch => {
-        localStorage.removeItem("jwtToken");
-        setAuthorizationToken(false);
-        dispatch(setCurrentUser({}));
+export const login = data => async dispatch => {
+  console.log("Log Data")
+  console.log(data);
+  const response = await axios({
+    method: "post",
+    url: baseUrl + "user_token",
+    responseType: "json",
+    data: {
+      auth: {
+        email: data.email,
+        password: data.password
+      }
     }
-}
+  });
 
-export function login(data)
-{
-    return dispatch => {
+  const token = response.data.jwt;
+  localStorage.setItem("jwtToken", token);
+  setAuthorizationToken(token);
+  const decoded = jwt_decode(token);
+  const id = decoded.sub;
 
-        return  axios({
-            method:'post',
-            url:'http://localhost:3000/user_token',
-            responseType: "json",
-            data: {
-                "auth":
-                {
-                "email": data.email,
-                "password": data.password
-                }
-            }
-        })
-        .then(response =>  {
+  const response2 = await axios({
+    method: "get",
+    url: baseUrl + "users/" + id,
+    responseType: "json"
+  });
 
-            const token = response.data.jwt;
-            localStorage.setItem("jwtToken", token);
-            setAuthorizationToken(token);
-            const decoded = jwt_decode(token);
-            const id = decoded.sub;
+  dispatch(setCurrentUser(response2.data.id));
 
-            axios({
-                    method: "get",
-                    url:'http://localhost:3000/users/' + id,
-                    responseType: "json"
-            })
-            .then(response => {
+  history.push("/");
+};
 
-                console.log(response);
-                dispatch(setCurrentUser(response.data));
-            })            
-        });
+export const loginFacebook = data => async dispatch => {
+  const response = await axios({
+    method: "POST",
+    url: baseUrl + "users/fb_create/",
+    responseType: "json",
+    data: {
+      accessToken: data.accessToken,
+      user: {
+        email: data.email,
+        name: data.name,
+        userType: data.userType,
+        password: data.id
+      }
     }
-} 
+  });
 
-
-export function loginFacebook(data)
-{
-    console.log(data.userType);
-
-    return dispatch => {
-
-        return  axios({
-            method:'POST',
-            url:'http://localhost:3000/users/fb_create/',
-            responseType: "json",
-            data: {
-                "accessToken": data.accessToken,
-                "user": {
-                    "email": data.email,
-                    "name":data.name,
-                    "userType": data.userType,
-                    "password": data.id
-                }
-            }
-            
-        })
-        .then(response =>  {
-
-            console.log(response);
-            dispatch(login(response.data));
-        });
-    }
-} 
+  dispatch(login(response.data));
+};

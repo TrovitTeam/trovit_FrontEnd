@@ -1,0 +1,18 @@
+.my-container {
+  width: 90%;
+  margin: auto;
+}
+
+.preloader-container {
+  top: 40%;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+}
+
+.custom-file-input {
+  display: inline-block;
+  margin: 0 0 1rem 1rem;
+  padding: 6px 12px;
+  cursor: pointer;
+}

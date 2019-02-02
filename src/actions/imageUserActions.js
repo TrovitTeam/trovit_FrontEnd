@@ -1,64 +1,74 @@
-import axios from 'axios';
+import trovitAPI from "../apis/trovit";
+import { baseUrl } from "../resources/url";
+import axios from "axios";
+import { CLEAN_IMAGE_USER } from "./types";
 
+export const fetchImageUser = () => async (dispatch, getState) => {
+    const { user } = getState().auth;
+    let id = 0;
 
-export function imageUserCreateRequest(pictureData){
-    return dispatch => {
-        return axios({
-                    method:'POST',
-                    url:'http://localhost:3000/users/1/pictures',
-                    responseType: "json",
-                    data: {
-                        "image": pictureData.image,
-                        "pictureType": "user",
-                        "pictureUrl": "image_url"
-                    }
-                })
-                .then(function(response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-    }   
-}
+    const responseId = await axios({
+        method: "GET",
+        url: baseUrl + "users/" + user.id + "/user_type",
+        responseType: "json"
+    })
 
-export function imageUpload(fData){
+    id = responseId.data["0"].id;
+    let type = "";
 
-    return (dispatch, getState) => {
-        
-        const {user} = getState().auth;
-
-
-        let type = '';
-        if(user.userType === 'distributor')
-        {
-            type = 'distributors';
-        }
-        else
-        {
-            type = 'business_managers';
-        }
-
-        let id = 0;
-        
-        axios({
-            method: 'GET',
-            url: 'http://localhost:3000/users/' + user.id + '/user_type',
-            responseType: 'json',
-        })
-        .then(response => {
-            console.log(response);
-            id = response.data["0"].id;
-            console.log("FData: ");
-            console.log(fData);
-
-            return  axios({
-                method: 'POST',
-                url: 'http://localhost:3000/'+ type +'/' + id + '/pictures',
-                data: fData
-            });
-        });
-
-        
+    if (user.userType === "distributor") {
+        type = "distributors";
+    } else {
+        type = "business_managers";
     }
-}
+
+    const response = await axios({
+        method: "GET",
+        url: baseUrl + type + "/" + id + "/pictures",
+        data: fData
+    });
+    dispatch({
+        type: "FETCH_IMAGE_USER",
+        payload: response.data
+    });
+};
+
+
+export const uploadImageUser = (fData) => async (dispatch, getState) => {
+    const { user } = getState().auth;
+    let id = 0;
+
+    const responseId = await axios({
+        method: "GET",
+        url: baseUrl + "users/" + user.id + "/user_type",
+        responseType: "json"
+    })
+
+    id = responseId.data["0"].id;
+    let type = "";
+
+    if (user.userType === "distributor") {
+        type = "distributors";
+    } else {
+        type = "business_managers";
+    }
+
+    const response = await axios({
+        method: "POST",
+        url: baseUrl + type + "/" + id + "/pictures",
+        data: fData
+    });
+
+    dispatch({
+        type: "UPLOAD_IMAGE_USER",
+        payload: response.data
+    });
+};
+
+export const cleanImageUser = () => async dispatch => {
+    dispatch({
+        type: CLEAN_IMAGE_USER
+    });
+};
+  
+
